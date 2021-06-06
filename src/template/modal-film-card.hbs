@@ -1,6 +1,10 @@
-<div class='movie__card'>
+<div class='movie__card' data-action='{{id}}'>
   <div class='movie__card-img-wrapper'>
-    <img class='movie__card-img' src={{backdrop_path}} alt={{original_title}} />
+    <img
+      class='movie__card-img'
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+      alt={{original_title}}
+    />
   </div>
   <div class='movie__card-text-block'>
     <h2 class='movie__title'>
@@ -25,7 +29,9 @@
         </li>
         <li class='movie__data-list-item'>
           <p>Genre
-            <span>{{genres.name}}</span>
+            {{#each genres}}
+              <span>{{genres.name}}</span>
+            {{/each}}
           </p>
         </li>
       </ul>
