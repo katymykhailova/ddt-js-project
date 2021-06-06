@@ -1,0 +1,39 @@
+/*Базовые стили кнопки */
+.handle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 113px;
+  min-height: 44px;
+
+  cursor: pointer;
+
+  padding: 10px 15px;
+
+  border-radius: 5px;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+
+  border: 2px solid var(--secondary-button-color);
+  color: var(--secondary-button-color);
+
+  /*Базовые стили для span*/
+  &__title {
+    display: block;
+
+    font-family: var(--main-page-font);
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+}
+
+/*Стили по нажатию на кнопку*/
+.add-watched {
+  border: none;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
