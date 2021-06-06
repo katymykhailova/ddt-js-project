@@ -83,4 +83,4 @@ module.exports="/ddt-js-project/no-poster.b01744b0.png";
 },{"./apiService":"eQwa","./components/pagination":"H1oe","./refs/get-refs":"efIR","../template/film-card.hbs":"gqlN"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/components/arrowTop"),require("./js/components/modal"),require("./js/components/modalTeam"),require("./js/components/pagination"),require("./js/fetchMovies");
 },{"./sass/main.scss":"clu1","./js/components/arrowTop":"dAYR","./js/components/modal":"dAYR","./js/components/modalTeam":"dAYR","./js/components/pagination":"H1oe","./js/fetchMovies":"oMST"}]},{},["Focm"], null)
-//# sourceMappingURL=/ddt-js-project/src.43784be4.js.map
+//# sourceMappingURL=/ddt-js-project/src.3d8c755b.js.map
