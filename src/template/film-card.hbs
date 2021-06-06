@@ -1,14 +1,21 @@
 {{#each this}}
-<li class="gallery-list__item" data-id="{{id}}">
-  <img class="poster" src="{{poster_path}}" alt="{{title}}"
-    data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}" />
-  <h3 class="film-card__name ">
-    {{title}}
-  </h3>
-  <p class="film-card__genres">
-    {{#each genres}}
-    <span class="film-card__genre">{{this}}</span>
-    {{/each}}| {{release_date}}
-  </p>
-</li>
+  <li class='gallery-list__item' data-id="{{id}}">
+    <img
+      class='poster'
+      src="{{poster_path}}"
+      alt="{{title}}"
+      data-source="https://image.tmdb.org/t/p/w500{{backdrop_path}}"
+    />
+    <h3 class='film-card__name'>
+      {{title}}
+    </h3>
+    <p class='film-card__genres'>
+      {{#each genres}}
+        <span class='film-card__genre'>
+          {{this}}
+        </span>
+      {{/each}}
+      | {{release_date}}
+    </p>
+  </li>
 {{/each}}
