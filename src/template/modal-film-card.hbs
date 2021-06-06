@@ -1,0 +1,38 @@
+<div class='movie__card'>
+  <div class='movie__card-img-wrapper'>
+    <img class='movie__card-img' src={{backdrop_path}} alt={{original_title}} />
+  </div>
+  <div class='movie__card-text-block'>
+    <h2 class='movie__title'>
+      {{original_title}}
+    </h2>
+    <div class='movie__data'>
+      <ul class='movie__data-list'>
+        <li class='movie__data-list-item'>
+          <p>Vote/Votes
+            <span>{{vote_average}}/{{vote_count}}</span>
+          </p>
+        </li>
+        <li class='movie__data-list-item'>
+          <p>Popularity
+            <span>{{popularity}}</span>
+          </p>
+        </li>
+        <li class='movie__data-list-item'>
+          <p>Original title
+            <span>{{original_title}}</span>
+          </p>
+        </li>
+        <li class='movie__data-list-item'>
+          <p>Genre
+            <span>{{genres.name}}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class='movie__descr'>
+      <p class='movie__descr-title'>About</p>
+      <p class='movie__descr-text'>{{overview}}</p>
+    </div>
+  </div>
+</div>
