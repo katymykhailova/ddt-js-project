@@ -86,6 +86,11 @@ export default class NewPagination {
     this.updatePageList();
   }
 
+  decrementCurrentPage() {
+    this.currentPage = +this.currentPage - 1;
+    this.updatePageList();
+  }
+
   show() {
     this.refs.paginateContainer.classList.remove('is-hidden');
   }

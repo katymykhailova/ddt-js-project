@@ -8,12 +8,35 @@ import getRefs from './refs/get-refs';
 // variables
 const moviesApiService = new MoviesApiService();
 const pagination = new Pagination({ selector: '[data-action="pagination"]' });
-const refs = getRefs();
 
 // templates
 import filmCard from '../template/film-card.hbs';
 
+const refs = getRefs();
+
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
+refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
+refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
+
+function onPrevPageBtnClick(e) {
+  e.preventDefault();
+  moviesApiService.decrementPage();
+  pagination.decrementCurrentPage();
+  moviesApiService.currentPage = pagination.currentPage;
+  clearMoviesContainer();
+  fetchMoviesPagination();
+  pagination.updatePageList();
+}
+
+function onNextPageBtnClick(e) {
+  e.preventDefault();
+  moviesApiService.incrementPage();
+  pagination.incrementCurrentPage();
+  moviesApiService.currentPage = pagination.currentPage;
+  clearMoviesContainer();
+  fetchMoviesPagination();
+  pagination.updatePageList();
+}
 
 function onSearchPagination(e) {
   e.preventDefault();
@@ -63,6 +86,7 @@ async function fetchPopularMovies() {
       // });
     }
     pagination.show();
+    clearMoviesContainer();
     appendMoviesMarkup(movies);
     appendPaginationMarkup();
   } catch (error) {

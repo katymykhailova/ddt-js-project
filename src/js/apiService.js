@@ -90,6 +90,10 @@ export default class NewApiService {
     this.page += 1;
   }
 
+  decrementPage() {
+    this.page -= 1;
+  }
+
   resetPage() {
     this.page = 1;
   }
