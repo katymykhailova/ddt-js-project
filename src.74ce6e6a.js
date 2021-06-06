@@ -77,4 +77,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./apiService":"eQwa","./components/pagination":"dAYR","./refs/get-refs":"efIR","../template/film-card.hbs":"gqlN"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/components/arrowTop"),require("./js/components/modal"),require("./js/components/modalTeam"),require("./js/components/pagination"),require("./js/fetchMovies");
 },{"./sass/main.scss":"clu1","./js/components/arrowTop":"dAYR","./js/components/modal":"dAYR","./js/components/modalTeam":"dAYR","./js/components/pagination":"dAYR","./js/fetchMovies":"oMST"}]},{},["Focm"], null)
-//# sourceMappingURL=/ddt-js-project/src.4af812f9.js.map
+//# sourceMappingURL=/ddt-js-project/src.74ce6e6a.js.map
