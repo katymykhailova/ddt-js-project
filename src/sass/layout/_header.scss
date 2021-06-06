@@ -1,5 +1,5 @@
 .header-section {
-  padding: 58px 21px 43px 20px;
+  padding: 58px 0 43px 0;
 }
 
 .header-main {
@@ -135,7 +135,7 @@
       url(../images/header-bg-main-tablet.jpg);
   }
   .header-section {
-    padding: 58px 76px 59px 71px;
+    padding: 58px 0;
   }
   .logo__icon {
     margin-right: 10px;
@@ -153,8 +153,5 @@
   .header-main {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header-bg-main-desktop.jpg);
-  }
-  .header-section {
-    padding: 58px 71px 59px 71px;
   }
 }
