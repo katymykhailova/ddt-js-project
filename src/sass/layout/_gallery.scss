@@ -1,4 +1,11 @@
-@import '../utils/mixins';
+@mixin font {
+  font-family: var(--main-page-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
 
 .gallery-list {
   padding-top: 20px;
@@ -13,7 +20,20 @@
 .poster {
   width: 280px;
   height: 398px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
+.film-card__name {
+  @include font;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.film-card__genres {
+  @include font;
+  color: #ff6b08;
+}
+
 @media screen and (max-width: 767px) {
   .gallery-list__item:not(:last-child) {
     margin-bottom: 20px;
