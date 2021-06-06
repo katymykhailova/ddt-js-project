@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL, API_KEY } from './refs/settingsApi';
+import noposter from '../images/no-poster.png';
 axios.defaults.baseURL = BASE_URL;
 
 export default class NewApiService {
@@ -7,16 +8,37 @@ export default class NewApiService {
     this.searchQuery = '';
     this.page = 1;
     this.currentPage = 1;
+    this.totalPages = 1;
   }
 
   async fetchPopularMovies() {
     try {
       const response = await axios.get(
-        `/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${this.page}`,
+        // `/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${this.page}`,
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.page}`,
       );
-      console.log(response);
-      const popularMovies = await response.data.results;
+      // console.log(response);
+      const popularMoviesData = await response.data;
+      const popularMovies = await popularMoviesData.results;
       const normalizedMovies = await this.fetchNormalizer(popularMovies);
+      this.totalPages = popularMoviesData.total_pages;
+      return normalizedMovies;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async fetchMoviesPagination() {
+    try {
+      const response = await axios.get(
+        // `/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${this.currentPage}`,
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.currentPage}`,
+      );
+      // console.log(response);
+      const popularMoviesData = await response.data;
+      const popularMovies = await popularMoviesData.results;
+      const normalizedMovies = await this.fetchNormalizer(popularMovies);
+      this.totalPages = popularMoviesData.total_pages;
       return normalizedMovies;
     } catch (error) {
       console.error(error);
@@ -62,5 +84,21 @@ export default class NewApiService {
     // Обновляем информацию фильмов в массиве
     const updatedMoviesarr = moviesArr.map(movie => updateMovie(movie));
     return updatedMoviesarr;
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
   }
 }

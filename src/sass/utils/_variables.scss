@@ -1,7 +1,7 @@
 :root {
   --main-page-font: 'Roboto', sans-serif;
 
-  --accent-color: #ffffff;
+  --accent-color: #ff6b08;
 
   --primary-text-color: #ffffff;
   --secondary-text-color: #ffffff;
@@ -18,6 +18,6 @@
   --text-color: #ffffff;
   --secondary-button-color: #000000;
 
-  --transition-function: 300ms ease-in-out;
+  --transition-function: 250ms;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
