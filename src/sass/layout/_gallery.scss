@@ -1,6 +1,6 @@
+@import '../utils/mixins';
+
 .gallery-list {
-  display: flex;
-  flex-wrap: wrap;
   padding-top: 20px;
   padding-bottom: 40px;
 }
@@ -10,11 +10,30 @@
   height: 440px;
 }
 
-.gallery-list__item:not(:last-child) {
-  margin-bottom: 20px;
-}
-
 .poster {
   width: 280px;
   height: 398px;
+}
+@media screen and (max-width: 767px) {
+  .gallery-list__item:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gallery-list {
+    @include grid(30px);
+  }
+  .gallery-list__item {
+    @include grid-item(30px, 2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gallery-list {
+    @include grid(30px);
+  }
+  .gallery-list__item {
+    @include grid-item(30px, 3);
+  }
 }
