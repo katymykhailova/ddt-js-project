@@ -9,6 +9,7 @@ export default class NewApiService {
     this.page = 1;
     this.currentPage = 1;
     this.totalPages = 1;
+    this.id = 550;
   }
 
   async fetchPopularMovies() {
@@ -52,6 +53,17 @@ export default class NewApiService {
       return genres;
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  async fetchMovieDetails() {
+    try {
+      const response = await axios.get(`movie/${this.id}?api_key=${API_KEY}&language=en-US`);
+      const modalMovie = await response.data;
+      // console.log(response.data);
+      return modalMovie;
+    } catch (error) {
+      console.log(error);
     }
   }
 
