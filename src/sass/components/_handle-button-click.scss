@@ -37,3 +37,12 @@
   background: var(--button-bg-color);
   color: var(--button-text-color);
 }
+
+.header-button {
+  border: 2px solid var(--button-border-color);
+  color: var(--button-text-color);
+}
+.--accent {
+  border: none;
+  background: var(--button-bg-color);
+}
