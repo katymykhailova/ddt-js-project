@@ -8,12 +8,35 @@ import getRefs from './refs/get-refs';
 // variables
 const moviesApiService = new MoviesApiService();
 const pagination = new Pagination({ selector: '[data-action="pagination"]' });
-const refs = getRefs();
 
 // templates
 import filmCard from '../template/film-card.hbs';
 
+const refs = getRefs();
+
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
+refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
+refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
+
+function onPrevPageBtnClick(e) {
+  e.preventDefault();
+  moviesApiService.decrementPage();
+  pagination.decrementCurrentPage();
+  moviesApiService.page = pagination.page;
+  clearMoviesContainer();
+  fetchMoviesPagination();
+  pagination.updatePageList();
+}
+
+function onNextPageBtnClick(e) {
+  e.preventDefault();
+  moviesApiService.incrementPage();
+  pagination.incrementCurrentPage();
+  moviesApiService.page = pagination.page;
+  clearMoviesContainer();
+  fetchMoviesPagination();
+  pagination.updatePageList();
+}
 
 function onSearchPagination(e) {
   e.preventDefault();
@@ -21,8 +44,8 @@ function onSearchPagination(e) {
     return;
   }
 
-  moviesApiService.currentPage = e.target.dataset.page;
-  pagination.currentPage = e.target.dataset.page;
+  moviesApiService.page = e.target.dataset.page;
+  pagination.page = e.target.dataset.page;
   clearMoviesContainer();
   fetchMoviesPagination();
   pagination.updatePageList();
@@ -41,7 +64,7 @@ async function fetchMoviesPagination() {
       // });
     }
     appendMoviesMarkup(movies);
-    if (pagination.currentPage == pagination.maxPage) {
+    if (pagination.page == pagination.maxPage) {
       // loadMoreBtn.hide();
     } else {
       // loadMoreBtn.enable();
@@ -63,6 +86,7 @@ async function fetchPopularMovies() {
       // });
     }
     pagination.show();
+    clearMoviesContainer();
     appendMoviesMarkup(movies);
     appendPaginationMarkup();
   } catch (error) {

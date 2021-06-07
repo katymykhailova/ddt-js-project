@@ -3,7 +3,7 @@ import paginateTpl from '../../template/pagination.hbs';
 export default class NewPagination {
   constructor({ selector }) {
     this.refs = this.getRefs(selector);
-    this.currentPage = 1;
+    this.page = 1;
     this.pageList = [];
     this.firstPage = 1;
     this.lastPage = 7;
@@ -22,7 +22,7 @@ export default class NewPagination {
     this.clearPaginationContainer();
     this.pages = {};
     this.pageList = [];
-    if (this.currentPage <= this.length - 3) {
+    if (this.page <= this.length - 3) {
       for (let i = this.firstPage; i <= this.length - 2; i += 1) {
         this.pageList.push(i);
       }
@@ -34,10 +34,7 @@ export default class NewPagination {
         pageList: this.pageList,
         maxPage: this.maxPage,
       };
-    } else if (
-      this.currentPage >= this.maxPage - this.length + 4 ||
-      this.currentPage == this.maxPage
-    ) {
+    } else if (this.page >= this.maxPage - this.length + 4 || this.page == this.maxPage) {
       for (let i = this.maxPage - this.length + 3; i <= this.maxPage; i += 1) {
         this.pageList.push(i);
       }
@@ -50,8 +47,8 @@ export default class NewPagination {
       };
     } else {
       for (
-        let i = this.currentPage - Math.round((this.length - 5) / 2);
-        i <= +this.currentPage + Math.round((this.length - 5) / 2);
+        let i = this.page - Math.round((this.length - 5) / 2);
+        i <= +this.page + Math.round((this.length - 5) / 2);
         i += 1
       ) {
         this.pageList.push(i);
@@ -69,7 +66,7 @@ export default class NewPagination {
 
   appendPaginationMarkup() {
     this.refs.paginateContainer.insertAdjacentHTML('beforeend', paginateTpl(this.pages));
-    const currentEl = document.querySelector(`[data-page="${this.currentPage}"]`);
+    const currentEl = document.querySelector(`[data-page="${this.page}"]`);
     currentEl.parentElement.classList.add('active');
   }
 
@@ -78,11 +75,16 @@ export default class NewPagination {
   }
 
   resetCurrentPage() {
-    this.currentPage = 1;
+    this.page = 1;
   }
 
   incrementCurrentPage() {
-    this.currentPage = +this.currentPage + 1;
+    this.page = +this.page + 1;
+    this.updatePageList();
+  }
+
+  decrementCurrentPage() {
+    this.page = +this.page - 1;
     this.updatePageList();
   }
 

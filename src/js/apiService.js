@@ -7,7 +7,6 @@ export default class NewApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
-    this.currentPage = 1;
     this.totalPages = 1;
     this.id = 550;
   }
@@ -33,7 +32,7 @@ export default class NewApiService {
     try {
       const response = await axios.get(
         // `/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${this.currentPage}`,
-        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.currentPage}`,
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.page}`,
       );
       // console.log(response);
       const popularMoviesData = await response.data;
@@ -100,6 +99,10 @@ export default class NewApiService {
 
   incrementPage() {
     this.page += 1;
+  }
+
+  decrementPage() {
+    this.page -= 1;
   }
 
   resetPage() {
