@@ -17,11 +17,23 @@ pagination.length = clientWidth >= 768 ? 9 : 5;
 import filmCard from '../template/film-card.hbs';
 
 const refs = getRefs();
+const headerClientHeight = refs.headerEl.clientHeight;
 
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
 window.addEventListener('resize', debounce(onWindowResize, 200));
+
+function scrollTo() {
+  if (headerClientHeight === 0) {
+    return;
+  }
+
+  window.scrollTo({
+    top: headerClientHeight,
+    behavior: 'smooth',
+  });
+}
 
 function onWindowResize() {
   clientWidth = document.documentElement.clientWidth;
@@ -33,6 +45,7 @@ function onPrevPageBtnClick(e) {
   e.preventDefault();
   moviesApiService.decrementPage();
   pagination.decrementPage();
+  scrollTo();
   fetchMoviesPagination();
   pagination.updatePageList();
 }
@@ -41,6 +54,7 @@ function onNextPageBtnClick(e) {
   e.preventDefault();
   moviesApiService.incrementPage();
   pagination.incrementPage();
+  scrollTo();
   fetchMoviesPagination();
   pagination.updatePageList();
 }
@@ -53,6 +67,7 @@ function onSearchPagination(e) {
 
   moviesApiService.page = e.target.dataset.page;
   pagination.page = e.target.dataset.page;
+  scrollTo();
   clearMoviesContainer();
   fetchMoviesPagination();
   pagination.updatePageList();
