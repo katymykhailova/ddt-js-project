@@ -157,23 +157,3 @@
 }
 
 
-// ------------------style for header-library-----------------------//
-
-.header-main.lib {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header-bg-lib-mobile.jpeg);
-}
-
-@media screen and (min-width: 768px) {
-  .header-main.lib {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/header-bg-lib-tablet.jpeg);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .header-main.lib {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/header-bg-lib-desktop.jpeg);
-  }
-}
