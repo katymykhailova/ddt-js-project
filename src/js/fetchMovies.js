@@ -15,15 +15,13 @@ import filmCard from '../template/film-card.hbs';
 const refs = getRefs();
 
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
-refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
-refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
+pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
+pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
 
 function onPrevPageBtnClick(e) {
   e.preventDefault();
   moviesApiService.decrementPage();
-  pagination.decrementCurrentPage();
-  moviesApiService.page = pagination.page;
-  clearMoviesContainer();
+  pagination.decrementPage();
   fetchMoviesPagination();
   pagination.updatePageList();
 }
@@ -31,9 +29,7 @@ function onPrevPageBtnClick(e) {
 function onNextPageBtnClick(e) {
   e.preventDefault();
   moviesApiService.incrementPage();
-  pagination.incrementCurrentPage();
-  moviesApiService.page = pagination.page;
-  clearMoviesContainer();
+  pagination.incrementPage();
   fetchMoviesPagination();
   pagination.updatePageList();
 }
@@ -52,6 +48,7 @@ function onSearchPagination(e) {
 }
 
 async function fetchMoviesPagination() {
+  clearMoviesContainer();
   try {
     // loadMoreBtn.show();
     // loadMoreBtn.disable();
@@ -77,6 +74,7 @@ async function fetchMoviesPagination() {
 }
 
 async function fetchPopularMovies() {
+  clearMoviesContainer();
   try {
     const movies = await moviesApiService.fetchPopularMovies();
 
@@ -86,7 +84,6 @@ async function fetchPopularMovies() {
       // });
     }
     pagination.show();
-    clearMoviesContainer();
     appendMoviesMarkup(movies);
     appendPaginationMarkup();
   } catch (error) {

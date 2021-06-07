@@ -2,7 +2,6 @@ import paginateTpl from '../../template/pagination.hbs';
 
 export default class NewPagination {
   constructor({ selector }) {
-    this.refs = this.getRefs(selector);
     this.page = 1;
     this.pageList = [];
     this.firstPage = 1;
@@ -10,6 +9,8 @@ export default class NewPagination {
     this.maxPage = 42;
     this.length = 9;
     this.pages = {};
+    this.refs = this.getRefs(selector);
+    this.createPaginationArrow();
   }
 
   getRefs(selector) {
@@ -19,6 +20,7 @@ export default class NewPagination {
   }
 
   updatePageList() {
+    this.updateArrowBtn();
     this.clearPaginationContainer();
     this.pages = {};
     this.pageList = [];
@@ -64,6 +66,19 @@ export default class NewPagination {
     this.appendPaginationMarkup();
   }
 
+  createPaginationArrow() {
+    const prevPageEl = document.createElement('div');
+    prevPageEl.classList = 'pagination-arrow arrow_left';
+    prevPageEl.dataset.action = 'prev-page';
+    this.refs.paginateContainer.before(prevPageEl);
+    const nextPageEl = document.createElement('div');
+    nextPageEl.classList = 'pagination-arrow arrow_right';
+    nextPageEl.dataset.action = 'next-page';
+    this.refs.paginateContainer.after(nextPageEl);
+    this.refs.prevPageBtn = prevPageEl;
+    this.refs.nextPageBtn = nextPageEl;
+  }
+
   appendPaginationMarkup() {
     this.refs.paginateContainer.insertAdjacentHTML('beforeend', paginateTpl(this.pages));
     const currentEl = document.querySelector(`[data-page="${this.page}"]`);
@@ -74,16 +89,16 @@ export default class NewPagination {
     this.refs.paginateContainer.innerHTML = '';
   }
 
-  resetCurrentPage() {
+  resetPage() {
     this.page = 1;
   }
 
-  incrementCurrentPage() {
+  incrementPage() {
     this.page = +this.page + 1;
     this.updatePageList();
   }
 
-  decrementCurrentPage() {
+  decrementPage() {
     this.page = +this.page - 1;
     this.updatePageList();
   }
@@ -94,5 +109,10 @@ export default class NewPagination {
 
   hide() {
     this.refs.paginateContainer.classList.add('is-hidden');
+  }
+
+  updateArrowBtn() {
+    this.refs.nextPageBtn.dataset.disabled = this.page == this.maxPage;
+    this.refs.prevPageBtn.dataset.disabled = this.page == 1;
   }
 }
