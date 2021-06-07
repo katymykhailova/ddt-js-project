@@ -34,6 +34,15 @@
 /*Стили по нажатию на кнопку*/
 .add-watched {
   border: none;
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+}
+
+.header-button {
+  border: 2px solid var(--button-border-color);
+  color: var(--button-text-color);
+}
+.--accent {
+  border: none;
+  background: var(--button-bg-color);
 }
