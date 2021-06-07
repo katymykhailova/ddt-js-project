@@ -2,6 +2,7 @@ import paginateTpl from '../../template/pagination.hbs';
 
 export default class NewPagination {
   constructor({ selector }) {
+    this.fetch = 'api';
     this.page = 1;
     this.pageList = [];
     this.firstPage = 1;
@@ -20,9 +21,19 @@ export default class NewPagination {
   }
 
   updatePageList() {
+    if (this.maxPage <= 1) {
+      this.clearPagination();
+      return;
+    }
     this.updateArrowBtn();
     this.clearPaginationContainer();
-    this.pages = {};
+    this.pages = {
+      start: false,
+      end: false,
+      middle: false,
+      pageList: [],
+      maxPage: this.maxPage,
+    };
     this.pageList = [];
     const mobileStart = this.length <= 5 && this.page < this.length - 2;
     const mobileMiddle = this.length <= 5 && this.page >= 3 && this.page <= this.maxPage - 2;
@@ -32,14 +43,16 @@ export default class NewPagination {
     const start = this.page <= this.length - 3;
     const end = this.page >= this.maxPage - this.length + 4 || this.page == this.maxPage;
 
-    if (mobileStart) {
+    if (this.maxPage <= this.length) {
+      for (let i = this.firstPage; i <= this.maxPage; i += 1) {
+        this.pageList.push(i);
+      }
+      this.pages.pageList = this.pageList;
+    } else if (mobileStart) {
       for (let i = this.firstPage; i <= this.length; i += 1) {
         this.pageList.push(i);
       }
-      this.pages = {
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.pageList = this.pageList;
     } else if (mobileMiddle) {
       for (
         let i = +this.page - Math.round((this.length - 1) / 2);
@@ -48,40 +61,24 @@ export default class NewPagination {
       ) {
         this.pageList.push(i);
       }
-      this.pages = {
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.pageList = this.pageList;
     } else if (mobileEnd) {
       for (let i = this.maxPage - this.length + 1; i <= this.maxPage; i += 1) {
         this.pageList.push(i);
       }
-      this.pages = {
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.pageList = this.pageList;
     } else if (start) {
       for (let i = this.firstPage; i <= this.length - 2; i += 1) {
         this.pageList.push(i);
       }
-      this.pages = {
-        start: true,
-        end: false,
-        middle: false,
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.start = true;
+      this.pages.pageList = this.pageList;
     } else if (end) {
       for (let i = this.maxPage - this.length + 3; i <= this.maxPage; i += 1) {
         this.pageList.push(i);
       }
-      this.pages = {
-        start: false,
-        end: true,
-        middle: false,
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.end = true;
+      this.pages.pageList = this.pageList;
     } else {
       for (
         let i = this.page - Math.round((this.length - 5) / 2);
@@ -90,13 +87,8 @@ export default class NewPagination {
       ) {
         this.pageList.push(i);
       }
-      this.pages = {
-        start: false,
-        end: false,
-        middle: true,
-        pageList: this.pageList,
-        maxPage: this.maxPage,
-      };
+      this.pages.middle = true;
+      this.pages.pageList = this.pageList;
     }
     this.appendPaginationMarkup();
   }
@@ -124,6 +116,12 @@ export default class NewPagination {
     this.refs.paginateContainer.innerHTML = '';
   }
 
+  clearPagination() {
+    this.refs.paginateContainer.innerHTML = '';
+    this.refs.nextPageBtn.dataset.disabled = true;
+    this.refs.prevPageBtn.dataset.disabled = true;
+  }
+
   resetPage() {
     this.page = 1;
   }
@@ -147,7 +145,8 @@ export default class NewPagination {
   }
 
   updateArrowBtn() {
-    this.refs.nextPageBtn.dataset.disabled = this.page == this.maxPage;
-    this.refs.prevPageBtn.dataset.disabled = this.page == 1;
+    this.refs.nextPageBtn.dataset.disabled =
+      this.page == this.maxPage || this.maxPage <= this.length;
+    this.refs.prevPageBtn.dataset.disabled = this.page == 1 || this.maxPage <= this.length;
   }
 }
