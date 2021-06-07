@@ -1,13 +1,17 @@
 // modules
 import MoviesApiService from './apiService';
 import Pagination from './components/pagination';
+// lodash
+import debounce from 'lodash.debounce';
 
 // refs
 import getRefs from './refs/get-refs';
 
 // variables
+let clientWidth = document.documentElement.clientWidth;
 const moviesApiService = new MoviesApiService();
 const pagination = new Pagination({ selector: '[data-action="pagination"]' });
+pagination.length = clientWidth >= 768 ? 9 : 5;
 
 // templates
 import filmCard from '../template/film-card.hbs';
@@ -17,6 +21,13 @@ const refs = getRefs();
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
+window.addEventListener('resize', debounce(onWindowResize, 200));
+
+function onWindowResize() {
+  clientWidth = document.documentElement.clientWidth;
+  pagination.length = clientWidth >= 768 ? 9 : 5;
+  pagination.updatePageList();
+}
 
 function onPrevPageBtnClick(e) {
   e.preventDefault();

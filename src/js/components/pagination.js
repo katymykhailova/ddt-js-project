@@ -24,7 +24,47 @@ export default class NewPagination {
     this.clearPaginationContainer();
     this.pages = {};
     this.pageList = [];
-    if (this.page <= this.length - 3) {
+    if (this.length <= 5 && this.page < this.length - 2) {
+      for (let i = this.firstPage; i <= this.length; i += 1) {
+        this.pageList.push(i);
+      }
+      this.pages = {
+        start: false,
+        end: false,
+        middle: false,
+        pageList: this.pageList,
+        maxPage: this.maxPage,
+      };
+    } else if (this.length <= 5 && this.page >= 3 && this.page <= this.maxPage - 2) {
+      for (
+        let i = +this.page - Math.round((this.length - 1) / 2);
+        i <= +this.page + Math.round((this.length - 1) / 2);
+        i += 1
+      ) {
+        this.pageList.push(i);
+      }
+      this.pages = {
+        start: false,
+        end: false,
+        middle: false,
+        pageList: this.pageList,
+        maxPage: this.maxPage,
+      };
+    } else if (
+      (this.length <= 5 && this.page >= this.maxPage - this.length + 2) ||
+      this.page == this.maxPage
+    ) {
+      for (let i = this.maxPage - this.length + 1; i <= this.maxPage; i += 1) {
+        this.pageList.push(i);
+      }
+      this.pages = {
+        start: false,
+        end: false,
+        middle: false,
+        pageList: this.pageList,
+        maxPage: this.maxPage,
+      };
+    } else if (this.page <= this.length - 3) {
       for (let i = this.firstPage; i <= this.length - 2; i += 1) {
         this.pageList.push(i);
       }
