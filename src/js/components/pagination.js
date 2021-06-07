@@ -24,18 +24,23 @@ export default class NewPagination {
     this.clearPaginationContainer();
     this.pages = {};
     this.pageList = [];
-    if (this.length <= 5 && this.page < this.length - 2) {
+    const mobileStart = this.length <= 5 && this.page < this.length - 2;
+    const mobileMiddle = this.length <= 5 && this.page >= 3 && this.page <= this.maxPage - 2;
+    const mobileEnd =
+      (this.length <= 5 && this.page >= this.maxPage - this.length + 2) ||
+      this.page == this.maxPage;
+    const start = this.page <= this.length - 3;
+    const end = this.page >= this.maxPage - this.length + 4 || this.page == this.maxPage;
+
+    if (mobileStart) {
       for (let i = this.firstPage; i <= this.length; i += 1) {
         this.pageList.push(i);
       }
       this.pages = {
-        start: false,
-        end: false,
-        middle: false,
         pageList: this.pageList,
         maxPage: this.maxPage,
       };
-    } else if (this.length <= 5 && this.page >= 3 && this.page <= this.maxPage - 2) {
+    } else if (mobileMiddle) {
       for (
         let i = +this.page - Math.round((this.length - 1) / 2);
         i <= +this.page + Math.round((this.length - 1) / 2);
@@ -44,31 +49,21 @@ export default class NewPagination {
         this.pageList.push(i);
       }
       this.pages = {
-        start: false,
-        end: false,
-        middle: false,
         pageList: this.pageList,
         maxPage: this.maxPage,
       };
-    } else if (
-      (this.length <= 5 && this.page >= this.maxPage - this.length + 2) ||
-      this.page == this.maxPage
-    ) {
+    } else if (mobileEnd) {
       for (let i = this.maxPage - this.length + 1; i <= this.maxPage; i += 1) {
         this.pageList.push(i);
       }
       this.pages = {
-        start: false,
-        end: false,
-        middle: false,
         pageList: this.pageList,
         maxPage: this.maxPage,
       };
-    } else if (this.page <= this.length - 3) {
+    } else if (start) {
       for (let i = this.firstPage; i <= this.length - 2; i += 1) {
         this.pageList.push(i);
       }
-
       this.pages = {
         start: true,
         end: false,
@@ -76,7 +71,7 @@ export default class NewPagination {
         pageList: this.pageList,
         maxPage: this.maxPage,
       };
-    } else if (this.page >= this.maxPage - this.length + 4 || this.page == this.maxPage) {
+    } else if (end) {
       for (let i = this.maxPage - this.length + 3; i <= this.maxPage; i += 1) {
         this.pageList.push(i);
       }
