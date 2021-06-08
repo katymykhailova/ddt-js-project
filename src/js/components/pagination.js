@@ -127,12 +127,12 @@ export default class NewPagination {
   }
 
   incrementPage() {
-    this.page = +this.page + 1;
+    this.page += 1;
     this.updatePageList();
   }
 
   decrementPage() {
-    this.page = +this.page - 1;
+    this.page -= 1;
     this.updatePageList();
   }
 
