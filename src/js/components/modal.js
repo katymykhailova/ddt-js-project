@@ -23,11 +23,11 @@ async function fetchMovieDetails(e) {
 export default function onModalOpen(e) {
   e.preventDefault();
 
-  const isFilmCardLiEl = e.target.classList.contains('gallery-list__item');
+  const isFilmCardLiEl = e.target.parentNode.classList.contains('gallery-list__item');
   if (!isFilmCardLiEl) {
     return;
   }
   console.log(e.target);
-  moviesApiService.id = e.target.dataset.id;
+  moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
 }
