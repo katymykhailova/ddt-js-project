@@ -10,3 +10,12 @@
   margin-left: $margin;
   margin-top: $margin;
 }
+
+@mixin font {
+  font-family: var(--main-page-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
