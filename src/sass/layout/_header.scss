@@ -5,6 +5,7 @@
 
 .header-main {
   min-width: 320px;
+  height: 230px;
   width: 100%;
   position: relative;
   background-size: cover;
@@ -119,7 +120,7 @@
   &:placeholder-shown ~ .form-label {
     font-size: 18px;
     cursor: text;
-    top: 15px;
+    top: 10px;
   }
 }
 
@@ -210,5 +211,3 @@
     text-align: center;
   }
 }
-
-
