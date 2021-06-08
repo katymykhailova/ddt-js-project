@@ -137,11 +137,11 @@ export default class NewPagination {
   }
 
   show() {
-    this.refs.paginateContainer.classList.remove('is-hidden');
+    this.refs.paginateContainer.parentElement.classList.remove('is-hidden');
   }
 
   hide() {
-    this.refs.paginateContainer.classList.add('is-hidden');
+    this.refs.paginateContainer.parentElement.classList.add('is-hidden');
   }
 
   updateArrowBtn() {

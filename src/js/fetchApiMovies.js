@@ -41,13 +41,6 @@ function scrollTo() {
 function onInput(e) {
   e.preventDefault();
   moviesApiService.query = e.target.value.trim();
-
-  if (moviesApiService.query === '') {
-    // return info({
-    //   text: 'You must enter query parameters. Try again',
-    // });
-  }
-
   moviesApiService.resetPage();
   pagination.resetPage();
   scrollTo();
@@ -90,60 +83,57 @@ function paginationFetch() {
 }
 
 async function fetchMoviesSearchQuery() {
+  pagination.hide();
   try {
     const movies = await moviesApiService.fetchMoviesSearchQuery();
 
     if (movies.length == 0) {
-      // return info({
-      //   text: 'No country has been found. Please enter a more specific query!',
-      // });
+      refs.jsWarningEl.textContent =
+        'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
+      return;
     }
-    pagination.show();
     appendMoviesMarkup(movies);
     appendPaginationMarkup(moviesApiService.totalPages);
+    pagination.show();
   } catch (error) {
-    // info({
-    //   text: 'Sorry. we cannot process your request!',
-    // });
+    refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
 
 async function fetchApiMoviesPagination() {
+  pagination.hide();
   try {
     const movies = await moviesApiService.fetchMoviesPagination();
     if (movies.length == 0) {
-      pagination.hide();
-      // return info({
-      //   text: 'No country has been found. Please enter a more specific query!',
-      // });
+      refs.jsWarningEl.textContent =
+        'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
+      return;
     }
     clearMoviesContainer();
     appendMoviesMarkup(movies);
+    pagination.show();
     scrollTo();
   } catch (error) {
-    // info({
-    //   text: 'Sorry. we cannot process your request!',
-    // });
+    refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
 
 async function fetchPopularMovies() {
   clearMoviesContainer();
+  pagination.hide();
   try {
     const movies = await moviesApiService.fetchPopularMovies();
 
     if (movies.length == 0) {
-      // return info({
-      //   text: 'No country has been found. Please enter a more specific query!',
-      // });
+      refs.jsWarningEl.textContent =
+        'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
+      return;
     }
     pagination.show();
     appendMoviesMarkup(movies);
     appendPaginationMarkup(moviesApiService.totalPages);
   } catch (error) {
-    // info({
-    //   text: 'Sorry. we cannot process your request!',
-    // });
+    refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
 
