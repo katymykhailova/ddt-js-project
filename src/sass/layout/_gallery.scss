@@ -1,12 +1,3 @@
-@mixin font {
-  font-family: var(--main-page-font);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  color: #000000;
-}
-
 .gallery-list {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -23,15 +14,15 @@
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
 .film-card__name {
   @include font;
   text-transform: uppercase;
-  font-weight: 700;
 }
 
 .film-card__genres {
   @include font;
-  color: #ff6b08;
+  color: var(--accent-color);
 }
 
 @media screen and (max-width: 767px) {
@@ -42,18 +33,31 @@
 
 @media screen and (min-width: 768px) {
   .gallery-list {
+    padding-top: 60px;
+    padding-bottom: 50px;
     @include grid(30px);
   }
   .gallery-list__item {
+    width: 294px;
+
     @include grid-item(30px, 2);
+  }
+  .poster {
+    width: 294px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .gallery-list {
+    padding-top: 50px;
+    padding-bottom: 60px;
     @include grid(30px);
   }
   .gallery-list__item {
+    width: 274px;
     @include grid-item(30px, 3);
+  }
+  .poster {
+    width: 274px;
   }
 }
