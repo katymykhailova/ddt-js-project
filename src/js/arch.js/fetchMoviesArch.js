@@ -1,20 +1,17 @@
-// lodash
-import debounce from 'lodash.debounce';
 // modules
 import MoviesApiService from './apiService';
+import Pagination from './components/pagination';
+// lodash
+import debounce from 'lodash.debounce';
 
 // refs
 import getRefs from './refs/get-refs';
 
-import {
-  appendMoviesMarkup,
-  clearMoviesContainer,
-  appendPaginationMarkup,
-  pagination,
-} from './components/appendMovies';
-
 // variables
+let clientWidth = document.documentElement.clientWidth;
 const moviesApiService = new MoviesApiService();
+const pagination = new Pagination({ selector: '[data-action="pagination"]' });
+pagination.length = clientWidth >= 768 ? 9 : 5;
 
 // templates
 import filmCard from '../template/film-card.hbs';
@@ -26,6 +23,7 @@ pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
 refs.inputEl.addEventListener('input', debounce(onInput, 500));
+window.addEventListener('resize', debounce(onWindowResize, 200));
 
 function scrollTo() {
   if (headerClientHeight === 0) {
@@ -36,6 +34,12 @@ function scrollTo() {
     top: headerClientHeight,
     behavior: 'smooth',
   });
+}
+
+function onWindowResize() {
+  clientWidth = document.documentElement.clientWidth;
+  pagination.length = clientWidth >= 768 ? 9 : 5;
+  pagination.updatePageList();
 }
 
 function onInput(e) {
@@ -76,12 +80,14 @@ function onSearchPagination(e) {
     return;
   }
 
-  moviesApiService.page = Number(e.target.dataset.page);
-  pagination.page = Number(e.target.dataset.page);
+  moviesApiService.page = e.target.dataset.page;
+  pagination.page = e.target.dataset.page;
   paginationFetch();
 }
 
 function paginationFetch() {
+  scrollTo();
+  clearMoviesContainer();
   if (pagination.fetch === 'api') {
     fetchApiMoviesPagination();
   }
@@ -100,7 +106,7 @@ async function fetchMoviesSearchQuery() {
     }
     pagination.show();
     appendMoviesMarkup(movies);
-    appendPaginationMarkup(moviesApiService.totalPages);
+    appendPaginationMarkup();
   } catch (error) {
     // info({
     //   text: 'Sorry. we cannot process your request!',
@@ -117,9 +123,7 @@ async function fetchApiMoviesPagination() {
       //   text: 'No country has been found. Please enter a more specific query!',
       // });
     }
-    clearMoviesContainer();
     appendMoviesMarkup(movies);
-    scrollTo();
   } catch (error) {
     // info({
     //   text: 'Sorry. we cannot process your request!',
@@ -139,12 +143,25 @@ async function fetchPopularMovies() {
     }
     pagination.show();
     appendMoviesMarkup(movies);
-    appendPaginationMarkup(moviesApiService.totalPages);
+    appendPaginationMarkup();
   } catch (error) {
     // info({
     //   text: 'Sorry. we cannot process your request!',
     // });
   }
+}
+
+function appendMoviesMarkup(movies) {
+  refs.galleryListEl.insertAdjacentHTML('beforeend', filmCard(movies));
+}
+
+function clearMoviesContainer() {
+  refs.galleryListEl.innerHTML = '';
+}
+
+function appendPaginationMarkup() {
+  pagination.maxPage = moviesApiService.totalPages;
+  pagination.updatePageList();
 }
 
 fetchPopularMovies();
