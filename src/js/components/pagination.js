@@ -38,8 +38,8 @@ export default class NewPagination {
     const mobileStart = this.length <= 5 && this.page < this.length - 2;
     const mobileMiddle = this.length <= 5 && this.page >= 3 && this.page <= this.maxPage - 2;
     const mobileEnd =
-      (this.length <= 5 && this.page >= this.maxPage - this.length + 2) ||
-      this.page == this.maxPage;
+      this.length <= 5 &&
+      (this.page >= this.maxPage - this.length + 2 || this.page == this.maxPage);
     const start = this.page <= this.length - 3;
     const end = this.page >= this.maxPage - this.length + 4 || this.page == this.maxPage;
 
