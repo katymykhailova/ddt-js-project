@@ -5,5 +5,6 @@ export default function getRefs() {
     headerEl: document.querySelector('.header-main'),
     prevPageBtn: document.querySelector('[data-action="prev-page"]'),
     nextPageBtn: document.querySelector('[data-action="next-page"]'),
+    jsWarningEl: document.querySelector('#js-warning'),
   };
 }
