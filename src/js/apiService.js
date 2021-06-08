@@ -8,7 +8,7 @@ export default class NewApiService {
     this.searchQuery = '';
     this.page = 1;
     this.totalPages = 1;
-    this.id = 550;
+    this.id = '';
   }
 
   async fetchMoviesPagination() {
