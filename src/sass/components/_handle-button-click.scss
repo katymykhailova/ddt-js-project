@@ -15,9 +15,6 @@
   background-color: Transparent;
   background-repeat: no-repeat;
 
-  border: 2px solid var(--button-text-color);
-  color: var(--button-text-color);
-
   /*Базовые стили для span*/
   &__title {
     display: block;
@@ -30,19 +27,19 @@
     text-transform: uppercase;
   }
 }
-
+/*Кнопка не активная popup*/
+.popup-button {
+  border: 2px solid var(--secondary-button-color);
+  color: var(--secondary-button-color);
+}
 /*Стили по нажатию на кнопку*/
-// .add-watched {
-//   border: none;
-//   background: var(--button-bg-color);
-//   color: var(--button-text-color);
-// }
+.add-watched {
+  border: 2px solid var(--button-bg-color);
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+}
 
-// .header-button {
-//   border: 2px solid var(--button-border-color);
-//   color: var(--button-text-color);
-// }
-// .--accent {
-//   border: none;
-//   background: var(--button-bg-color);
-// }
+.header-button {
+  border: 2px solid var(--button-border-color);
+  color: var(--button-text-color);
+}
