@@ -23,7 +23,9 @@
 }
 
 .film-card__name {
-  @include font;
+  font-family: var(--main-page-font);
+  font-size: 12px;
+  line-height: 1.33;
   text-transform: uppercase;
 }
 

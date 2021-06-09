@@ -1,9 +1,20 @@
 <header class="header-main">
   <div class="container">
     <div class="header-section">
+      <div class="toolbar">
+      <div class="theme-switch">
+      <div class="theme-switch__control">
+        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+          aria-label="light-dark theme switcher" />
+        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
+      </div>
+      </div>
       <nav class="navigation">
-        <a href="#" class="navigation__logo" data-page="index">
-          <svg class="logo__icon" width="24" height="24" id="homeBtn">
+        <a href="#" class="navigation__logo" >
+          <svg class="logo__icon"  data-page="index" width="24" height="24" id="homeBtn">
             <use href="./images/sprite.svg#icon-film"></use>
           </svg>
           <span class="logo__name" data-page="index">Filmoteka</span>
@@ -51,7 +62,7 @@
           <use href="./images/sprite.svg#sun"></use>
         </svg> -->
 
-          <div class="theme-switch__control">
+          <!-- <div class="theme-switch__control">
             <input
               class="theme-switch__toggle"
               type="checkbox"
@@ -62,13 +73,13 @@
             <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
             </label>
             <div aria-hidden="true" class="theme-switch__marker"></div>
-          </div>
+          </div> -->
 
           <!-- <svg class="theme-switch__icon" aria-label="Moon icon">
           <use href="./images/sprite.svg#moon"></use>
         </svg> -->
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
     </div>
   </div>
 </header>
