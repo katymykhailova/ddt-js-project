@@ -5,20 +5,34 @@ import { fetchLibraryMovies } from './fetchLibraryMovies';
 const refs = getRefs();
 
 refs.navigator.addEventListener('click', loadPageContent);
+window.addEventListener('popstate', updateContent);
+
+function updateContent(e) {
+  const character = e.state;
+  if (character === 'index') {
+    loadHomepageContent();
+  } else if (character === 'library') {
+    loadLibraryContent();
+  }
+}
+
 function loadPageContent(e) {
   if (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') {
     return;
   }
+  const data = e.target.dataset.page;
+  const url = data + '.html';
+
   if (e.target.dataset.page === 'index') {
     e.preventDefault();
-    history.pushState(null, '', `${e.target.dataset.page}.html`);
     loadHomepageContent();
   }
   if (e.target.dataset.page === 'library') {
     e.preventDefault();
-    history.pushState(null, '', `${e.target.dataset.page}.html`);
+    history.pushState(data, null, url);
     loadLibraryContent();
   }
+  history.pushState(data, null, url);
 }
 
 function loadHomepageContent() {
@@ -39,4 +53,3 @@ function loadLibraryContent() {
   fetchLibraryMovies();
   //--зарендерить в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
 }
-
