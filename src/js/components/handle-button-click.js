@@ -8,23 +8,13 @@ export default class HandleButtonClick {
     return button;
   }
 
-  remove() {
-    this.button.dataset.action = 'add';
-    this.button.classList.remove('add-watched');
-  }
-
   add() {
     this.button.dataset.action = 'remove';
-    this.button.classList.add('add-watched');
+    this.button.classList.add('--accent-button');
   }
 
-  //comeIn() {
-  //  this.button.dataset.action = 'add';
-  //  this.button.classList.remove('--accent');
-  //}
-
-  //goOut() {
-  //  this.button.dataset.action = 'remove';
-  //  this.button.classList.add('--accent');
-  //}
+  remove() {
+    this.button.dataset.action = 'add';
+    this.button.classList.remove('--accent-button');
+  }
 }

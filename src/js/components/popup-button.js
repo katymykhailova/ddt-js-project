@@ -1,25 +1,27 @@
 import HandleButtonClick from './handle-button-click';
 
-const addToQueue = new HandleButtonClick({
-  selector: '.to-watched-js',
+const DATA_SET = {
+  ADD: 'add',
+  REMOVE: 'remove',
+};
+
+const CLICK = {
+  WATCHED: new HandleButtonClick({
+    selector: '.add-watched-js',
+  }),
+  QUEUE: new HandleButtonClick({
+    selector: '.add-queue-js',
+  }),
+};
+
+CLICK.WATCHED.button.addEventListener('click', () => {
+  return CLICK.WATCHED.button.dataset.action === DATA_SET.ADD
+    ? CLICK.WATCHED.add()
+    : CLICK.WATCHED.remove();
 });
 
-addToQueue.button.addEventListener('click', () => {
-  if (addToQueue.button.dataset.action === 'add') {
-    return addToQueue.add();
-  }
-  if (addToQueue.button.dataset.action === 'remove') {
-    return addToQueue.remove();
-  }
-});
-
-const addToWatch = new HandleButtonClick({ selector: '.to-queue-js' });
-
-addToWatch.button.addEventListener('click', () => {
-  if (addToWatch.button.dataset.action === 'add') {
-    return addToWatch.add();
-  }
-  if (addToWatch.button.dataset.action === 'remove') {
-    return addToWatch.remove();
-  }
+CLICK.QUEUE.button.addEventListener('click', () => {
+  return CLICK.WATCHED.button.dataset.action === DATA_SET.ADD
+    ? CLICK.QUEUE.add()
+    : CLICK.QUEUE.remove();
 });
