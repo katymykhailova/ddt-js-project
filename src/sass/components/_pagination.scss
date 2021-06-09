@@ -38,6 +38,10 @@
     color var(--transition-function) var(--timing-function);
 }
 
+.dark-theme .pagination-link {
+  color: var(--white-text-color);
+}
+
 .pagination-link:hover {
 }
 
