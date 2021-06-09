@@ -1,9 +1,9 @@
 
-// import firebase from 'firebase/app';
-// import 'firebase/database';
-// import 'firebaseui';
-// import '../../node_modules/firebaseui/dist/firebaseui.css';
-// import './modal-login';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebaseui';
+import '../../../node_modules/firebaseui/dist/firebaseui.css';
+import './modal-login';
 // import getRefs from '../refs/get-refs';
 // import { getUserLibraryFromDatabase } from './userLibrary';
 
@@ -12,8 +12,8 @@ openModalBtn: document.querySelector('[data-action="open-modal"]'),
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.js-backdrop'),
 };
-refs.openModalBtn.addEventListener('click', showOpenModalBtn);
-refs.closeModalBtn.addEventListener('click', showLogOutbutton);
+// refs.openModalBtn.addEventListener('click', showOpenModalBtn);
+// refs.closeModalBtn.addEventListener('click', showLogOutbutton);
 
 // const firebaseConfig = {
 //   apiKey: 'AIzaSyC7TRb9mfyMhzQU-yq3pDKTxl2-zaHwRmo',
@@ -26,6 +26,21 @@ refs.closeModalBtn.addEventListener('click', showLogOutbutton);
 //   appId: '1:658952655924:web:26304edc0b944079c1e661',
 // };
 // firebase.initializeApp(firebaseConfig);
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBN4f_F5q6aEuEv1E6c5IHJy5dDCpPJXBo",
+    authDomain: "filmoteka-f1878.firebaseapp.com",
+    projectId: "filmoteka-f1878",
+    storageBucket: "filmoteka-f1878.appspot.com",
+    messagingSenderId: "370619409618",
+    appId: "1:370619409618:web:5a232dc64a1670cf9bf90b"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+
+
 // const ui = new firebaseui.auth.AuthUI(firebase.auth());
 // const uiStart = () => ui.start('#firebaseui-auth-container', uiConfig);
 //phoneAuth
@@ -85,15 +100,15 @@ refs.closeModalBtn.addEventListener('click', showLogOutbutton);
 //   }
 // });
 
-function showLogOutbutton() {
-  refs.logOutbutton.classList.remove('is-hidden');
-  refs.openModalBtn.classList.add('is-hidden');
-}
+// function showLogOutbutton() {
+//   refs.logOutbutton.classList.remove('is-hidden');
+//   refs.openModalBtn.classList.add('is-hidden');
+// }
 
-function showOpenModalBtn() {
-  refs.openModalBtn.classList.remove('is-hidden');
-  refs.logOutbutton.classList.add('is-hidden');
-}
+// function showOpenModalBtn() {
+//   refs.openModalBtn.classList.remove('is-hidden');
+//   refs.logOutbutton.classList.add('is-hidden');
+// }
 
 // function setUserData(userId) {
 //   const userLibrary = {
