@@ -1,14 +1,6 @@
-.header-main.lib {
+.header-main.my-library {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/header-bg-lib-mobile.jpeg);
-}
-
-.header-section.lib {
-  padding: 46px 0 65px 0;
-}
-
-.navigation.lib {
-  height: 75px;
 }
 
 .header-button.watched-js {
@@ -30,7 +22,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header-main.lib {
+  .header-main.my-library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header-bg-lib-tablet.jpeg);
   }
@@ -44,7 +36,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .header-main.lib {
+  .header-main.my-library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header-bg-lib-desktop.jpeg);
   }
