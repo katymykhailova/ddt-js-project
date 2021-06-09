@@ -1,19 +1,19 @@
 {{#if end}}
-<li class="pagination-list__item"><a class="pagination-link" href="#" data-page="1">1</a></li>
-<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-page="...">...</a></li>
+<li class="pagination-list__item"><a class="pagination-link" href="#" data-pagepagination="1">1</a></li>
+<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-pagepagination="...">...</a></li>
 {{/if}}
 {{#if middle}}
-<li class="pagination-list__item"><a class="pagination-link" href="#" data-page="1">1</a></li>
-<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-page="...">...</a></li>
+<li class="pagination-list__item"><a class="pagination-link" href="#" data-pagepagination="1">1</a></li>
+<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-pagepagination="...">...</a></li>
 {{/if}}
 {{#each pageList}}
-<li class="pagination-list__item"><a class="pagination-link" href="#" data-page={{this}}>{{this}}</a></li>
+<li class="pagination-list__item"><a class="pagination-link" href="#" data-pagepagination={{this}}>{{this}}</a></li>
 {{/each}}
 {{#if start}}
-<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-page="...">...</a></li>
-<li class="pagination-list__item"><a class="pagination-link" href="#" data-page={{maxPage}}>{{maxPage}}</a></li>
+<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-pagepagination="...">...</a></li>
+<li class="pagination-list__item"><a class="pagination-link" href="#" data-pagepagination={{maxPage}}>{{maxPage}}</a></li>
 {{/if}}
 {{#if middle}}
-<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-page="...">...</a></li>
-<li class="pagination-list__item"><a class="pagination-link" href="#" data-page={{maxPage}}>{{maxPage}}</a></li>
+<li class="pagination-list__item disabled"><a class="pagination-link" href="#" data-pagepagination="...">...</a></li>
+<li class="pagination-list__item"><a class="pagination-link" href="#" data-pagepagination={{maxPage}}>{{maxPage}}</a></li>
 {{/if}}

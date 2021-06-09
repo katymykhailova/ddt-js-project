@@ -108,7 +108,7 @@ export default class NewPagination {
 
   appendPaginationMarkup() {
     this.refs.paginateContainer.insertAdjacentHTML('beforeend', paginateTpl(this.pages));
-    const currentEl = document.querySelector(`[data-page="${this.page}"]`);
+    const currentEl = document.querySelector(`[data-pagepagination="${this.page}"]`);
     currentEl.parentElement.classList.add('active');
   }
 
