@@ -1,31 +1,28 @@
-// MODAL
-  const refs = {
-    openTeamModalBtn : document.querySelector('[data-modal-open]'),
-    closeTeamModalBtn: document.querySelector('[data-modal-close]'),
-    teamModal: document.querySelector('[data-modal]'),
-  };
-
-  refs.openTeamModalBtn.addEventListener('click', toggleModal);
-  refs.closeTeamModalBtn.addEventListener('click', toggleModal);
-
-  function toggleModal() {
-    refs.teamModal.classList.toggle('visually-hidden');
-};
-      
+// REFS
+import { modalTeamRefs } from '../refs/get-refs';
 
 //  палитра
 const colors = [
-  '#ffffff',
+  '#d3b8ea',
   '#85aff2',
   '#f0d7d5',
   '#FF6B08',
-  '#273275'
+  '#273275',
 ];
 
-// refs & constants
-const itemsRef = document.querySelectorAll('.team-list__item');
+//constants
 let intervalId = null;
 const ISACTIVE = 'isActive';
+
+// MODAL
+  modalTeamRefs.openTeamModalBtn.addEventListener('click', toggleModal);
+  modalTeamRefs.closeTeamModalBtn.addEventListener('click', toggleModal);
+
+  function toggleModal() {
+    modalTeamRefs.teamModal.classList.toggle('visually-hidden');
+};
+      
+
 
 // formula Random
 const randomIntegerFromInterval = (min, max) => {
@@ -42,7 +39,7 @@ const searchItem = function (items) {
   }
 };
 
-let activeItem = searchItem(itemsRef);
+let activeItem = searchItem(modalTeamRefs.itemsRef);
 
 // fn2 вешает класс
 const animateItem = function (item) {
@@ -54,16 +51,28 @@ const animateItem = function (item) {
   }
 };
 
-// fn 3 запускает вечный двигатель
+// fn3 прогоняет палитру
+const colorize = function () {
+  // перебирает блоки и красит каждый по очереди
+  modalTeamRefs.itemsRef.forEach(item => {
+    setTimeout(function () {
+      let ind = randomIntegerFromInterval(0, colors.length - 1);
+      item.style.backgroundColor = colors[ind];
+    }, 1000);}
+  )
+}
+colorize()
+
+// fn 4 запускает вечный двигатель
 intervalId = setInterval(() => {
   // выбирает рандомный блок и анимирует
-  activeItem = searchItem(itemsRef);
+  activeItem = searchItem(modalTeamRefs.itemsRef);
   animateItem(activeItem);
   // красит     
   let ind = randomIntegerFromInterval(0, colors.length - 1);
   activeItem.style.backgroundColor = colors[ind];
 }
-  , 1000);
+  , 400);
         
   
     
