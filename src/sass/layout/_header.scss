@@ -47,7 +47,7 @@
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.site-nav__list {
+.site-nav__list.btn {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 40px;
@@ -60,21 +60,19 @@
 
   color: #ffffff;
 }
-
-.site-nav__item :first-child {
-  margin-right: 39px;
-}
-
-.site-nav__link {
-  text-decoration: none;
-  color: inherit;
+.site-nav__btn {
+  background-color: transparent;
+  border: transparent;
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     color: #ff6b08;
   }
 }
+.site-nav__btn :first-child {
+  margin-right: 39px;
+}
 
-.site-nav__link.current {
+.site-nav__btn.current {
   position: relative;
 
   &::after {

@@ -2,20 +2,18 @@
 <div class="container">
   <div class="header-section">
     <nav class="navigation">
-      <a href="#" class="navigation__logo">
+      <a href="./index.html" class="navigation__logo">
         <svg class="logo__icon" width="24" height="24" id="homeBtn">
           <use href="./images/sprite.svg#icon-film"></use>
         </svg>
         <span class="logo__name">Filmoteka</span>
       </a>
-      <ul class="site-nav__list">
-        <li class="site-nav__item">
-          <a href="./index.html" class="site-nav__link current" id="index">Home</a>
-        </li>
-        <li class="site-nav item">
-          <a href="./library.html" class="site-nav__link" id="library">My library</a>
-        </li>
-      </ul>
+      <div class="site-nav__list btn">
+        <button type="button" class="site-nav__btn current" id="index">Home
+        </button>
+        <button type="button" class="site-nav__btn" id="library">My library
+      </button>
+      </div>
     </nav>
     <div class="form">
       <form class="search-form" id="search-form">

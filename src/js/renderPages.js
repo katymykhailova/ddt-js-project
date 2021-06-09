@@ -6,8 +6,9 @@ refs.logoBtn.addEventListener('click', loadHomepageContent);
 refs.homeBtn.addEventListener('click', loadHomepageContent);
 refs.libraryBtn.addEventListener('click', loadLibraryContent);
 
-const loadHomepageContent = (e) => {
-    e.preventDefault();
+
+function loadHomepageContent(e) {
+    preventDefault(e);
     refs.headerEl.classList.remove('.my-library');
     refs.libraryBtn.classList.remove('.current');
     refs.homeBtn.classList.add('.current')
@@ -17,8 +18,8 @@ const loadHomepageContent = (e) => {
     // и зарендерить в galleryListEl список фильмов для главной страницы///
 };
 
-const loadLibraryContent = (e) => {
-    e.preventDefault();
+function loadLibraryContent (e)  {
+    preventDefault(e);
     refs.headerEl.classList.add('.my-library');
     refs.libraryBtn.classList.add('.current');
     refs.homeBtn.classList.remove('.current')
