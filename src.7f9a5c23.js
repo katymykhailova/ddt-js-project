@@ -106,4 +106,4 @@ const e={LIGHT:"light-theme",DARK:"dark-theme"},t={checkbox:document.getElementB
 },{"./handle-button-click":"bp3X"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/components/arrowTop"),require("./js/components/modal"),require("./js/components/modalTeam"),require("./js/components/pagination"),require("./js/fetchApiMovies"),require("./js/components/theme"),require("./js/components/popup-button");
 },{"./sass/main.scss":"clu1","./js/components/arrowTop":"dAYR","./js/components/modal":"fSkc","./js/components/modalTeam":"rlHn","./js/components/pagination":"H1oe","./js/fetchApiMovies":"USRH","./js/components/theme":"l9EJ","./js/components/popup-button":"VRFd"}]},{},["Focm"], null)
-//# sourceMappingURL=/ddt-js-project/src.52a50d59.js.map
+//# sourceMappingURL=/ddt-js-project/src.7f9a5c23.js.map
