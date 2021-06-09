@@ -8,3 +8,10 @@ export default function getRefs() {
     jsWarningEl: document.querySelector('#js-warning'),
   };
 }
+
+export const modalTeamRefs = {
+    openTeamModalBtn : document.querySelector('[data-modal-open]'),
+    closeTeamModalBtn: document.querySelector('[data-modal-close]'),
+    teamModal: document.querySelector('[data-modal]'),
+    itemsRef : document.querySelectorAll('.team-list__item'),
+  };

@@ -1,17 +1,5 @@
-// MODAL
-  const refs = {
-    openTeamModalBtn : document.querySelector('[data-modal-open]'),
-    closeTeamModalBtn: document.querySelector('[data-modal-close]'),
-    teamModal: document.querySelector('[data-modal]'),
-  };
-
-  refs.openTeamModalBtn.addEventListener('click', toggleModal);
-  refs.closeTeamModalBtn.addEventListener('click', toggleModal);
-
-  function toggleModal() {
-    refs.teamModal.classList.toggle('visually-hidden');
-};
-      
+// REFS
+import { modalTeamRefs } from '../refs/get-refs';
 
 //  палитра
 const colors = [
@@ -22,14 +10,21 @@ const colors = [
   '#273275'
 ];
 
-// refs & constants
-const itemsRef = document.querySelectorAll('.team-list__item');
+//constants
 let intervalId = null;
 const ISACTIVE = 'isActive';
 
 // formula Random
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+// MODAL
+  modalTeamRefs.openTeamModalBtn.addEventListener('click', toggleModal);
+  modalTeamRefs.closeTeamModalBtn.addEventListener('click', toggleModal);
+
+  function toggleModal() {
+    modalTeamRefs.teamModal.classList.toggle('visually-hidden');
 };
         
 // fn1 поиск случайного блока
@@ -42,7 +37,7 @@ const searchItem = function (items) {
   }
 };
 
-let activeItem = searchItem(itemsRef);
+let activeItem = searchItem(modalTeamRefs.itemsRef);
 
 // fn2 вешает класс
 const animateItem = function (item) {
@@ -57,7 +52,7 @@ const animateItem = function (item) {
 // fn 3 запускает вечный двигатель
 intervalId = setInterval(() => {
   // выбирает рандомный блок и анимирует
-  activeItem = searchItem(itemsRef);
+  activeItem = searchItem(modalTeamRefs.itemsRef);
   animateItem(activeItem);
   // красит     
   let ind = randomIntegerFromInterval(0, colors.length - 1);
