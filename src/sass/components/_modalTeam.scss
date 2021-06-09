@@ -1,0 +1,106 @@
+// * {
+//   outline: 1px solid red;
+// }
+/* MODAL - tEAM */
+/* MOBILE */
+
+// backdrop
+.backdrop.visually-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(12, 10, 32, 0.719);
+
+  z-index: 98;
+  overflow-y: scroll;
+}
+// modal
+.team {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+.team-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.team-list__item {
+  outline: 1px solid black;
+  display: block;
+
+  background-color: #545454;
+  transition: all 1000ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: -18px -15px 43px -15px rgba(47, 67, 82, 0.71) inset;
+}
+.team-list__item:hover,
+.team-list__item:focus {
+  transform: scale(2);
+  z-index: 100;
+}
+.isActive {
+  // transform: scale(1.25);
+  box-shadow: 4px 4px 8px 6px rgba(27, 46, 61, 0.808) inset;
+}
+
+.team__button {
+  position: fixed;
+
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  background-color: transparent;
+}
+
+.team__icon {
+  margin: 0;
+  padding: 0;
+  fill: #fff;
+}
+.team__icon:hover,
+.team__icon:focus {
+  fill: var(--accent-color);
+}
+
+/* TABLET */
+@media screen and(min-width: 768px) and(max-width: 1023px) {
+  .team {
+    background-attachment: scroll;
+  }
+}
+/* DESKTOP */
+@media screen and(min-width: 1024px) {
+  .team {
+    width: 1100px;
+    height: 600px;
+  }
+  .team-list__item {
+    width: 220px;
+    height: 150px;
+  }
+  .team__button {
+    top: -10%;
+    right: -16%;
+    width: 50px;
+    height: 50px;
+  }
+}
