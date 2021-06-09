@@ -6,5 +6,11 @@ export default function getRefs() {
     prevPageBtn: document.querySelector('[data-action="prev-page"]'),
     nextPageBtn: document.querySelector('[data-action="next-page"]'),
     jsWarningEl: document.querySelector('#js-warning'),
+    navigator:document.querySelector('.navigation'),
+    logoBtn:document.querySelector('#logoBtn'),
+    homeBtn: document.querySelector('#index'),
+    libraryBtn:document.querySelector('#library'),
+    form: document.querySelector('#search-form'),
+    buttonBox: document.querySelector("#js-buttons"),
   };
 }
