@@ -12,11 +12,30 @@
         <li class="site-nav__item">
           <a href="./index.html" class="site-nav__link current" id="homeBtn">Home</a>
         </li>
-        <li class="site-nav item">
+        <li class="site-nav__item">
           <a href="./library.html" class="site-nav__link" id="libraryBtn">My library</a>
         </li>
       </ul>
+      <button class="js-singOut-button logButton" type="button">
+          sign Out
+        </button>
+        <button data-action="open-modal" class="logButton" type="button">
+          log In
+        </button>
     </nav>
+    <!-- modal-login -->
+    <div class="header-nav-container"></div>
+    <div class="header-backdrop is-hidden js-backdrop">
+      <div class="header-modal" id="firebaseui-auth-container">
+        <button
+          type="button"
+          class="button-close-modal"
+          data-action="close-modal"
+        >
+          x
+        </button>
+      </div>
+    </div>
     <div class="form">
       <form class="search-form" id="search-form">
         <input

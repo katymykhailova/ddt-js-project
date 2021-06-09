@@ -7,6 +7,7 @@
 // base
 @import './base/common';
 @import './base/container';
+@import './base/mixin';
 
 // layout
 @import './layout/header';
@@ -22,3 +23,5 @@
 @import './components/arrowTop';
 @import './components/handle-button-click';
 @import './components/theme';
+@import './components/authorisation';
+
