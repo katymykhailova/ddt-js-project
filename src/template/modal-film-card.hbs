@@ -4,13 +4,13 @@
       <path stroke-width="2.133" stroke="#000" d="M8.533 8.533l14.933 14.933M8.533 23.467L23.466 8.534" />
     </svg>
   </button>
-  <div class='modal__movie-img-wrapper'>
+  {{!-- <div class='modal__movie-img-wrapper'> --}}
     <img
       class='modal__movie-img'
       src='https://image.tmdb.org/t/p/w500{{poster_path}}'
       alt={{original_title}}
     />
-  </div>
+  {{!-- </div> --}}
   <div class='modal__movie-text-block'>
     <h2 class='modal__movie-title'>
       {{original_title}}
@@ -45,8 +45,17 @@
       <p class='modal__movie-descr-title'>About</p>
       <p class='modal__movie-descr-text'>{{overview}}</p>
     </div>
+    <div class='modal__movie-buttons'>
+      <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
+        <span class='handle-button__title'>add to watched</span>
+      </button>
+    
+      <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
+        <span class='handle-button__title'>add to queue</span>
+      </button>
+    </div>
   </div>
-  <div class='modal__movie-buttons'>
+  {{!-- <div class='modal__movie-buttons'>
     <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
       <span class='handle-button__title'>add to watched</span>
     </button>
@@ -54,5 +63,5 @@
     <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
       <span class='handle-button__title'>add to queue</span>
     </button>
-  </div>
+  </div> --}}
 </div>
