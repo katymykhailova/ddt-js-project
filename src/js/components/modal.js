@@ -19,11 +19,13 @@ async function fetchMovieDetails() {
 }
 
 const modalMovieRender = markup => {
-  refs.movieBackdrop.insertAdjacentHTML('beforeend', markup);
+  // refs.movieBackdrop.insertAdjacentHTML('beforeend', markup);
+  refs.movieWrap.insertAdjacentHTML('beforeend', markup);
 };
 
 const modalClear = () => {
-  refs.movieBackdrop.innerHTML = '';
+  // refs.movieBackdrop.innerHTML = '';
+  refs.movieWrap.innerHTML = '';
 };
 
 export default function onModalOpen(e) {

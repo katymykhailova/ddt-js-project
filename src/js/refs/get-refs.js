@@ -11,6 +11,7 @@ export default function getRefs() {
     form: document.querySelector('#search-form'),
     buttonBox: document.querySelector('#js-buttons'),
     movieBackdrop: document.querySelector('.movie-backdrop'),
+    movieWrap: document.querySelector('.movie-wrap'),
     modalCloseBtn: document.querySelector('[data-action="modal-close"]'),
   };
 }
