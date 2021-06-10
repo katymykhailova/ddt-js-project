@@ -1,14 +1,22 @@
 // import getRefs from '../refs/get-refs';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebaseui';
+
 
 const refs = {
   openModalBtn: document.querySelector('[data-action="open-modal"]'),
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.js-backdrop'),
+  email: document.querySelector('#email'),
+  password: document.querySelector('#password'),
+  login: document.querySelector('.btn__to_sing_in'),
 };
 
-refs.openModalBtn.addEventListener('click', onOpenModal),
+  refs.openModalBtn.addEventListener('click', onOpenModal),
   refs.closeModalBtn.addEventListener('click', onCloseModal),
   refs.backdrop.addEventListener('click', onBackdropClick);
+
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress);
@@ -35,3 +43,39 @@ function onEscKeyPress(event) {
     onCloseModal();
   }
 }
+
+
+document.querySelector('.btn__to_sing_in').onclick = myClick;
+
+function myClick(){
+    let email = document.querySelector('.input__auth-email').value;
+    let password = document.querySelector('.input__auth-password').value;
+    authWithEmailandPassword(email,password)
+  
+}
+
+
+function authWithEmailandPassword(email,password){
+    const apiKey= 'AIzaSyBN4f_F5q6aEuEv1E6c5IHJy5dDCpPJXBo'
+  return fetch (`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`)
+// //   method: 'POST',
+// //   body: JSON.stringify({email,password,
+// //       returnSecureToken:true
+// //   }),
+// //   headers:{
+// //       'Content-Type': 'application/json'
+// //   }
+// // })
+.then(response => response.json())
+.then(data => console.log(data))
+}
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBN4f_F5q6aEuEv1E6c5IHJy5dDCpPJXBo",
+  authDomain: "filmoteka-f1878.firebaseapp.com",
+  projectId: "filmoteka-f1878",
+  storageBucket: "filmoteka-f1878.appspot.com",
+  messagingSenderId: "370619409618",
+  appId: "1:370619409618:web:5a232dc64a1670cf9bf90b"
+};
+  firebase.initializeApp(firebaseConfig);
