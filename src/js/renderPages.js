@@ -21,18 +21,20 @@ function updateContent(e) {
 }
 
 function loadPageContent(e) {
-  if (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') {
+  e.preventDefault();
+  if (
+    (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') ||
+    e.target.dataset.page === history.state
+  ) {
     return;
   }
   const data = e.target.dataset.page;
   const url = data + '.html';
 
   if (e.target.dataset.page === 'index') {
-    e.preventDefault();
     loadHomepageContent();
   }
   if (e.target.dataset.page === 'library') {
-    e.preventDefault();
     loadLibraryContent();
   }
   history.pushState(data, null, url);

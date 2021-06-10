@@ -38,6 +38,11 @@
   color: var(--accent-color);
 }
 
+.film-card__genre:not(:last-child):after {
+  content: ', ';
+  color: var(--accent-color);
+}
+
 @media screen and (max-width: 767px) {
   .gallery-list__item:not(:last-child) {
     margin-bottom: 20px;
