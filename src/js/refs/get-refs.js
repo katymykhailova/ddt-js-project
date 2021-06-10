@@ -10,12 +10,14 @@ export default function getRefs() {
     libraryBtn: document.querySelector('#library'),
     form: document.querySelector('#search-form'),
     buttonBox: document.querySelector('#js-buttons'),
+    movieBackdrop: document.querySelector('.movie-backdrop'),
+    modalCloseBtn: document.querySelector('[data-action="modal-close"]'),
   };
 }
 
 export const modalTeamRefs = {
-    openTeamModalBtn : document.querySelector('[data-modal-open]'),
-    closeTeamModalBtn: document.querySelector('[data-modal-close]'),
-    teamModal: document.querySelector('[data-modal]'),
-    itemsRef : document.querySelectorAll('.team-list__item'),
-  };
+  openTeamModalBtn: document.querySelector('[data-modal-open]'),
+  closeTeamModalBtn: document.querySelector('[data-modal-close]'),
+  teamModal: document.querySelector('[data-modal]'),
+  itemsRef: document.querySelectorAll('.team-list__item'),
+};

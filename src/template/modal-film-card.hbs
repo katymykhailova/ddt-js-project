@@ -1,18 +1,23 @@
-<div class='movie__card' data-action='{{id}}'>
-  <div class='movie__card-img-wrapper'>
+<div class='modal' data-action='{{id}}'>
+  <button type='button' class='modal__close-button' data-action='modal-close'>
+    <svg class='modal__close-btn-icon' width='11' height='11'>
+      <use href='../images/sprite.svg#close'></use>
+    </svg>
+  </button>
+  <div class='modal__movie-img-wrapper'>
     <img
-      class='movie__card-img'
+      class='modal__movie-img'
       src='https://image.tmdb.org/t/p/w500{{poster_path}}'
       alt={{original_title}}
     />
   </div>
-  <div class='movie__card-text-block'>
-    <h2 class='movie__title'>
+  <div class='modal__movie-text-block'>
+    <h2 class='modal__movie-title'>
       {{original_title}}
     </h2>
-    <div class='movie__data'>
-      <ul class='movie__data-list'>
-        <li class='movie__data-list-item'>
+    <div class='modal__movie-data'>
+      <ul class='modal__movie-data-list'>
+        <li class='modal__data-list-item'>
           <p>Vote/Votes
             <span>{{vote_average}}/{{vote_count}}</span>
           </p>
@@ -30,22 +35,24 @@
         <li class='movie__data-list-item'>
           <p>Genre
             {{#each genres}}
-              <span>{{genres.name}}</span>
+              <span>{{name}}</span>
             {{/each}}
           </p>
         </li>
       </ul>
     </div>
-    <div class='movie__descr'>
-      <p class='movie__descr-title'>About</p>
-      <p class='movie__descr-text'>{{overview}}</p>
+    <div class='modal__movie-descr'>
+      <p class='modal__movie-descr-title'>About</p>
+      <p class='modal__movie-descr-text'>{{overview}}</p>
     </div>
   </div>
-  <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
-    <span class='handle-button__title'>add to watched</span>
-  </button>
+  <div class='modal__movie-buttons'>
+    <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
+      <span class='handle-button__title'>add to watched</span>
+    </button>
 
-  <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
-    <span class='handle-button__title'>add to queue</span>
-  </button>
+    <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
+      <span class='handle-button__title'>add to queue</span>
+    </button>
+  </div>
 </div>
