@@ -137,4 +137,4 @@ export async function fetchPopularMovies() {
   }
 }
 
-fetchPopularMovies();
+// fetchPopularMovies();
