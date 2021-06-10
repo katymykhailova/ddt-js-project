@@ -61,16 +61,16 @@ body.show-modal .header-modal {
 
 .modal__container__auth {
   background-color: rgba(0, 0, 0, 0.9);
-    width: 400px;
+  width: 400px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-margin: 0 auto;
+  margin: 0 auto;
   box-shadow: black;
 }
 .auth-header {
   height: 35px;
-  color: orange;
+  color:   var(--accent-color);
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -82,7 +82,7 @@ margin: 0 auto;
   width: 400px;
   height: 300px;
   padding: 10px;
-  color: white;
+  color: var(--white-text-color);
   text-align: center;
   margin: 0 auto;
 }
@@ -99,16 +99,16 @@ margin: 0 auto;
   }
   button {
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid var(--white-text-color);
     box-sizing: border-box;
     border-radius: 5px;
     background-color: transparent;
     font-weight: 500;
     font-size: 15px;
     line-height: 1.33;
-    color: white;
+    color: var(--white-text-color);
     &:hover {
-      background-color: orange;
+      background-color: var(--accent-color);
     }
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -120,11 +120,11 @@ margin: 0 auto;
   display: block;
   background: transparent;
   border: transparent;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--white-text-color);
   font-size: 16px;
   line-height: 1.17;
 
-  color: white;
+  color: var(--white-text-color);
 
 //   @include transition(border-bottom);
 
@@ -134,7 +134,7 @@ margin: 0 auto;
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid orange;
+    border-bottom: 1px solid var(--accent-color);
   }
 }
 .auth__error_message {
@@ -158,4 +158,22 @@ margin: 0 auto;
       font-size: 12px;
     }
   }
+}
+
+
+.button-close-modal {
+    position: relative;
+    right: 2px;
+    top: -2px;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-right: 0;
+    z-index: 99999;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-weight: 700;
+    color: var(--accent-color);
+
 }
