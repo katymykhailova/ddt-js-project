@@ -25,7 +25,7 @@ const headerClientHeight = refs.headerEl.clientHeight;
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
-refs.inputEl.addEventListener('input', debounce(onInput, 500));
+refs.inputEl.addEventListener('input', debounce(onInput, 1000));
 
 function scrollTo() {
   if (headerClientHeight === 0) {
