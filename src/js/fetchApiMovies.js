@@ -69,8 +69,8 @@ function onSearchPagination(e) {
     return;
   }
 
-  moviesApiService.page = Number(e.target.dataset.page);
-  pagination.page = Number(e.target.dataset.page);
+  moviesApiService.page = Number(e.target.dataset.pagepagination);
+  pagination.page = Number(e.target.dataset.pagepagination);
   paginationFetch();
 }
 
@@ -118,7 +118,7 @@ async function fetchApiMoviesPagination() {
   }
 }
 
-async function fetchPopularMovies() {
+export async function fetchPopularMovies() {
   clearMoviesContainer();
   pagination.hide();
   try {
@@ -137,4 +137,4 @@ async function fetchPopularMovies() {
   }
 }
 
-fetchPopularMovies();
+// fetchPopularMovies();

@@ -1,5 +1,5 @@
 import './sass/main.scss';
-
+import './js/renderPages';
 import './js/components/arrowTop';
 import './js/components/modal';
 import './js/components/modalTeam';

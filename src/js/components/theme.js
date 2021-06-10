@@ -26,7 +26,6 @@ function onClickCheckbox(e) {
 }
 
 const saveTheme = localStorage.getItem('theme');
-console.log(saveTheme);
 if (saveTheme===Theme.DARK) {
   refs.checkbox.checked = true;
   refs.body.classList.add(Theme.DARK)
