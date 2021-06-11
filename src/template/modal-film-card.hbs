@@ -22,26 +22,23 @@
     <div class='modal__movie-data'>
       <ul class='modal__movie-data-list'>
         <li class='movie__data-list-item'>
-          <p class='movie__data-value'>Vote/Votes
-            <span class='movie__vote-value'>{{vote_average}}/{{vote_count}}</span>
-          </p>
+          <p class='movie__data-title'>Vote/Votes</p>
+          <span class='movie__data-subtitle--accent'>{{vote_average}} / </span>
+          <span class='movie__data-subtitle'>{{vote_count}}</span>
         </li>
         <li class='movie__data-list-item'>
-          <p class='movie__data-value'>Popularity
-            <span class='movie__popularity-value'>{{popularity}}</span>
-          </p>
+          <p class='movie__data-title'>Popularity</p>
+          <span class='movie__data-subtitle'>{{popularity}}</span>
         </li>
         <li class='movie__data-list-item'>
-          <p class='movie__data-value'>Original title
-            <span class='movie__original-title-text'>{{original_title}}</span>
-          </p>
+          <p class='movie__data-title'>Original title</p>
+          <span class='movie__data-subtitle'>{{original_title}}</span>
         </li>
         <li class='movie__data-list-item'>
-          <p class='movie__data-value'>Genre
-            {{#each genres}}
-              <span class='movie__genre-name'>{{name}}</span>
-            {{/each}}
-          </p>
+          <p class='movie__data-title'>Genre</p>
+          {{#each genres}}
+            <span class='movie__data-subtitle'>{{name}}</span>
+          {{/each}}
         </li>
       </ul>
     </div>
@@ -59,13 +56,4 @@
       </button>
     </div>
   </div>
-  {{! <div class='modal__movie-buttons'>
-    <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
-      <span class='handle-button__title'>add to watched</span>
-    </button>
-
-    <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
-      <span class='handle-button__title'>add to queue</span>
-    </button>
-  </div> }}
 </div>
