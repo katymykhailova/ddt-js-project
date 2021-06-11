@@ -38,6 +38,13 @@
   color: var(--accent-color);
 }
 
+.film-card__vote_average {
+  padding: 1px 10px;
+  background-color: var(--accent-color);
+  color: var(--white-text-color);
+  border-radius: 5px;
+}
+
 .film-card__genre:not(:last-child):after {
   content: ', ';
   color: var(--accent-color);
