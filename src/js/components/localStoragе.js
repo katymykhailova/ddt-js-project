@@ -9,23 +9,24 @@ const toQueue = JSON.parse(localStorage.getItem(`${STORAGE_KEY.QUEUE}`));
 const toWatchArray = toWatch !== null ? [...toWatch] : [];
 const toQueueArray = toQueue !== null ? [...toQueue] : [];
 
-function addToWatchInLocalStorage() {
-  // Читаем текущий фильм
-  const addedMovie = JSON.parse(localStorage.getItem('movie'));
-  // Сиздаем масси id из массива уже записанных в хранилище фильмов
-  const idArr = toWatchArray.map(movie => {
-    if (!movie) {
-      return;
-    }
-    return movie.id;
-  });
+function addToWatchInLocalStorage({ addedMovie, currentMovie }) {
+  if (addedMovie) {
+    // Сохраняет фильм в local storage при нажатии на кнопку "Add to watched"
+    toWatchArray.push(currentMovie);
+    localStorage.setItem(`${STORAGE_KEY.WATCHED}`, JSON.stringify(toWatchArray));
+  } else {
+    // Удаляет фильм из local storage при нажатии на кнопку "Remove from watched"
+    const idArray = toWatchArray.map(movie => {
+      if (!movie) {
+        return;
+      }
+      return movie.id;
+    });
 
-  if (idArr.includes(addedMovie.id)) {
-    return;
+    const index = idArray.indexOf(currentMovie.id);
+    toWatchArray.splice(index, 1);
+    localStorage.setItem(`${STORAGE_KEY.WATCHED}`, JSON.stringify(toWatchArray));
   }
-
-  toWatchArray.push(addedMovie);
-  localStorage.setItem(`${STORAGE_KEY.WATCHED}`, JSON.stringify(toWatchArray));
 
   console.log('Добавлено в просмотренные');
 }
@@ -34,4 +35,22 @@ function addToQuequeInLocalStorage() {
   console.log('Добавлено в очередь');
 }
 
-export { addToWatchInLocalStorage, addToQuequeInLocalStorage };
+function getMovieWatchOfLocalStorage(currentMovie) {
+  // Читаем текущий фильм
+  // const currentMovie = JSON.parse(localStorage.getItem('movie'));
+  // Сиздаем масси id из массива уже записанных в хранилище фильмов
+  const idArr = toWatchArray.map(movie => {
+    if (!movie) {
+      return;
+    }
+    return movie.id;
+  });
+
+  if (idArr.includes(currentMovie.id)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export { getMovieWatchOfLocalStorage, addToWatchInLocalStorage, addToQuequeInLocalStorage };

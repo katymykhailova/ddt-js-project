@@ -2,10 +2,16 @@ import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
 
-import { addToWatchInLocalStorage, addToQuequeInLocalStorage } from './localStoragе';
+import {
+  getMovieWatchOfLocalStorage,
+  addToWatchInLocalStorage,
+  addToQuequeInLocalStorage,
+} from './localStoragе';
 
 const moviesApiService = new MoviesApiService();
 const refs = getRefs();
+let addedMovie;
+let currentMovie;
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
 refs.movieBackdrop.addEventListener('click', onModalClose);
@@ -22,6 +28,7 @@ async function fetchMovieDetails() {
     const watchedMovie = {
       id: movie.id,
       poster_path,
+      vote_average: movie.vote_average,
       title: movie.title,
       backdrop_path: movie.backdrop_path,
       genres,
@@ -32,6 +39,16 @@ async function fetchMovieDetails() {
 
     const movieMarkup = modalFilmTpl(movie);
     modalMovieRender(movieMarkup);
+
+    currentMovie = JSON.parse(localStorage.getItem('movie'));
+    if (getMovieWatchOfLocalStorage(currentMovie)) {
+      addedMovie = false;
+      //есть в LocalStorage меняем внешний вид кнопки Watch
+    } else {
+      addedMovie = true;
+      //нет в LocalStorage
+    }
+
     const addQuequeBtn = document.querySelector('.add-queue-js');
     const addWatchedBtn = document.querySelector('.add-watched-js');
     const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
@@ -88,11 +105,10 @@ function onAddMovieInLocalStorage(watchedMovie) {
 }
 
 function onAddQueque() {
-  addToQuequeInLocalStorage();
-  // console.log('Добавлено в очередь');
+  addToQuequeInLocalStorage({ addedMovie, currentMovie });
 }
 
 function onAddWatched() {
-  addToWatchInLocalStorage();
-  // console.log('Добавлено в просмотренные');
+  addToWatchInLocalStorage({ addedMovie, currentMovie });
+  addedMovie = !addedMovie;
 }
