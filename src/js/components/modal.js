@@ -2,7 +2,7 @@ import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
 
-import { addToWatchInLocalStorage, addToQuequeInLocalStorage } from './localStoraga';
+import { addToWatchInLocalStorage, addToQuequeInLocalStorage } from './localStoragе';
 
 const moviesApiService = new MoviesApiService();
 const refs = getRefs();
