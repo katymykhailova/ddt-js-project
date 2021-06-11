@@ -6,7 +6,7 @@ const moviesApiService = new MoviesApiService();
 const refs = getRefs();
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
-// refs.modalCloseBtn.addEventListener('click', onModalClose);
+refs.movieBackdrop.addEventListener('click', onModalClose);
 
 async function fetchMovieDetails() {
   try {
@@ -15,8 +15,10 @@ async function fetchMovieDetails() {
     modalMovieRender(movieMarkup);
     const addQuequeBtn = document.querySelector('.add-queue-js');
     const addWatchedBtn = document.querySelector('.add-watched-js');
+    const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
     addQuequeBtn.addEventListener('click', onAddQueque);
     addWatchedBtn.addEventListener('click', onAddWatched);
+    modalCloseBtn.addEventListener('click', onModalClose);
   } catch (error) {
     console.log(error);
   }
@@ -48,7 +50,7 @@ export default function onModalOpen(e) {
 
 function onModalClose(e) {
   if (
-    e.target.dataset.action !== 'modal-close' &&
+    !e.target.classList.contains('modal__close-btn-icon') &&
     !e.target.classList.contains('movie-backdrop') &&
     e.code !== 'Escape'
   ) {
