@@ -2,6 +2,8 @@ import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
 
+import { addToWatchInLocalStorage, addToQuequeInLocalStorage } from './localStoraga';
+
 const moviesApiService = new MoviesApiService();
 const refs = getRefs();
 
@@ -11,6 +13,23 @@ refs.movieBackdrop.addEventListener('click', onModalClose);
 async function fetchMovieDetails() {
   try {
     const movie = await moviesApiService.fetchMovieDetails();
+
+    const poster_path = movie.poster_path
+      ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
+      : noposter;
+    const genres = movie.genres.map(genre => genre.name);
+    const release_date = movie.release_date.split('-')[0];
+    const watchedMovie = {
+      id: movie.id,
+      poster_path,
+      title: movie.title,
+      backdrop_path: movie.backdrop_path,
+      genres,
+      name: movie.name,
+      release_date,
+    };
+    onAddMovieInLocalStorage(watchedMovie);
+
     const movieMarkup = modalFilmTpl(movie);
     modalMovieRender(movieMarkup);
     const addQuequeBtn = document.querySelector('.add-queue-js');
@@ -64,10 +83,16 @@ function onModalClose(e) {
   modalClear();
 }
 
+function onAddMovieInLocalStorage(watchedMovie) {
+  localStorage.setItem('movie', JSON.stringify(watchedMovie));
+}
+
 function onAddQueque() {
-  console.log('Добавлено в очередь');
+  addToQuequeInLocalStorage();
+  // console.log('Добавлено в очередь');
 }
 
 function onAddWatched() {
-  console.log('Добавлено в просмотренные');
+  addToWatchInLocalStorage();
+  // console.log('Добавлено в просмотренные');
 }
