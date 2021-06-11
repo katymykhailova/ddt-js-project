@@ -13,6 +13,10 @@ async function fetchMovieDetails() {
     const movie = await moviesApiService.fetchMovieDetails();
     const movieMarkup = modalFilmTpl(movie);
     modalMovieRender(movieMarkup);
+    const addQuequeBtn = document.querySelector('.add-queue-js');
+    const addWatchedBtn = document.querySelector('.add-watched-js');
+    addQuequeBtn.addEventListener('click', onAddQueque);
+    addWatchedBtn.addEventListener('click', onAddWatched);
   } catch (error) {
     console.log(error);
   }
@@ -56,4 +60,12 @@ function onModalClose(e) {
   window.removeEventListener('keydown', onModalClose);
 
   modalClear();
+}
+
+function onAddQueque() {
+  console.log('Добавлено в очередь');
+}
+
+function onAddWatched() {
+  console.log('Добавлено в просмотренные');
 }
