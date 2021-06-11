@@ -31,28 +31,26 @@ function addToWatchInLocalStorage({ addedMovie, currentMovie }) {
   console.log('Добавлено в просмотренные');
 }
 
-function addToQuequeInLocalStorage({ addedMovie, currentMovie }) {
-  if (addedMovie) {
-    if (addedMovie) {
-      // Сохраняет фильм в local storage при нажатии на кнопку "Queue"
-      toQueueArray.push(currentMovie);
-      localStorage.setItem(`${STORAGE_KEY.QUEUE}`, JSON.stringify(toQueueArray));
-    } else {
-      // Удаляет фильм из local storage при нажатии на кнопку "Remove from watched"
-      const idArray = toQueueArray.map(movie => {
-        if (!movie) {
-          return;
-        }
-        return movie.id;
-      });
+function addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie }) {
+  if (addedQuequeMovie) {
+    // Сохраняет фильм в local storage при нажатии на кнопку "Queue"
+    toQueueArray.push(currentMovie);
+    localStorage.setItem(`${STORAGE_KEY.QUEUE}`, JSON.stringify(toQueueArray));
+  } else {
+    // Удаляет фильм из local storage при нажатии на кнопку "Remove from watched"
+    const idArray = toQueueArray.map(movie => {
+      if (!movie) {
+        return;
+      }
+      return movie.id;
+    });
 
-      const index = idArray.indexOf(currentMovie.id);
-      toQueueArray.splice(index, 1);
-      localStorage.setItem(`${STORAGE_KEY.QUEUE}`, JSON.stringify(toQueueArray));
-    }
-    // Сохраняет фильм в local storage при нажатии на кнопку "Ad) {
-    console.log('Добавлено в очередь');
+    const index = idArray.indexOf(currentMovie.id);
+    toQueueArray.splice(index, 1);
+    localStorage.setItem(`${STORAGE_KEY.QUEUE}`, JSON.stringify(toQueueArray));
   }
+  // Сохраняет фильм в local storage при нажатии на кнопку "Ad) {
+  console.log('Добавлено в очередь');
 }
 
 function getMovieWatchOfLocalStorage(currentMovie) {

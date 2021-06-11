@@ -11,7 +11,9 @@ import {
 
 const moviesApiService = new MoviesApiService();
 const refs = getRefs();
+
 let addedMovie;
+let addedQuequeMovie;
 let currentMovie;
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
@@ -53,11 +55,15 @@ async function fetchMovieDetails() {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
       // addWatchedBtn.textContent = 'Remove';
-    } else if (getMovieQueueOfLocalStorage(currentMovie)) {
-      addedMovie = false;
-      //есть в LocalStorage меняем внешний вид кнопки Queue
     } else {
       addedMovie = true;
+      //нет в LocalStorage
+    }
+    if (getMovieQueueOfLocalStorage(currentMovie)) {
+      addedQuequeMovie = false;
+      //есть в LocalStorage меняем внешний вид кнопки Queue
+    } else {
+      addedQuequeMovie = true;
       //нет в LocalStorage
     }
   } catch (error) {
@@ -110,8 +116,8 @@ function onAddMovieInLocalStorage(watchedMovie) {
 }
 
 function onAddQueque() {
-  addToQuequeInLocalStorage({ addedMovie, currentMovie });
-  addedMovie = !addedMovie;
+  addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
+  addedQuequeMovie = !addedQuequeMovie;
 }
 
 function onAddWatched() {
