@@ -29,6 +29,7 @@ const appendMoviesMarkup = function (movies) {
 };
 
 const clearMoviesContainer = function () {
+  refs.jsWarningEl.textContent = '';
   refs.galleryListEl.innerHTML = '';
 };
 
