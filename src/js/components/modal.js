@@ -17,6 +17,8 @@ let addedQuequeMovie;
 let currentMovie;
 let addWatchedBtn;
 let addQuequeBtn;
+const btnWatchTextContent = 'REMOVE TO WATCHED';
+const btnQueueTextContent = 'REMOVE TO QUEUE';
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
 refs.movieBackdrop.addEventListener('click', onModalClose);
@@ -56,7 +58,7 @@ async function fetchMovieDetails() {
     if (getMovieWatchOfLocalStorage(currentMovie)) {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
-      addWatchedBtn.textContent = 'REMOVE TO WATCHED';
+      addWatchedBtn.textContent = btnWatchTextContent;
     } else {
       addedMovie = true;
 
@@ -65,7 +67,7 @@ async function fetchMovieDetails() {
     if (getMovieQueueOfLocalStorage(currentMovie)) {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
-      addQuequeBtn.textContent = 'REMOVE TO QUEUE';
+      addQuequeBtn.textContent = btnQueueTextContent;
     } else {
       addedQuequeMovie = true;
       //нет в LocalStorage
@@ -121,17 +123,22 @@ function onAddMovieInLocalStorage(watchedMovie) {
 
 function onAddQueque() {
   addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
-  addQuequeBtn.textContent = 'REMOVE TO QUEUE';
+
+  addQuequeBtn.textContent = btnQueueTextContent;
+  addQuequeBtn.classList.add('accent-button');
   if ((addedQuequeMovie = !addedQuequeMovie)) {
     addQuequeBtn.textContent = 'QUEUE';
+    addQuequeBtn.classList.remove('accent-button');
   }
 }
 
 function onAddWatched() {
   addToWatchInLocalStorage({ addedMovie, currentMovie });
 
-  addWatchedBtn.textContent = 'REMOVE TO WATCHED';
+  addWatchedBtn.textContent = btnWatchTextContent;
+  addWatchedBtn.classList.add('accent-button');
   if ((addedMovie = !addedMovie)) {
     addWatchedBtn.textContent = 'ADD TO WATCHED';
+    addWatchedBtn.classList.remove('accent-button');
   }
 }
