@@ -22,19 +22,24 @@
         </li>    
       </ul>
     </nav> 
+    
     <!-- modal-login -->
     <div class="header-nav-container">
     <div class="header-backdrop is-hidden js-backdrop">
+  
       <div class="modal__container__auth" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-      <button
+       <button
           type="button"
           class="button-close-modal"
           data-action="close-modal"
         >
           x
         </button>
-        <h2 class="auth-header">Sign IN</h2>
-        <main class="modal__content modal__content__auth" id="modal-1-content">
+        !-- <h2 class="auth-header">Sign IN</h2> 
+      <div id="firebaseui-auth-container">
+   
+        <!-- <h2 class="auth-header">Sign IN</h2> -->
+        <!-- <main class="modal__content modal__content__auth" id="modal-1-content">
             <div class="modal__auth">
                 <div class="line_wrapper">
                     <label for="email">Email</label>
@@ -52,9 +57,10 @@
                 </div>
                 <p class="auth__error_message" data-index="error_in__auth"></p>
             </div>
-        </main>
+        </main> -->
     </div>
     </div>
+ </div>
     <div class="form">
       <form class="search-form" id="search-form">
         <input
