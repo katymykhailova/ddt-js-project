@@ -46,7 +46,7 @@
   border-radius: 5px;
 }
 
-.film-card__genre:not(:last-child):after {
+.film-card__genre:not(:nth-last-child(-n + 2)):after {
   content: ', ';
   color: var(--accent-color);
 }

@@ -76,13 +76,23 @@ export default class NewApiService {
     const genresArr = await this.fetchGenres();
 
     const updateMovie = movie => {
-      const genres = [];
+      let genres = [];
       const genresIdArr = movie.genre_ids;
 
       genresIdArr.forEach(id => {
         const genreName = genresArr.find(gener => id === gener.id).name;
         genres.push(genreName);
       });
+
+      28;
+      let genresStr = genres.join(',');
+      let i = 0;
+      if (genresStr.length > 28) {
+        do {
+          genres.splice(genres.length - 1, 2);
+        } while (genres.join(',').length > 20);
+        genres.push('others...');
+      }
 
       const release_date = movie.release_date ? movie.release_date.split('-')[0] : 'NA';
 
