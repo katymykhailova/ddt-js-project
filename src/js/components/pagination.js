@@ -2,7 +2,7 @@ import paginateTpl from '../../template/pagination.hbs';
 
 export default class NewPagination {
   constructor({ selector }) {
-    this.fetch = 'api';
+    // this.fetch = 'api';
     this.page = 1;
     this.pageList = [];
     this.firstPage = 1;
@@ -108,7 +108,7 @@ export default class NewPagination {
 
   appendPaginationMarkup() {
     this.refs.paginateContainer.insertAdjacentHTML('beforeend', paginateTpl(this.pages));
-    const currentEl = document.querySelector(`[data-page="${this.page}"]`);
+    const currentEl = document.querySelector(`[data-pagepagination="${this.page}"]`);
     currentEl.parentElement.classList.add('active');
   }
 

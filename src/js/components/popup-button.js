@@ -1,27 +1,27 @@
-import HandleButtonClick from './handle-button-click';
-
-const DATA_SET = {
-  ADD: 'add',
-  REMOVE: 'remove',
+const STORAGE_KEY = {
+  WATCHED: 'WATCHED',
+  QUEUE: 'QUEUE',
 };
 
-const CLICK = {
-  WATCHED: new HandleButtonClick({
-    selector: '.add-watched-js',
-  }),
-  QUEUE: new HandleButtonClick({
-    selector: '.add-queue-js',
-  }),
-};
+// const refs = {
+//   getBtnWatched: document.querySelector('.add-watched-js'),
+//   getBtnQueue: document.querySelector('.add-queue-js'),
+// };
 
-CLICK.WATCHED.button.addEventListener('click', () => {
-  return CLICK.WATCHED.button.dataset.action === DATA_SET.ADD
-    ? CLICK.WATCHED.add()
-    : CLICK.WATCHED.remove();
-});
+// refs.getBtnWatched.addEventListener('click', () => {
+//   checkButton(refs.getBtnWatched);
+// });
 
-CLICK.QUEUE.button.addEventListener('click', () => {
-  return CLICK.WATCHED.button.dataset.action === DATA_SET.ADD
-    ? CLICK.QUEUE.add()
-    : CLICK.QUEUE.remove();
-});
+// refs.getBtnQueue.addEventListener('click', () => {
+//   checkButton(refs.getBtnQueue);
+// });
+
+// function checkButton(event) {
+//   if (event.dataset.action === 'remove') {
+//     event.dataset.action = 'add';
+//     event.classList.add('--accent-button');
+//     return event;
+//   }
+//   event.dataset.action = 'remove';
+//   event.classList.remove('--accent-button');
+// }

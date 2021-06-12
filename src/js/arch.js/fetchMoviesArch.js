@@ -88,9 +88,9 @@ function onSearchPagination(e) {
 function paginationFetch() {
   scrollTo();
   clearMoviesContainer();
-  if (pagination.fetch === 'api') {
+  // if (pagination.fetch === 'api') {
     fetchApiMoviesPagination();
-  }
+  // }
 
   pagination.updatePageList();
 }

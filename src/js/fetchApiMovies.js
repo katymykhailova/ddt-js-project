@@ -25,7 +25,7 @@ const headerClientHeight = refs.headerEl.clientHeight;
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
-refs.inputEl.addEventListener('input', debounce(onInput, 500));
+refs.inputEl.addEventListener('input', debounce(onInput, 1000));
 
 function scrollTo() {
   if (headerClientHeight === 0) {
@@ -69,15 +69,15 @@ function onSearchPagination(e) {
     return;
   }
 
-  moviesApiService.page = Number(e.target.dataset.page);
-  pagination.page = Number(e.target.dataset.page);
+  moviesApiService.page = Number(e.target.dataset.pagepagination);
+  pagination.page = Number(e.target.dataset.pagepagination);
   paginationFetch();
 }
 
 function paginationFetch() {
-  if (pagination.fetch === 'api') {
-    fetchApiMoviesPagination();
-  }
+  // if (pagination.fetch === 'api') {
+  fetchApiMoviesPagination();
+  // }
 
   pagination.updatePageList();
 }
@@ -118,7 +118,7 @@ async function fetchApiMoviesPagination() {
   }
 }
 
-async function fetchPopularMovies() {
+export async function fetchPopularMovies() {
   clearMoviesContainer();
   pagination.hide();
   try {
@@ -137,4 +137,4 @@ async function fetchPopularMovies() {
   }
 }
 
-fetchPopularMovies();
+// fetchPopularMovies();

@@ -1,80 +1,85 @@
 <header class="header-main">
-<div class="container">
-  <div class="header-section">
-    <nav class="navigation">
-      <a href="#" class="navigation__logo">
-        <svg class="logo__icon" width="24" height="24" id="homeBtn">
-          <use href="./images/sprite.svg#icon-film"></use>
-        </svg>
-        <span class="logo__name">Filmoteka</span>
-      </a>
-      <ul class="site-nav__list">
-        <li class="site-nav__item">
-          <a href="./index.html" class="site-nav__link current" id="homeBtn">Home</a>
-        </li>
-        <li class="site-nav__item">
-          <a href="./library.html" class="site-nav__link" id="libraryBtn">My library</a>
-        </li>
-         <li class="site-nav__item">
-          <button data-action="open-modal" class="logButton" type="button">SIGN IN </button>
-        </li>    
-      </ul>
-    </nav> 
-    
-    <!-- modal-login -->
-<div class="header-nav-container">
-    <div class="header-backdrop is-hidden js-backdrop">
-      <div class="modal__container__auth" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-       <button
-          type="button"
-          class="button-close-modal"
-          data-action="close-modal" >x</button>
-        <h2 class="auth-header">Sign IN</h2> 
-      <div id="firebaseui-auth-container">
-      <div id="main_container" style="display:none;">
-          <h1>Welcome to the Filmoteka</h1>
-          <button class="button-logout">logout</button>
-    </div>
-  </div>
-</div>
- </div>
-    <div class="form">
-      <form class="search-form" id="search-form">
-        <input
-          type="text"
-          name="query"
-          autocomplete="off"
-          placeholder="Поиск фильмов"
-          class="search-field"
-          id="name"
-        />
-        <label class="form-label" for="name">Поиск фильмов</label>
-        <button type="submit" class="search-btn">
-          <svg class="search-icon" width="12" height="12">
-            <use href="./images/sprite.svg#icon-search"></use>
-          </svg>
-        </button>
-      </form> 
-    </div>
-    <div class="header-warning" id="js-warning"></div>
-    <div class="toolbar">
+  <div class="container">
+    <div class="header-section">
+      <div class="toolbar">
       <div class="theme-switch">
-        <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-          <use href="./images/sprite.svg#sun"></use>
-        </svg>
-    
-        <div class="theme-switch__control">
-          <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-            aria-label="light-dark theme switcher" />
-          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
-          <div aria-hidden="true" class="theme-switch__marker"></div>
-        </div>
-    
-        <svg class="theme-switch__icon" aria-label="Moon icon">
-          <use href="./images/sprite.svg#moon"></use>
-        </svg>
+      <div class="theme-switch__control">
+        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+          aria-label="light-dark theme switcher" />
+        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
       </div>
+      </div>
+      </div>
+      <nav class="navigation">
+        <a href="#" class="navigation__logo" >
+          <svg class="logo__icon"  data-page="index" width="24" height="24" id="homeBtn">
+            <use href="./images/sprite.svg#icon-film"></use>
+          </svg>
+          <span class="logo__name" data-page="index">Filmoteka</span>
+        </a>
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a href="#" class="site-nav__link current" data-page="index" id="index">Home</a>
+          </li>
+          <li class="site-nav item">
+            <a href="#" class="site-nav__link" data-page="library" id="library">My library</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="form">
+        <form class="search-form" id="search-form">
+          <input
+            type="text"
+            name="query"
+            autocomplete="off"
+            placeholder="Поиск фильмов"
+            class="search-field"
+            id="name"
+          />
+          <label class="form-label" for="name">Поиск фильмов</label>
+          <button type="submit" class="search-btn">
+            <svg class="search-icon" width="12" height="12">
+              <use href="./images/sprite.svg#icon-search"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div class="header-warning" id="js-warning"></div>
+      <div class="library-btn visually-hidden" id="js-buttons">
+        <button type="button" class="handle-button header-button lib watched-js" data-action="add">
+          <span class="handle-button__title">watched</span>
+        </button>
+
+        <button type="button" class="handle-button header-button lib queue-js" data-action="add">
+          <span class="handle-button__title">queue</span>
+        </button>
+      </div>
+      <div class="toolbar">
+        <div class="theme-switch">
+          <!-- <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
+          <use href="./images/sprite.svg#sun"></use>
+        </svg> -->
+
+          <!-- <div class="theme-switch__control">
+            <input
+              class="theme-switch__toggle"
+              type="checkbox"
+              name="theme"
+              id="theme-switch-toggle"
+              aria-label="light-dark theme switcher"
+            />
+            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+          </div> -->
+
+          <!-- <svg class="theme-switch__icon" aria-label="Moon icon">
+          <use href="./images/sprite.svg#moon"></use>
+        </svg> -->
+        <!-- </div>
+      </div> -->
     </div>
   </div>
-</div>
 </header>

@@ -76,7 +76,7 @@ export default class NewApiService {
     const genresArr = await this.fetchGenres();
 
     const updateMovie = movie => {
-      const genres = [];
+      let genres = [];
       const genresIdArr = movie.genre_ids;
 
       genresIdArr.forEach(id => {
@@ -84,12 +84,27 @@ export default class NewApiService {
         genres.push(genreName);
       });
 
+      // В случае переполнения контента
+      let genresStr = genres.join(',');
+      let i = 0;
+      if (genresStr.length > 28) {
+        do {
+          genres.splice(genres.length - 1, 2);
+        } while (genres.join(',').length > 20);
+        genres.push('others...');
+      }
+
+      let title = movie.title;
+      if (title.length > 40) {
+        title = movie.title.slice(0, 37) + '...';
+      }
+
       const release_date = movie.release_date ? movie.release_date.split('-')[0] : 'NA';
 
       const poster_path = movie.poster_path
         ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
         : noposter;
-      const movieUpdate = { ...movie, genres, release_date, poster_path };
+      const movieUpdate = { ...movie, title, genres, release_date, poster_path };
       return movieUpdate;
     };
 

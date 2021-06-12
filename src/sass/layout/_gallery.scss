@@ -6,22 +6,48 @@
 .gallery-list__item {
   width: 280px;
   height: 440px;
+  transition: var(--transition-function) var(--timing-function);
+}
+.gallery-list__item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 26px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .gallery-list__item:hover {
+  box-shadow: 0px 8px 26px rgba(255, 255, 255, 0.1);
 }
 
 .poster {
   width: 280px;
   height: 398px;
+  object-fit: cover;
+  max-width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
 .film-card__name {
-  @include font;
+  font-family: var(--main-page-font);
+  font-size: 12px;
+  line-height: 1.33;
   text-transform: uppercase;
 }
 
 .film-card__genres {
   @include font;
+  color: var(--accent-color);
+}
+
+.film-card__vote_average {
+  padding: 1px 10px;
+  margin-left: 10px;
+  background-color: var(--accent-color);
+  color: var(--white-text-color);
+  border-radius: 5px;
+}
+
+.film-card__genre:not(:nth-last-child(-n + 2)):after {
+  content: ', ';
   color: var(--accent-color);
 }
 
