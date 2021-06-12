@@ -37,7 +37,7 @@ if (currentLibrary === WATCHED) {
 if (currentLibrary === QUEUE) {
   libraryQueue();
 } else {
-  return;
+  // return;
 }
 
 function libraryWatched() {
