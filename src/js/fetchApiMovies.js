@@ -75,9 +75,9 @@ function onSearchPagination(e) {
 }
 
 function paginationFetch() {
-  if (pagination.fetch === 'api') {
-    fetchApiMoviesPagination();
-  }
+  // if (pagination.fetch === 'api') {
+  fetchApiMoviesPagination();
+  // }
 
   pagination.updatePageList();
 }
