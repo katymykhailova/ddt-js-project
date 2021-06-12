@@ -15,6 +15,8 @@ const refs = getRefs();
 let addedMovie;
 let addedQuequeMovie;
 let currentMovie;
+let addWatchedBtn;
+let addQuequeBtn;
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
 refs.movieBackdrop.addEventListener('click', onModalClose);
@@ -43,8 +45,8 @@ async function fetchMovieDetails() {
     const movieMarkup = modalFilmTpl(movie);
     modalMovieRender(movieMarkup);
 
-    const addQuequeBtn = document.querySelector('.add-queue-js');
-    const addWatchedBtn = document.querySelector('.add-watched-js');
+    addQuequeBtn = document.querySelector('.add-queue-js');
+    addWatchedBtn = document.querySelector('.add-watched-js');
     const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
     addQuequeBtn.addEventListener('click', onAddQueque);
     addWatchedBtn.addEventListener('click', onAddWatched);
@@ -54,14 +56,16 @@ async function fetchMovieDetails() {
     if (getMovieWatchOfLocalStorage(currentMovie)) {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
-      // addWatchedBtn.textContent = 'Remove';
+      addWatchedBtn.textContent = 'Remove add to watched';
     } else {
       addedMovie = true;
+
       //нет в LocalStorage
     }
     if (getMovieQueueOfLocalStorage(currentMovie)) {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
+      addQuequeBtn.textContent = 'Remove add to queue';
     } else {
       addedQuequeMovie = true;
       //нет в LocalStorage
@@ -118,9 +122,11 @@ function onAddMovieInLocalStorage(watchedMovie) {
 function onAddQueque() {
   addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
   addedQuequeMovie = !addedQuequeMovie;
+  addQuequeBtn.textContent = 'Remove add to queue';
 }
 
 function onAddWatched() {
   addToWatchInLocalStorage({ addedMovie, currentMovie });
   addedMovie = !addedMovie;
+  addWatchedBtn.textContent = 'Remove add to watched';
 }
