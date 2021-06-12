@@ -56,7 +56,7 @@ async function fetchMovieDetails() {
     if (getMovieWatchOfLocalStorage(currentMovie)) {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
-      addWatchedBtn.textContent = 'Remove add to watched';
+      addWatchedBtn.textContent = 'REMOVE TO WATCHED';
     } else {
       addedMovie = true;
 
@@ -65,7 +65,7 @@ async function fetchMovieDetails() {
     if (getMovieQueueOfLocalStorage(currentMovie)) {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
-      addQuequeBtn.textContent = 'Remove add to queue';
+      addQuequeBtn.textContent = 'REMOVE TO QUEUE';
     } else {
       addedQuequeMovie = true;
       //нет в LocalStorage
@@ -121,12 +121,17 @@ function onAddMovieInLocalStorage(watchedMovie) {
 
 function onAddQueque() {
   addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
-  addedQuequeMovie = !addedQuequeMovie;
-  addQuequeBtn.textContent = 'Remove add to queue';
+  addQuequeBtn.textContent = 'REMOVE TO QUEUE';
+  if ((addedQuequeMovie = !addedQuequeMovie)) {
+    addQuequeBtn.textContent = 'QUEUE';
+  }
 }
 
 function onAddWatched() {
   addToWatchInLocalStorage({ addedMovie, currentMovie });
-  addedMovie = !addedMovie;
-  addWatchedBtn.textContent = 'Remove add to watched';
+
+  addWatchedBtn.textContent = 'REMOVE TO WATCHED';
+  if ((addedMovie = !addedMovie)) {
+    addWatchedBtn.textContent = 'ADD TO WATCHED';
+  }
 }
