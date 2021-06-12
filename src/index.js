@@ -6,7 +6,6 @@ import './js/components/modalTeam';
 import './js/components/pagination';
 import './js/fetchApiMovies';
 import './js/components/theme';
-import './js/components/sign-up-modal';
 import './js/components/modal-login';
 
 /*кнопка header в library*/

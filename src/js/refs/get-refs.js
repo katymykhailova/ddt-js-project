@@ -8,8 +8,5 @@ export default function getRefs() {
     jsWarningEl: document.querySelector('#js-warning'),
     signUpModal: document.querySelector('.sign-up'),
     headerHome: document.querySelector('.header-home'),
-    openModalBtn: document.querySelector('[data-action="open-modal"]'),
-  closeModalBtn: document.querySelector('[data-action="close-modal"]'),
-  backdrop: document.querySelector('.js-backdrop'),
   };
 }

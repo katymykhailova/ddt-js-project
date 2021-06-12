@@ -3,9 +3,7 @@ body.show-modal .header-backdrop {
   visibility: visible;
   pointer-events: initial;
 }
-body.show-modal .header-modal {
-  transform: scale(1);
-}
+
 .header-backdrop {
   display: flex;
   justify-content: center;
@@ -22,33 +20,7 @@ body.show-modal .header-modal {
   visibility: hidden;
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
-.header-modal {
-  border-radius: 4px;
-  max-width: 350px;
-  background-color: #fff;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  transform: scale(1.1);
-  transition: transform 200ms ease-in-out;
-}
-.is-hidden {
-  display: none;
-}
-.button-close-modal {
-  position: absolute;
-  right: 2px;
-  top: -2px;
-  display: inline-flex;
-  justify-content: flex-end;
-  margin-right: 0;
-  z-index: 99999;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  font-weight: bold;
-  color: rgb(97, 94, 94);
-}
+
 
 .logButton {
     background-color:var(--secondary-button-color);
@@ -79,88 +51,6 @@ body.show-modal .header-modal {
   text-align: center;
   margin-bottom:30px;
 }
-.modal__auth {
-  width: 400px;
-  height: 300px;
-  padding: 10px;
-  color: var(--white-text-color);
-  text-align: center;
-  margin: 0 auto;
-}
-.line_wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  button {
-    padding: 10px;
-    border: 1px solid var(--white-text-color);
-    box-sizing: border-box;
-    border-radius: 5px;
-    background-color: transparent;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 1.33;
-    color: var(--white-text-color);
-    &:hover {
-      background-color: var(--accent-color);
-    }
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.input__auth {
-  display: block;
-  background: transparent;
-  border: transparent;
-  border-bottom: 1px solid var(--white-text-color);
-  font-size: 16px;
-  line-height: 1.17;
-
-  color: var(--white-text-color);
-
-//   @include transition(border-bottom);
-
-  &::placeholder {
-    color: slave;
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid var(--accent-color);
-  }
-}
-.auth__error_message {
-  font-size: 14px;
-  color: red;
-}
-@media screen and (min-width: 320px) {
-  .modal__container__auth {
-    padding: 5px;
-  }
-  .auth-header {
-    height: 25px;
-    font-size: 25px;
-  }
-  .modal__auth {
-    width: 300px;
-    padding: 5px;
-  }
-  .line_wrapper {
-    button {
-      font-size: 12px;
-    }
-  }
-}
-
 
 .button-close-modal {
     position: relative;
