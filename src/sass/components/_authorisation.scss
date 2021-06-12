@@ -62,7 +62,7 @@ body.show-modal .header-modal {
 .modal__container__auth {
   background-color: rgba(0, 0, 0, 0.9);
   width: 400px;
-  height:500px;
+  height:450px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -177,4 +177,8 @@ body.show-modal .header-modal {
     font-weight: 700;
     color: var(--accent-color);
 
+}
+
+.auth-Welcom{
+    color:white;
 }

@@ -9,15 +9,17 @@ const refs = {
   openModalBtn: document.querySelector('[data-action="open-modal"]'),
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.js-backdrop'),
-  email: document.querySelector('#email'),
-  password: document.querySelector('#password'),
-  login: document.querySelector('.btn__to_sing_in'),
+
+
+//   email: document.querySelector('#email'),
+//   password: document.querySelector('#password'),
+//   login: document.querySelector('.btn__to_sing_in'),
 };
 
   refs.openModalBtn.addEventListener('click', onOpenModal),
   refs.closeModalBtn.addEventListener('click', onCloseModal),
   refs.backdrop.addEventListener('click', onBackdropClick);
-
+  
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress);
@@ -91,7 +93,6 @@ var uiConfig = {
     // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
           firebase.auth.GithubAuthProvider.PROVIDER_ID,
           firebase.auth.EmailAuthProvider.PROVIDER_ID,
           firebase.auth.PhoneAuthProvider.PROVIDER_ID
@@ -105,6 +106,11 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
+
+
+  document.querySelector('.button-logout').onclick = mainApp.logout;
+
+
 var mainApp = {};
 (function(){
 var mainContainer = document.getElementById("main_container");
@@ -112,7 +118,7 @@ var mainContainer = document.getElementById("main_container");
     var logtout =  function(){
         firebase.auth().signOut().then(function(){
             console.log('success');
-            window.location.replace("login.html");
+            window.location.replace("header.html");
         },function(){})
     }
 
@@ -126,7 +132,7 @@ var init = function(){
           // No user is signed in.
           mainContainer.style.display = "none";
           console.log("redirect");
-          window.location.replace("login.html");
+          window.location.replace("header.html");
         }
       });
 }
@@ -135,3 +141,4 @@ init();
 
 mainApp.logout = logtout;
 })();
+
