@@ -89,7 +89,7 @@ export default class NewApiService {
       let i = 0;
       if (genresStr.length > 28) {
         do {
-          genres.splice(genres.length - 1, 2);
+          genres.splice(genres.length - 1, 1);
         } while (genres.join(',').length > 20);
         genres.push('others...');
       }

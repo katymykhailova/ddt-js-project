@@ -25,7 +25,8 @@ const headerClientHeight = refs.headerEl.clientHeight;
 pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
 pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
 pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
-refs.inputEl.addEventListener('input', debounce(onInput, 1000));
+// refs.inputEl.addEventListener('input', debounce(onInput, 1000));
+refs.form.addEventListener('submit', onInput);
 
 function scrollTo() {
   if (headerClientHeight === 0) {
@@ -40,13 +41,15 @@ function scrollTo() {
 
 function onInput(e) {
   e.preventDefault();
-  moviesApiService.query = e.target.value.trim();
+  // moviesApiService.query = e.target.value.trim();
+  moviesApiService.query = e.currentTarget.elements.query.value.trim();
   moviesApiService.resetPage();
   pagination.resetPage();
   scrollTo();
   clearMoviesContainer();
   fetchMoviesSearchQuery();
-  e.target.value = '';
+  // e.target.value = '';
+  e.currentTarget.elements.query.value = '';
 }
 
 function onPrevPageBtnClick(e) {
