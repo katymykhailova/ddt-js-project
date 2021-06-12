@@ -12,6 +12,8 @@ export default function getRefs() {
     buttonBox: document.querySelector('#js-buttons'),
     movieBackdrop: document.querySelector('.movie-backdrop'),
     movieWrap: document.querySelector('.movie-wrap'),
+    libraryWatchedBtn: document.querySelector('.watched-js'),
+    libraryQueueBtn: document.querySelector('.queue-js'),
   };
 }
 
