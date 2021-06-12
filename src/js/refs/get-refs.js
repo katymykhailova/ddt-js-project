@@ -4,6 +4,8 @@ export default function getRefs() {
     galleryListEl: document.querySelector('.gallery-list'),
     headerEl: document.querySelector('.header-main'),
     jsWarningEl: document.querySelector('#js-warning'),
+    signUpModal: document.querySelector('.sign-up'),
+    headerHome: document.querySelector('.header-home'),
     navigator: document.querySelector('.navigation'),
     logoBtn: document.querySelector('#logoBtn'),
     homeBtn: document.querySelector('#index'),
