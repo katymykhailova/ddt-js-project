@@ -110,7 +110,14 @@ let ligtboxSpinner = new Spinner(previewSpinnerOpts).spin(target);
 
 const modalSpinner = document.querySelector('[data-modal-spinner]');
 
-function spinnerModal() {
-  modalSpinner.classList.toggle('is-hidden');
+function spinnerModal(value = 'start') {
+  if (value === 'start') {
+    modalSpinner.classList.remove('is-hidden');
+  } else if (value === 'stop') {
+    setTimeout(() => {
+      modalSpinner.classList.add('is-hidden');
+    }, 1000);
+  }
+  // modalSpinner.classList.toggle('is-hidden');
 }
 export default spinnerModal;

@@ -79,16 +79,14 @@ function onSearchPagination(e) {
 }
 
 function paginationFetch() {
-  // if (pagination.fetch === 'api') {
   fetchApiMoviesPagination();
-  // }
-
   pagination.updatePageList();
 }
 
 async function fetchMoviesSearchQuery() {
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchMoviesSearchQuery();
 
     if (movies.length == 0) {
@@ -96,16 +94,10 @@ async function fetchMoviesSearchQuery() {
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
     }
-    ligtboxSpinner(); // Убирает класс is-hidden
-    setTimeout(() => {
-      appendMoviesMarkup(movies);
-      appendPaginationMarkup(moviesApiService.totalPages);
-      pagination.show();
-      ligtboxSpinner(); // Возвращает класс is-hidden
-    }, 1000);
-    // appendMoviesMarkup(movies);
-    // appendPaginationMarkup(moviesApiService.totalPages);
-    // pagination.show();
+    appendMoviesMarkup(movies);
+    appendPaginationMarkup(moviesApiService.totalPages);
+    pagination.show();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
@@ -114,6 +106,7 @@ async function fetchMoviesSearchQuery() {
 async function fetchApiMoviesPagination() {
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchMoviesPagination();
     if (movies.length == 0) {
       refs.jsWarningEl.textContent =
@@ -121,15 +114,10 @@ async function fetchApiMoviesPagination() {
       return;
     }
     clearMoviesContainer();
-    ligtboxSpinner(); // Убирает класс is-hidden
-    setTimeout(() => {
-      appendMoviesMarkup(movies);
-      pagination.show();
-      ligtboxSpinner(); //Возвращает класс is-hidden
-    }, 1000);
-    // appendMoviesMarkup(movies);
-    // pagination.show();
+    appendMoviesMarkup(movies);
+    pagination.show();
     scrollTo();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
@@ -139,6 +127,7 @@ export async function fetchPopularMovies() {
   clearMoviesContainer();
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchPopularMovies();
 
     if (movies.length == 0) {
@@ -146,16 +135,10 @@ export async function fetchPopularMovies() {
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
     }
-    ligtboxSpinner(); // Убирает класс is-hidden
-    setTimeout(() => {
-      appendMoviesMarkup(movies);
-      appendPaginationMarkup(moviesApiService.totalPages);
-      pagination.show();
-      ligtboxSpinner(); //Возвращает класс is-hidden
-    }, 1000);
-    // pagination.show();
-    // appendMoviesMarkup(movies);
-    // appendPaginationMarkup(moviesApiService.totalPages);
+    appendMoviesMarkup(movies);
+    appendPaginationMarkup(moviesApiService.totalPages);
+    pagination.show();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
