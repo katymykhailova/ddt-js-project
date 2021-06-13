@@ -23,8 +23,9 @@
       <ul class='modal__movie-data-list'>
         <li class='movie__data-list-item'>
           <p class='movie__data-title'>Vote/Votes</p>
-          <span class='movie__data-subtitle--accent'>{{vote_average}} / </span>
-          <span class='movie__data-subtitle'>{{vote_count}}</span>
+          <span class='movie__data-subtitle--accent'>{{vote_average}}</span>
+          <span class='movie__data-subtitle--dark-grey'>/</span>
+          <span class='movie__data-subtitle--accent bg-grey'>{{vote_count}}</span>
         </li>
         <li class='movie__data-list-item'>
           <p class='movie__data-title'>Popularity</p>
@@ -37,7 +38,7 @@
         <li class='movie__data-list-item'>
           <p class='movie__data-title'>Genre</p>
           {{#each genres}}
-            <span class='movie__data-subtitle'>{{name}}</span>
+            <span class='movie__data-subtitle--genre'>{{name}}{{#unless @last}},{{/unless}}</span>
           {{/each}}
         </li>
       </ul>
@@ -47,11 +48,19 @@
       <p class='modal__movie-descr-text'>{{overview}}</p>
     </div>
     <div class='modal__movie-buttons'>
-      <button type='button' class='handle-button popup-button add-watched-js' data-action='add'>
+      <button
+        type='button'
+        class='handle-button popup-button handle-button__watched add-watched-js'
+        data-action='add'
+      >
         <span class='handle-button__title'>add to watched</span>
       </button>
 
-      <button type='button' class='handle-button popup-button add-queue-js' data-action='add'>
+      <button
+        type='button'
+        class='handle-button popup-button handle-button__queque add-queue-js'
+        data-action='add'
+      >
         <span class='handle-button__title'>add to queue</span>
       </button>
     </div>
