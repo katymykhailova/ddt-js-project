@@ -46,10 +46,10 @@
   border-radius: 5px;
 }
 
-.film-card__genre:not(:nth-last-child(-n + 2)):after {
-  content: ', ';
-  color: var(--accent-color);
-}
+// .film-card__genre:not(:nth-last-child(-n + 2)):after {
+//   content: ', ';
+//   color: var(--accent-color);
+// }
 
 @media screen and (max-width: 767px) {
   .gallery-list__item:not(:last-child) {
