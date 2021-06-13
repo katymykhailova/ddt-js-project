@@ -12,12 +12,10 @@ export default function getRefs() {
     buttonBox: document.querySelector('#js-buttons'),
     movieBackdrop: document.querySelector('.movie-backdrop'),
     modalCloseBtn: document.querySelector('[data-action="modal-close"]'),
+    openTeamModalBtn: document.querySelector('[data-modal-open]'),
+    closeTeamModalBtn: document.querySelector('[data-modal-close]'),
+    teamModal: document.querySelector('[data-modal]'),
+    cardsArrRef: document.querySelectorAll('.team-list__card'),
+    cardsImages: document.querySelectorAll('.team-list__img'),
   };
 }
-
-export const modalTeamRefs = {
-  openTeamModalBtn: document.querySelector('[data-modal-open]'),
-  closeTeamModalBtn: document.querySelector('[data-modal-close]'),
-  teamModal: document.querySelector('[data-modal]'),
-  itemsRef: document.querySelectorAll('.team-list__item'),
-};
