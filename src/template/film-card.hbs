@@ -13,7 +13,7 @@
     <p class='film-card__genres'>
       {{#each genres}}
         <span class='film-card__genre'>
-          {{this}}
+          {{this}}{{#unless @last}},{{/unless}}
         </span>
       {{/each}}
       | {{release_date}} <span class='film-card__vote_average'>{{vote_average}}</span>
