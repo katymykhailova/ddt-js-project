@@ -9,6 +9,10 @@ let intervalId = null;
 refs.openTeamModalBtn.addEventListener('click', onTeamModal);
 refs.closeTeamModalBtn.addEventListener('click', onTeamModal);
 
+function onTeamModal() {
+  refs.teamModal.classList.toggle('visually-hidden');
+}
+
 // formula Random
 const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
