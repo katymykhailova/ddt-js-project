@@ -2,6 +2,12 @@ import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
 
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+import 'spin.js/spin.css';
+
+import { ligtboxSpinner } from './spinner';
+
 import {
   getMovieQueueOfLocalStorage,
   getMovieWatchOfLocalStorage,
@@ -99,6 +105,19 @@ export default function onModalOpen(e) {
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
   refs.movieBackdrop.classList.remove('is-hidden');
+
+  const instance = basicLightbox.create(``);
+
+  instance.show();
+  const lightboxEl = instance.element();
+  const modalSpinner = ligtboxSpinner.spin(lightboxEl);
+  const modalImg = document.querySelector('.modal__movie-img');
+
+  modalImg.addEventListener('load', e => {
+    modalSpinner.stop();
+  });
+
+  // modalSpinner.stop();
 }
 
 function onModalClose(e) {
