@@ -8,48 +8,49 @@ import {
   pagination,
 } from './components/appendMovies';
 
-export async function fetchLibraryMovies(key) {
-  const movies = JSON.parse(localStorage.getItem(key));
-
+export async function fetchLibraryMovies(movies, totalPages) {
   clearMoviesContainer();
   pagination.hide();
-  // pagination.show();
+  pagination.show();
   appendMoviesMarkup(movies);
-  // appendPaginationMarkup(totalPages);
+  appendPaginationMarkup(totalPages);
 }
 
 const refs = getRefs();
 const Library = {
-  LIBRARY_KEY: 'LIBRARY',
   WATCHED: 'WATCHED',
   QUEUE: 'QUEUE',
 };
-const { LIBRARY_KEY, WATCHED, QUEUE } = Library;
+const { WATCHED, QUEUE } = Library;
 
-refs.libraryWatchedBtn.addEventListener('click', libraryWatched);
-refs.libraryQueueBtn.addEventListener('click', libraryQueue);
+refs.libraryWatchedBtn.addEventListener('click', (evt) => {
+  isActiveBtn(evt);
+  renderLibrary(WATCHED);
+});
+refs.libraryQueueBtn.addEventListener('click', (evt) => {
+  isActiveBtn(evt);
+  renderLibrary(QUEUE);
+});
 
-const currentLibrary = localStorage.getItem(LIBRARY_KEY);
+function isActiveBtn(evt) {
+  if (evt.currentTarget.nodeName !== 'BUTTON') {
+    return;
+  };
 
-if (currentLibrary === WATCHED) {
-  libraryWatched();
-}
-if (currentLibrary === QUEUE) {
-  libraryQueue();
-} else {
-  // return;
-}
+  const currentActiveBtn = document.querySelector('.is-active');
 
-function libraryWatched() {
-  refs.libraryWatchedBtn.classList.add('is-active');
-  refs.libraryQueueBtn.classList.remove('is-active');
-  localStorage.setItem(LIBRARY_KEY, WATCHED);
-  fetchLibraryMovies(WATCHED);
-}
+  if (currentActiveBtn) {
+    currentActiveBtn.classList.remove('is-active');
+  };
 
-function libraryQueue() {
-  refs.libraryQueueBtn.classList.add('is-active');
-  refs.libraryWatchedBtn.classList.remove('is-active');
-  localStorage.setItem(LIBRARY_KEY, QUEUE);
-  fetchLibraryMovies(QUEUE);
-}
+  evt.currentTarget.classList.add('is-active');
+};
+
+function renderLibrary(section) {
+  const movies = JSON.parse(localStorage.getItem(section));
+
+  if (movies) {
+    const numberOfPages = Math.ceil(movies.length / 12);
+    fetchLibraryMovies(movies, numberOfPages);
+  };
+};
