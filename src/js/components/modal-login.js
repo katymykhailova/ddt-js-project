@@ -64,13 +64,23 @@ var uiConfig = {
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.GithubAuthProvider.PROVIDER_ID,
           firebase.auth.EmailAuthProvider.PROVIDER_ID,
           firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
+  callbacks: {
+    signInSuccessWithAuthResult: function (authResult) {
+      if (authResult) {
+        location.reload();
+
+        setUserData(firebaseUser.uid);
+        return true;
+      }
+    },
+  },
   // Terms of service url.
   tosUrl: 'header.html'
 };
+
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
