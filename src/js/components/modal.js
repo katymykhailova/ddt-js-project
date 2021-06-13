@@ -103,7 +103,7 @@ export default function onModalOpen(e) {
 
 function onModalClose(e) {
   if (
-    !e.target.classList.contains('modal__close-btn-icon') &&
+    !e.target.classList.contains('modal__close-button') &&
     !e.target.classList.contains('movie-backdrop') &&
     e.code !== 'Escape'
   ) {
