@@ -2,6 +2,7 @@
 import debounce from 'lodash.debounce';
 // modules
 import MoviesApiService from './apiService';
+import ligtboxSpinner from './components/spinner';
 
 // refs
 import getRefs from './refs/get-refs';
@@ -78,16 +79,14 @@ function onSearchPagination(e) {
 }
 
 function paginationFetch() {
-  // if (pagination.fetch === 'api') {
   fetchApiMoviesPagination();
-  // }
-
   pagination.updatePageList();
 }
 
 async function fetchMoviesSearchQuery() {
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchMoviesSearchQuery();
 
     if (movies.length == 0) {
@@ -98,6 +97,7 @@ async function fetchMoviesSearchQuery() {
     appendMoviesMarkup(movies);
     appendPaginationMarkup(moviesApiService.totalPages);
     pagination.show();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
@@ -106,6 +106,7 @@ async function fetchMoviesSearchQuery() {
 async function fetchApiMoviesPagination() {
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchMoviesPagination();
     if (movies.length == 0) {
       refs.jsWarningEl.textContent =
@@ -116,6 +117,7 @@ async function fetchApiMoviesPagination() {
     appendMoviesMarkup(movies);
     pagination.show();
     scrollTo();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
@@ -125,6 +127,7 @@ export async function fetchPopularMovies() {
   clearMoviesContainer();
   pagination.hide();
   try {
+    ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchPopularMovies();
 
     if (movies.length == 0) {
@@ -132,9 +135,10 @@ export async function fetchPopularMovies() {
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
     }
-    pagination.show();
     appendMoviesMarkup(movies);
     appendPaginationMarkup(moviesApiService.totalPages);
+    pagination.show();
+    ligtboxSpinner('stop');
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }

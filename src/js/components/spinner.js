@@ -103,4 +103,21 @@ export const previewSpinnerOpts = {
   position: 'absolute', // Element positioning
 };
 
-export const ligtboxSpinner = new Spinner(lightboxSpinnerOpts);
+// export const ligtboxSpinner = new Spinner(lightboxSpinnerOpts);
+
+let target = document.getElementById('foo');
+let ligtboxSpinner = new Spinner(previewSpinnerOpts).spin(target);
+
+const modalSpinner = document.querySelector('[data-modal-spinner]');
+
+function spinnerModal(value = 'start') {
+  if (value === 'start') {
+    modalSpinner.classList.remove('is-hidden');
+  } else if (value === 'stop') {
+    setTimeout(() => {
+      modalSpinner.classList.add('is-hidden');
+    }, 1000);
+  }
+  // modalSpinner.classList.toggle('is-hidden');
+}
+export default spinnerModal;
