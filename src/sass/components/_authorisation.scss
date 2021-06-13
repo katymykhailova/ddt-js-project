@@ -21,20 +21,15 @@ body.show-modal .header-backdrop {
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
-
 .logButton {
-    background-color:var(--secondary-button-color);
-    color: var(--button-text-color);
+  background-color: var(--secondary-button-color);
+  color: var(--button-text-color);
 }
-
-
-
-
 
 .modal__container__auth {
   background-color: rgba(0, 0, 0, 0.9);
   width: 400px;
-  height:450px;
+  height: 400px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -43,32 +38,31 @@ body.show-modal .header-backdrop {
 }
 .auth-header {
   height: 35px;
-  color:   var(--accent-color);
+  color: var(--accent-color);
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
   line-height: 1.16em;
   text-align: center;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 .button-close-modal {
-    position: relative;
-    right: 2px;
-    top: -2px;
-    display: inline-flex;
-    justify-content: flex-end;
-    margin-right: 0;
-    z-index: 99999;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    font-weight: 700;
-    color: var(--accent-color);
-
+  position: relative;
+  right: 2px;
+  top: -2px;
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-right: 0;
+  z-index: 99999;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
-.auth-Welcom{
-    color:white;
+.auth-Welcom {
+  color: white;
 }
