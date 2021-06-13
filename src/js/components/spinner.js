@@ -103,4 +103,14 @@ export const previewSpinnerOpts = {
   position: 'absolute', // Element positioning
 };
 
-export const ligtboxSpinner = new Spinner(lightboxSpinnerOpts);
+// export const ligtboxSpinner = new Spinner(lightboxSpinnerOpts);
+
+let target = document.getElementById('foo');
+let ligtboxSpinner = new Spinner(previewSpinnerOpts).spin(target);
+
+const modalSpinner = document.querySelector('[data-modal-spinner]');
+
+function spinnerModal() {
+  modalSpinner.classList.toggle('is-hidden');
+}
+export default spinnerModal;

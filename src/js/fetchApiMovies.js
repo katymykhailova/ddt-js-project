@@ -2,6 +2,7 @@
 import debounce from 'lodash.debounce';
 // modules
 import MoviesApiService from './apiService';
+import ligtboxSpinner from './components/spinner';
 
 // refs
 import getRefs from './refs/get-refs';
@@ -95,9 +96,16 @@ async function fetchMoviesSearchQuery() {
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
     }
-    appendMoviesMarkup(movies);
-    appendPaginationMarkup(moviesApiService.totalPages);
-    pagination.show();
+    ligtboxSpinner(); // Убирает класс is-hidden
+    setTimeout(() => {
+      appendMoviesMarkup(movies);
+      appendPaginationMarkup(moviesApiService.totalPages);
+      pagination.show();
+      ligtboxSpinner(); // Возвращает класс is-hidden
+    }, 1000);
+    // appendMoviesMarkup(movies);
+    // appendPaginationMarkup(moviesApiService.totalPages);
+    // pagination.show();
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
@@ -113,8 +121,14 @@ async function fetchApiMoviesPagination() {
       return;
     }
     clearMoviesContainer();
-    appendMoviesMarkup(movies);
-    pagination.show();
+    ligtboxSpinner(); // Убирает класс is-hidden
+    setTimeout(() => {
+      appendMoviesMarkup(movies);
+      pagination.show();
+      ligtboxSpinner(); //Возвращает класс is-hidden
+    }, 1000);
+    // appendMoviesMarkup(movies);
+    // pagination.show();
     scrollTo();
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
@@ -132,9 +146,16 @@ export async function fetchPopularMovies() {
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
     }
-    pagination.show();
-    appendMoviesMarkup(movies);
-    appendPaginationMarkup(moviesApiService.totalPages);
+    ligtboxSpinner(); // Убирает класс is-hidden
+    setTimeout(() => {
+      appendMoviesMarkup(movies);
+      appendPaginationMarkup(moviesApiService.totalPages);
+      pagination.show();
+      ligtboxSpinner(); //Возвращает класс is-hidden
+    }, 1000);
+    // pagination.show();
+    // appendMoviesMarkup(movies);
+    // appendPaginationMarkup(moviesApiService.totalPages);
   } catch (error) {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
