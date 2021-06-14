@@ -51,7 +51,8 @@ async function fetchMovieDetails() {
     };
     onAddMovieInLocalStorage(watchedMovie);
 
-    const movieMarkup = modalFilmTpl(movie);
+    const movieNormalizer = { ...movie, poster_path };
+    const movieMarkup = modalFilmTpl(movieNormalizer);
     modalMovieRender(movieMarkup);
 
     addQuequeBtn = document.querySelector('.add-queue-js');
