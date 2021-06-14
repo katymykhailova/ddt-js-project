@@ -1,6 +1,7 @@
 import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
+import noposter from '../../images/no-poster.png';
 
 // import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basicLightbox.min.css';
