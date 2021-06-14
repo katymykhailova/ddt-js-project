@@ -8,8 +8,12 @@ import {
   pagination,
 } from './components/appendMovies';
 
-export async function fetchLibraryMovies() {  
-};
+export function fetchLibraryMovies() {
+  pagination.metod = paginationLibraryFetch;
+  clearMoviesContainer();
+  pagination.hide();
+  pagination.resetPage();
+}
 
 // function appendLibraryMoviesMarkup(movies, totalPages) {
 //   appendMoviesMarkup(movies);
@@ -22,14 +26,17 @@ const Library = {
   QUEUE: 'QUEUE',
 };
 const { WATCHED, QUEUE } = Library;
+let section = WATCHED;
 
 refs.libraryWatchedBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
-  renderLibrary(WATCHED);
+  section = WATCHED;
+  renderLibrary(section);
 });
 refs.libraryQueueBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
-  renderLibrary(QUEUE);
+  section = QUEUE;
+  renderLibrary(section);
 });
 
 function isActiveBtn(evt) {
@@ -56,8 +63,28 @@ function renderLibrary(section) {
     const moviesForRender = moviesFromLS.slice(0, 20);
     const numberOfPages = Math.ceil(moviesFromLS.length / 20);
     // appendLibraryMoviesMarkup(moviesForRender, numberOfPages);
-    pagination.show();
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
-  }  
+    pagination.show();
+  }
+}
+
+function paginationLibraryFetch() {
+  fetchLibraryMoviesPagination();
+  pagination.updatePageList();
+}
+
+function fetchLibraryMoviesPagination() {
+  pagination.hide();
+  clearMoviesContainer();
+  const moviesFromLS = JSON.parse(localStorage.getItem(section));
+  if (moviesFromLS) {
+    const begin = (pagination.page - 1) * 20;
+    const end = (pagination.page - 1) * 20 + 20;
+    const moviesForRender = moviesFromLS.slice(begin, end);
+    const numberOfPages = Math.ceil(moviesFromLS.length / 20);
+    appendMoviesMarkup(moviesForRender);
+    appendPaginationMarkup(numberOfPages);
+    pagination.show();
+  }
 }
