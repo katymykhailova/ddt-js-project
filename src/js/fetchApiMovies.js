@@ -92,6 +92,7 @@ async function fetchMoviesSearchQuery() {
     const movies = await moviesApiService.fetchMoviesSearchQuery();
 
     if (movies.length == 0) {
+      ligtboxSpinner('stop');
       refs.jsWarningEl.textContent =
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
@@ -101,6 +102,7 @@ async function fetchMoviesSearchQuery() {
     pagination.show();
     ligtboxSpinner('stop');
   } catch (error) {
+    ligtboxSpinner('stop');
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
@@ -111,6 +113,7 @@ async function fetchApiMoviesPagination() {
     ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchMoviesPagination();
     if (movies.length == 0) {
+      ligtboxSpinner('stop');
       refs.jsWarningEl.textContent =
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
@@ -121,6 +124,7 @@ async function fetchApiMoviesPagination() {
     scrollTo();
     ligtboxSpinner('stop');
   } catch (error) {
+    ligtboxSpinner('stop');
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
@@ -136,6 +140,7 @@ export async function fetchPopularMovies() {
     const movies = await moviesApiService.fetchPopularMovies();
 
     if (movies.length == 0) {
+      ligtboxSpinner('stop');
       refs.jsWarningEl.textContent =
         'Фильм не найден. Пожалуйста, введите более конкретный запрос!';
       return;
@@ -146,6 +151,7 @@ export async function fetchPopularMovies() {
     pagination.show();
     ligtboxSpinner('stop');
   } catch (error) {
+    ligtboxSpinner('stop');
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }

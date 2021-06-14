@@ -3,15 +3,8 @@ import getRefs from '../refs/get-refs';
 const refs = getRefs();
 //
 const colors = ['#d3b8ea', '#85aff2', '#f0d7d5', '#FF6B08', '#273275'];
-let intervalId = null;
-
-// MODAL
-refs.openTeamModalBtn.addEventListener('click', onTeamModal);
-refs.closeTeamModalBtn.addEventListener('click', onTeamModal);
-
-function onTeamModal() {
-  refs.teamModal.classList.toggle('visually-hidden');
-}
+let paintCardInterval = null;
+let animateCardInterval = null;
 
 // formula Random
 const randomIntegerFromInterval = (min, max) => {
@@ -47,29 +40,43 @@ const colorizeModal = function (array, colors) {
 };
 
 // ==================MODAL-TEAM================ //
-colorizeModal(refs.cardsArrRef, colors);
-//         УСЛОВИЯ НЕ РАБОТАЮТ!!!!!             //
-// const isTeamModalOpen = function () {
-//   const isOpen = !refs.teamModal.classList.contains('visually-hidden');
-  
-//   if (isOpen) {
-    intervalId = setInterval(() => {
+const teamModalAnimations = function () {
+  colorizeModal(refs.cardsArrRef, colors);
+
+    paintCardInterval = setInterval(() => {
       let activeCard = searchItem(refs.cardsArrRef);
       activateItem(activeCard, 'isActive');
       paintCard(activeCard, colors);
     }, 500);
         
-    intervalId = setInterval(() => {
+    animateCardInterval = setInterval(() => {
       let i = randomIntegerFromInterval(0, refs.cardsImages.length - 1);
       let activeImage = searchItem(refs.cardsImages);
       activeImage.classList.toggle('visually-hidden');
       activeImage.classList.toggle('animated');
     }, 3000);
-//   }
+}
   
-//   else {
-//     return;
-//   }
-// }
-// isTeamModalOpen();
+function teamModalOpen() {
+  refs.teamModal.classList.remove('visually-hidden');
+ 
+  if (!refs.teamModal.classList.contains('visually-hidden')) {
+    teamModalAnimations();
+  }
+  else {
+   return; 
+  }
+
+}
+
+const teamModalClose = function() {
+  refs.teamModal.classList.add('visually-hidden');
+  clearInterval(paintCardInterval);
+  clearInterval(animateCardInterval);
+}
+refs.openTeamModalBtn.addEventListener('click', teamModalOpen);
+refs.closeTeamModalBtn.addEventListener('click', teamModalClose);
+
+
+
 

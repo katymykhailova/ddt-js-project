@@ -13,30 +13,29 @@ export function fetchLibraryMovies() {
   clearMoviesContainer();
   pagination.hide();
   pagination.resetPage();
+  checkLibraryStatus();
 }
-
-// function appendLibraryMoviesMarkup(movies, totalPages) {
-//   appendMoviesMarkup(movies);
-//   appendPaginationMarkup(totalPages);
-// }
 
 const refs = getRefs();
 const Library = {
+  LIBRARY_STATUS: 'LibraryStatus',
   WATCHED: 'WATCHED',
   QUEUE: 'QUEUE',
 };
-const { WATCHED, QUEUE } = Library;
+const { LIBRARY_STATUS, WATCHED, QUEUE } = Library;
 let section = WATCHED;
 
 refs.libraryWatchedBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
   section = WATCHED;
   renderLibrary(section);
+  localStorage.setItem(LIBRARY_STATUS, section);
 });
 refs.libraryQueueBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
   section = QUEUE;
   renderLibrary(section);
+  localStorage.setItem(LIBRARY_STATUS, section);
 });
 
 function isActiveBtn(evt) {
@@ -51,7 +50,7 @@ function isActiveBtn(evt) {
   }
 
   evt.currentTarget.classList.add('is-active');
-}
+};
 
 function renderLibrary(section) {
   clearMoviesContainer();
@@ -62,17 +61,16 @@ function renderLibrary(section) {
   if (moviesFromLS) {
     const moviesForRender = moviesFromLS.slice(0, 20);
     const numberOfPages = Math.ceil(moviesFromLS.length / 20);
-    // appendLibraryMoviesMarkup(moviesForRender, numberOfPages);
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
     pagination.show();
-  }
-}
+  };
+};
 
 function paginationLibraryFetch() {
   fetchLibraryMoviesPagination();
   pagination.updatePageList();
-}
+};
 
 function fetchLibraryMoviesPagination() {
   pagination.hide();
@@ -86,5 +84,16 @@ function fetchLibraryMoviesPagination() {
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
     pagination.show();
-  }
-}
+  };
+};
+
+function checkLibraryStatus() {
+  if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
+    refs.libraryWatchedBtn.classList.add('is-active');
+    renderLibrary(WATCHED);
+  };
+  if (localStorage.getItem(LIBRARY_STATUS) === QUEUE) {
+    refs.libraryQueueBtn.classList.add('is-active');
+    renderLibrary(QUEUE);
+  };
+};

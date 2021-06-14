@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 140px;
 }
 
 .pagination-list {
@@ -89,10 +88,4 @@
   color: var(--white-text-color);
   border-radius: 5px;
   cursor: pointer;
-}
-
-@media screen and(min-width: 768px) {
-  .pagination {
-    margin-bottom: 160px;
-  }
 }
