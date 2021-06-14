@@ -109,6 +109,9 @@ export default function onModalOpen(e) {
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
   refs.movieBackdrop.classList.remove('is-hidden');
+  document.body.classList.add('body-overflow--hidden');
+  refs.toTopBtn.classList.remove('upview');
+  // console.log(toTopBtn);
 
   // const instance = basicLightbox.create(``);
 
@@ -134,6 +137,8 @@ function onModalClose(e) {
   }
 
   refs.movieBackdrop.classList.add('is-hidden');
+  document.body.classList.remove('body-overflow--hidden');
+  refs.toTopBtn.classList.add('upview');
 
   window.removeEventListener('keydown', onModalClose);
 
