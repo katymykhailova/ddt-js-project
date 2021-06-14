@@ -33,6 +33,9 @@
           </li>
           <li class="site-nav__item">
             <p class="site-nav__link sign-in" data-action="open-modal">Sign IN</p>
+            <button class="js-singOut-button logButton" type="button">
+              sign Out
+            </button>
           </li>
         </ul>
       </nav>
@@ -49,7 +52,11 @@
             <h2 class="auth-header sing-up">Sign IN</h2>
             <div id="firebaseui-auth-container"></div>
             <div id="main_container" style="display: none">
-              <p  data-action="open-modal" class="logout" id="logout">Sign OUT</p>
+              <p  class="logout" id="logout">Sign Out</p>
+            </div>
+            <div class="display-userinfo">
+              <span class="display-user-logo"></span>
+              <span class="js-display-username"></span>
             </div>
           </div>
         </div>

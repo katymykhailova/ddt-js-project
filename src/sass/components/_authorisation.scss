@@ -72,9 +72,22 @@ body.show-modal .header-backdrop {
   color: var(--accent-color);
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.16em;
   text-align: center;
   margin-bottom: 30px;
   cursor: pointer;
+}
+
+// .header-modal {
+//   border-radius: 4px;
+//   max-width: 350px;
+//   background-color: #fff;
+//   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+//     0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+//   transform: scale(1.1);
+//   transition: transform 200ms ease-in-out;
+// }
+.is-hidden {
+  display: none;
 }
