@@ -2,7 +2,7 @@ import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
 import noposter from '../../images/no-poster.png';
-import topBtn from './arrowTop';
+
 // import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basicLightbox.min.css';
 // import 'spin.js/spin.css';
@@ -109,7 +109,7 @@ export default function onModalOpen(e) {
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
   refs.movieBackdrop.classList.remove('is-hidden');
-  document.body.classList.add('body-hidden');
+  document.body.classList.add('body-overflowHidden');
   refs.toTopBtn.classList.remove('upview');
   // console.log(toTopBtn);
 
@@ -137,7 +137,7 @@ function onModalClose(e) {
   }
 
   refs.movieBackdrop.classList.add('is-hidden');
-  document.body.classList.remove('body-hidden');
+  document.body.classList.remove('body-overflowHidden');
   refs.toTopBtn.classList.add('upview');
 
   window.removeEventListener('keydown', onModalClose);
