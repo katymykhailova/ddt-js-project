@@ -130,11 +130,12 @@ async function fetchApiMoviesPagination() {
 }
 
 export async function fetchPopularMovies() {
-  pagination.metod = paginationFetch;
-  pagination.resetPage();
-  moviesApiService.page = Number(pagination.page);
-  clearMoviesContainer();
   pagination.hide();
+  pagination.resetPage();
+  pagination.metod = paginationFetch;
+  moviesApiService.page = Number(pagination.page);
+  moviesApiService.searchQuery = '';
+  clearMoviesContainer();
   try {
     ligtboxSpinner('start'); // Убирает класс is-hidden
     const movies = await moviesApiService.fetchPopularMovies();
@@ -155,5 +156,3 @@ export async function fetchPopularMovies() {
     refs.jsWarningEl.textContent = 'Извините. мы не можем обработать ваш запрос!';
   }
 }
-
-// fetchPopularMovies();

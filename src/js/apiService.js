@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL, API_KEY } from './refs/settingsApi';
+import { BASE_URL, API_KEY } from './refs/settings';
 import noposter from '../images/no-poster.png';
 axios.defaults.baseURL = BASE_URL;
 
