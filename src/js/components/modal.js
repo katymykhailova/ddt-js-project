@@ -109,7 +109,7 @@ export default function onModalOpen(e) {
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
   refs.movieBackdrop.classList.remove('is-hidden');
-  document.body.classList.add('body-overflowHidden');
+  document.body.classList.add('body-overflow--hidden');
   refs.toTopBtn.classList.remove('upview');
   // console.log(toTopBtn);
 
@@ -137,7 +137,7 @@ function onModalClose(e) {
   }
 
   refs.movieBackdrop.classList.add('is-hidden');
-  document.body.classList.remove('body-overflowHidden');
+  document.body.classList.remove('body-overflow--hidden');
   refs.toTopBtn.classList.add('upview');
 
   window.removeEventListener('keydown', onModalClose);
