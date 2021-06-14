@@ -65,6 +65,7 @@ async function fetchMovieDetails() {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
       addWatchedBtn.textContent = btnWatchTextContent;
+      addWatchedBtn.classList.add('accent-button');
     } else {
       addedMovie = true;
 
@@ -74,6 +75,7 @@ async function fetchMovieDetails() {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
       addQuequeBtn.textContent = btnQueueTextContent;
+      addQuequeBtn.classList.add('accent-button');
     } else {
       addedQuequeMovie = true;
       //нет в LocalStorage
