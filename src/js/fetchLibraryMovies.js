@@ -8,13 +8,13 @@ import {
   pagination,
 } from './components/appendMovies';
 
-export async function fetchLibraryMovies(movies, totalPages) {
-  clearMoviesContainer();
-  pagination.hide();
-  pagination.show();
-  appendMoviesMarkup(movies);
-  appendPaginationMarkup(totalPages);
-}
+export async function fetchLibraryMovies() {  
+};
+
+// function appendLibraryMoviesMarkup(movies, totalPages) {
+//   appendMoviesMarkup(movies);
+//   appendPaginationMarkup(totalPages);
+// }
 
 const refs = getRefs();
 const Library = {
@@ -23,11 +23,11 @@ const Library = {
 };
 const { WATCHED, QUEUE } = Library;
 
-refs.libraryWatchedBtn.addEventListener('click', (evt) => {
+refs.libraryWatchedBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
   renderLibrary(WATCHED);
 });
-refs.libraryQueueBtn.addEventListener('click', (evt) => {
+refs.libraryQueueBtn.addEventListener('click', evt => {
   isActiveBtn(evt);
   renderLibrary(QUEUE);
 });
@@ -35,22 +35,29 @@ refs.libraryQueueBtn.addEventListener('click', (evt) => {
 function isActiveBtn(evt) {
   if (evt.currentTarget.nodeName !== 'BUTTON') {
     return;
-  };
+  }
 
   const currentActiveBtn = document.querySelector('.is-active');
 
   if (currentActiveBtn) {
     currentActiveBtn.classList.remove('is-active');
-  };
+  }
 
   evt.currentTarget.classList.add('is-active');
-};
+}
 
 function renderLibrary(section) {
-  const movies = JSON.parse(localStorage.getItem(section));
+  clearMoviesContainer();
+  pagination.hide();
+  pagination.resetPage();
+  const moviesFromLS = JSON.parse(localStorage.getItem(section));
 
-  if (movies) {
-    const numberOfPages = Math.ceil(movies.length / 12);
-    fetchLibraryMovies(movies, numberOfPages);
-  };
-};
+  if (moviesFromLS) {
+    const moviesForRender = moviesFromLS.slice(0, 20);
+    const numberOfPages = Math.ceil(moviesFromLS.length / 20);
+    // appendLibraryMoviesMarkup(moviesForRender, numberOfPages);
+    pagination.show();
+    appendMoviesMarkup(moviesForRender);
+    appendPaginationMarkup(numberOfPages);
+  }  
+}
