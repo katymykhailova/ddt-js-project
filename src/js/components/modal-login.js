@@ -75,8 +75,6 @@ const uiConfig = {
       }
     },
   },
-  // Terms of service url.
-  // tosUrl: 'index.html',
 };
 
 // Initialize the FirebaseUI Widget using Firebase.
@@ -84,8 +82,6 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
-// let mainApp = {};
-// (function () {
 const mainContainer = document.getElementById('main_container');
 const logoutEl = document.querySelector('#logout');
 
@@ -95,10 +91,8 @@ const logtout = function () {
     .signOut()
     .then(
       function () {
-        console.log('success');
-        // window.location.replace('index.html');
+        console.log('success'); 
       },
-      // function () {},
     );
 };
 
@@ -112,13 +106,8 @@ const init = function () {
       // No user is signed in.
       mainContainer.style.display = 'none';
       console.log('redirect');
-      // window.location.replace('index.html');
     }
   });
 };
 
-// init();
-
-// mainApp.logout = logtout;
-// })();
 logoutEl.addEventListener('click', logtout);

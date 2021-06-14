@@ -66,3 +66,15 @@ body.show-modal .header-backdrop {
 .site-nav__link.sign-in {
   cursor: pointer;
 }
+
+.logout {
+  height: 35px;
+  color: var(--accent-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16em;
+  text-align: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
