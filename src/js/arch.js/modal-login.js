@@ -9,12 +9,11 @@ const refs = {
   backdrop: document.querySelector('.js-backdrop'),
 };
 
-refs.openModalBtn.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onBackdropClick);
+refs.openModalBtn.addEventListener('click', onOpenModal),
+  refs.closeModalBtn.addEventListener('click', onCloseModal),
+  refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onOpenModal() {
-  init();
   window.addEventListener('keydown', onEscKeyPress);
   refs.backdrop.classList.remove('is-hidden');
   document.body.classList.add('show-modal');
@@ -40,8 +39,8 @@ function onEscKeyPress(event) {
   }
 }
 
-// var fireBase = fireBase || firebase;
-let hasInit = false;
+var fireBase = fireBase || firebase;
+var hasInit = false;
 const firebaseConfig = {
   apiKey: 'AIzaSyBN4f_F5q6aEuEv1E6c5IHJy5dDCpPJXBo',
   authDomain: 'filmoteka-f1878.firebaseapp.com',
@@ -50,15 +49,13 @@ const firebaseConfig = {
   messagingSenderId: '370619409618',
   appId: '1:370619409618:web:5a232dc64a1670cf9bf90b',
 };
-
 if (!hasInit) {
   firebase.initializeApp(firebaseConfig);
   hasInit = true;
 }
 
-const uiConfig = {
-  // signInSuccessUrl: 'index.html',
-  signInFlow: 'popup',
+var uiConfig = {
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -76,49 +73,47 @@ const uiConfig = {
     },
   },
   // Terms of service url.
-  // tosUrl: 'index.html',
+  tosUrl: 'index.html',
 };
 
 // Initialize the FirebaseUI Widget using Firebase.
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
 
-// let mainApp = {};
-// (function () {
-const mainContainer = document.getElementById('main_container');
-const logoutEl = document.querySelector('#logout');
+var mainApp = {};
+(function () {
+  var mainContainer = document.getElementById('main_container');
 
-const logtout = function () {
-  firebase
-    .auth()
-    .signOut()
-    .then(
-      function () {
-        console.log('success');
-        // window.location.replace('index.html');
-      },
-      // function () {},
-    );
-};
+  var logtout = function () {
+    firebase
+      .auth()
+      .signOut()
+      .then(
+        function () {
+          console.log('success');
+          window.location.replace('index.html');
+        },
+        function () {},
+      );
+  };
 
-const init = function () {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      console.log('stay');
-      mainContainer.style.display = '';
-    } else {
-      // No user is signed in.
-      mainContainer.style.display = 'none';
-      console.log('redirect');
-      // window.location.replace('index.html');
-    }
-  });
-};
+  var init = function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        console.log('stay');
+        mainContainer.style.display = '';
+      } else {
+        // No user is signed in.
+        mainContainer.style.display = 'none';
+        console.log('redirect');
+        window.location.replace('index.html');
+      }
+    });
+  };
 
-// init();
+  init();
 
-// mainApp.logout = logtout;
-// })();
-logoutEl.addEventListener('click', logtout);
+  mainApp.logout = logtout;
+})();
