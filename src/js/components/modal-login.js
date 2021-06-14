@@ -7,6 +7,8 @@ const refs = {
   openModalBtn: document.querySelector('[data-action="open-modal"]'),
   closeModalBtn: document.querySelector('[data-action="close-modal"]'),
   backdrop: document.querySelector('.js-backdrop'),
+  logOutbutton: document.querySelector('.js-singOut-button'),
+  userName: document.querySelector('.js-display-username'),
 };
 
 refs.openModalBtn.addEventListener('click', onOpenModal);
@@ -14,7 +16,7 @@ refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onOpenModal() {
-  init();
+  // init();
   window.addEventListener('keydown', onEscKeyPress);
   refs.backdrop.classList.remove('is-hidden');
   document.body.classList.add('show-modal');
@@ -40,8 +42,6 @@ function onEscKeyPress(event) {
   }
 }
 
-// var fireBase = fireBase || firebase;
-let hasInit = false;
 const firebaseConfig = {
   apiKey: 'AIzaSyBN4f_F5q6aEuEv1E6c5IHJy5dDCpPJXBo',
   authDomain: 'filmoteka-f1878.firebaseapp.com',
@@ -50,20 +50,23 @@ const firebaseConfig = {
   messagingSenderId: '370619409618',
   appId: '1:370619409618:web:5a232dc64a1670cf9bf90b',
 };
+firebase.initializeApp(firebaseConfig);
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const uiStart = () => ui.start('#firebaseui-auth-container', uiConfig);
+//phoneAuth
+new firebase.auth.PhoneAuthProvider();
 
-if (!hasInit) {
-  firebase.initializeApp(firebaseConfig);
-  hasInit = true;
-}
+// =======VARIABLE FOR WORKING WITH USER LIBRARY========
+export const filmotekaDatabase = firebase.database().ref('users');
+export let currentUserId = '';
+console.log(currentUserId);
 
 const uiConfig = {
-  // signInSuccessUrl: 'index.html',
   signInFlow: 'popup',
   signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
   ],
   callbacks: {
     signInSuccessWithAuthResult: function (authResult) {
@@ -75,50 +78,54 @@ const uiConfig = {
       }
     },
   },
-  // Terms of service url.
-  // tosUrl: 'index.html',
 };
+refs.logOutbutton.addEventListener('click', e => {
+  firebase.auth().signOut();
+  localStorage.removeItem('currentUserId');
+  window.location.reload();
+});
 
-// Initialize the FirebaseUI Widget using Firebase.
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
-// let mainApp = {};
-// (function () {
-const mainContainer = document.getElementById('main_container');
-const logoutEl = document.querySelector('#logout');
-
-const logtout = function () {
-  firebase
-    .auth()
-    .signOut()
-    .then(
-      function () {
-        console.log('success');
-        // window.location.replace('index.html');
-      },
-      // function () {},
-    );
-};
-
-const init = function () {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-      console.log('stay');
-      mainContainer.style.display = '';
-    } else {
-      // No user is signed in.
-      mainContainer.style.display = 'none';
-      console.log('redirect');
-      // window.location.replace('index.html');
+// login state
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser) {
+    let displayName = firebaseUser.displayName;
+    if (displayName === null) {
+      displayName = 'guest';
     }
-  });
-};
+    refs.userName.innerHTML = `${displayName}`;
+    document.body.classList.remove('show-modal');
+    showLogOutbutton();
+    localStorage.setItem('currentUserId', JSON.stringify(firebaseUser.uid));
+    currentUserId = JSON.parse(localStorage.getItem('currentUserId'));
+    console.log(currentUserId);
 
-// init();
+    // if (!getUserLibraryFromDatabase(currentUserId)) {
+    //   setUserData(currentUserId);
+    // }
+  } else {
+    refs.userName.innerHTML = '';
+    showOpenModalBtn();
+    uiStart();
+  }
+});
 
-// mainApp.logout = logtout;
-// })();
-logoutEl.addEventListener('click', logtout);
+function showLogOutbutton() {
+  refs.logOutbutton.classList.remove('is-hidden');
+  refs.openModalBtn.classList.add('is-hidden');
+}
+
+function showOpenModalBtn() {
+  refs.openModalBtn.classList.remove('is-hidden');
+  refs.logOutbutton.classList.add('is-hidden');
+}
+
+function setUserData(userId) {
+  const userLibrary = {
+    userId: userId,
+    userWatched: [],
+    userQueue: [],
+  };
+  const updates = {};
+  updates['users/' + userId] = userLibrary;
+  return firebase.database().ref().update(updates);
+}
