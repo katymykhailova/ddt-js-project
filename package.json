@@ -28,7 +28,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "basiclightbox": "^5.0.4",
-    "firebase": "^8.6.5",
+    "firebase": "^8.6.7",
     "firebaseui": "^4.8.0",
     "lodash.debounce": "^4.0.8",
     "spin.js": "^4.1.0"
