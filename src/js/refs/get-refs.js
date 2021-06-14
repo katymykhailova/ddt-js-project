@@ -22,5 +22,6 @@ export default function getRefs() {
     movieWrap: document.querySelector('.movie-wrap'),
     libraryWatchedBtn: document.querySelector('.watched-js'),
     libraryQueueBtn: document.querySelector('.queue-js'),
+    toTopBtn: document.querySelector('.uptop'),
   };
 }

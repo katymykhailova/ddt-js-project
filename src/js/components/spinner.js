@@ -106,7 +106,7 @@ export const previewSpinnerOpts = {
 // export const ligtboxSpinner = new Spinner(lightboxSpinnerOpts);
 
 let target = document.getElementById('foo');
-let ligtboxSpinner = new Spinner(previewSpinnerOpts).spin(target);
+let ligtboxSpinner = new Spinner(lightboxSpinnerOpts).spin(target);
 
 const modalSpinner = document.querySelector('[data-modal-spinner]');
 

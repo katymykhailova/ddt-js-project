@@ -1,16 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let toTopBtn = document.querySelector('.uptop');
+import getRefs from '../refs/get-refs';
+const refs = getRefs();
 
+document.addEventListener('DOMContentLoaded', () => {
   window.onscroll = function () {
     if (window.pageYOffset > 500) {
-      toTopBtn.classList.add('upview');
+      refs.toTopBtn.classList.add('upview');
     } else {
-      toTopBtn.classList.remove('upview');
+      refs.toTopBtn.classList.remove('upview');
     }
   };
 
   // плавный скролл наверх
-  toTopBtn.addEventListener('click', function () {
+  refs.toTopBtn.addEventListener('click', function () {
     window.scrollBy({
       top: -document.documentElement.scrollHeight,
       behavior: 'smooth',
