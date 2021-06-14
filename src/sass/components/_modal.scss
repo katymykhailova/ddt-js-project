@@ -23,7 +23,7 @@
 
 .movie-wrap {
   position: relative;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   width: 100%;
@@ -39,6 +39,7 @@
   transition: transform var(--transition-function) var(--timing-function);
 
   @media screen and (min-width: 768px) {
+    top: 50%;
     padding: 42px 28px 40px 30px;
     max-width: 618px;
   }
@@ -134,11 +135,11 @@
   @include font;
 
   @media screen and (min-width: 768px) {
-    max-width: 264px;
+    width: 264px;
   }
 
   @media screen and (min-width: 1024px) {
-    max-width: 396px;
+    min-width: 396px;
   }
 }
 
