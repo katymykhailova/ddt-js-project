@@ -18,6 +18,32 @@ const refs = getRefs();
 
 window.addEventListener('resize', debounce(onWindowResize, 200));
 
+pagination.refs.paginateContainer.addEventListener('click', onSearchPagination);
+pagination.refs.prevPageBtn.addEventListener('click', onPrevPageBtnClick);
+pagination.refs.nextPageBtn.addEventListener('click', onNextPageBtnClick);
+
+function onSearchPagination(e) {
+  e.preventDefault();
+  if (e.target.classList.contains('disabled')) {
+    return;
+  }
+
+  pagination.page = Number(e.target.dataset.pagepagination);
+  pagination.metod();
+}
+
+function onPrevPageBtnClick(e) {
+  e.preventDefault();
+  pagination.decrementPage();
+  pagination.metod();
+}
+
+function onNextPageBtnClick(e) {
+  e.preventDefault();
+  pagination.incrementPage();
+  pagination.metod();
+}
+
 function onWindowResize() {
   clientWidth = document.documentElement.clientWidth;
   pagination.length = clientWidth >= 768 ? 9 : 5;

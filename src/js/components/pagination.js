@@ -2,6 +2,7 @@ import paginateTpl from '../../template/pagination.hbs';
 
 export default class NewPagination {
   constructor({ selector }) {
+    this.metod = '';
     this.page = 1;
     this.pageList = [];
     this.firstPage = 1;
