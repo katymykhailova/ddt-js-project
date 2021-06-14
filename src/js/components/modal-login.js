@@ -60,7 +60,7 @@ if(!hasInit){
 }
 
 var uiConfig = {
-  signInSuccessUrl: 'header.html',
+  signInSuccessUrl: 'index.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -78,7 +78,7 @@ var uiConfig = {
     },
   },
   // Terms of service url.
-  tosUrl: 'header.html'
+  tosUrl: 'index.html'
 };
 
 
@@ -96,7 +96,7 @@ var mainContainer = document.getElementById("main_container");
     var logtout =  function(){
         firebase.auth().signOut().then(function(){
             console.log('success');
-            window.location.replace("login.html");
+            window.location.replace("index.html");
         },function(){})
     }
 
@@ -110,7 +110,7 @@ var init = function(){
           // No user is signed in.
           mainContainer.style.display = "none";
           console.log("redirect");
-          window.location.replace("login.html");
+          window.location.replace("index.html");
         }
       });
 }
