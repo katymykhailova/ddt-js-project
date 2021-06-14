@@ -1,3 +1,4 @@
+
 <header class="header-main">
   <div class="container">
     <div class="header-section">
@@ -46,8 +47,11 @@
             aria-labelledby="modal-1-title"
           >
             <button type="button" class="button-close-modal" data-action="close-modal">x</button>
-            <h2 class="auth-header">Sign IN</h2>
+            <h2 class="auth-header sing-up">Sign IN</h2>
             <div id="firebaseui-auth-container">
+            </div>
+            <div id="main_container" style="display:none;">
+              <button onclick="mainApp.logout();">logout</button>
             </div>
           </div>
         </div>
