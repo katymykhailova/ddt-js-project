@@ -1,6 +1,12 @@
 import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
+import {
+  btnWatchTextContentRemove,
+  btnQueueTextContentRemove,
+  btnWatchTextContent,
+  btnQueueTextContent,
+} from '../refs/settings';
 import noposter from '../../images/no-poster.png';
 
 // import * as basicLightbox from 'basiclightbox';
@@ -24,8 +30,6 @@ let addedQuequeMovie;
 let currentMovie;
 let addWatchedBtn;
 let addQuequeBtn;
-const btnWatchTextContent = 'REMOVE TO WATCHED';
-const btnQueueTextContent = 'REMOVE TO QUEUE';
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
 refs.movieBackdrop.addEventListener('click', onModalClose);
@@ -66,7 +70,7 @@ async function fetchMovieDetails() {
     if (getMovieWatchOfLocalStorage(currentMovie)) {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
-      addWatchedBtn.textContent = btnWatchTextContent;
+      addWatchedBtn.textContent = btnWatchTextContentRemove;
       addWatchedBtn.classList.add('accent-button');
     } else {
       addedMovie = true;
@@ -76,7 +80,7 @@ async function fetchMovieDetails() {
     if (getMovieQueueOfLocalStorage(currentMovie)) {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
-      addQuequeBtn.textContent = btnQueueTextContent;
+      addQuequeBtn.textContent = btnQueueTextContentRemove;
       addQuequeBtn.classList.add('accent-button');
     } else {
       addedQuequeMovie = true;
@@ -147,10 +151,10 @@ function onAddMovieInLocalStorage(watchedMovie) {
 function onAddQueque() {
   addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
 
-  addQuequeBtn.textContent = btnQueueTextContent;
+  addQuequeBtn.textContent = btnQueueTextContentRemove;
   addQuequeBtn.classList.add('accent-button');
   if ((addedQuequeMovie = !addedQuequeMovie)) {
-    addQuequeBtn.textContent = 'QUEUE';
+    addQuequeBtn.textContent = btnQueueTextContent;
     addQuequeBtn.classList.remove('accent-button');
   }
 }
@@ -158,10 +162,10 @@ function onAddQueque() {
 function onAddWatched() {
   addToWatchInLocalStorage({ addedMovie, currentMovie });
 
-  addWatchedBtn.textContent = btnWatchTextContent;
+  addWatchedBtn.textContent = btnWatchTextContentRemove;
   addWatchedBtn.classList.add('accent-button');
   if ((addedMovie = !addedMovie)) {
-    addWatchedBtn.textContent = 'ADD TO WATCHED';
+    addWatchedBtn.textContent = btnWatchTextContent;
     addWatchedBtn.classList.remove('accent-button');
   }
 }
