@@ -58,7 +58,9 @@ async function fetchMovieDetails() {
     const movieNormalizer = { ...movie, poster_path };
     const movieMarkup = modalFilmTpl(movieNormalizer);
     modalMovieRender(movieMarkup);
-
+    refs.movieBackdrop.classList.remove('is-hidden');
+    document.body.classList.add('body-overflow--hidden');
+    refs.toTopBtn.classList.remove('upview');
     addQuequeBtn = document.querySelector('.add-queue-js');
     addWatchedBtn = document.querySelector('.add-watched-js');
     const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
@@ -92,12 +94,10 @@ async function fetchMovieDetails() {
 }
 
 const modalMovieRender = markup => {
-  // refs.movieBackdrop.insertAdjacentHTML('beforeend', markup);
   refs.movieWrap.insertAdjacentHTML('beforeend', markup);
 };
 
 const modalClear = () => {
-  // refs.movieBackdrop.innerHTML = '';
   refs.movieWrap.innerHTML = '';
 };
 
@@ -112,9 +112,7 @@ export default function onModalOpen(e) {
   }
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
-  refs.movieBackdrop.classList.remove('is-hidden');
-  document.body.classList.add('body-overflow--hidden');
-  refs.toTopBtn.classList.remove('upview');
+
   // console.log(toTopBtn);
 
   // const instance = basicLightbox.create(``);
