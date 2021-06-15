@@ -29,8 +29,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 90vh;
+  width: 70vw;
+  height: 85vh;
   background-color: transparent;
   background-attachment: scroll;
 }
@@ -56,64 +56,53 @@
 
   &:first-child:hover {
     transform: translate(100%, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(2):hover {
-    transform: translate(100%, 100%) scale(3);
+    transform: translate(0, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(3):hover {
-    transform: translate(0, 100%) scale(3);
+    transform: translate(-100%, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(4):hover {
-    transform: translate(0, 100%) scale(3);
+    transform: translate(100%, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(5):hover {
     transform: translate(0, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(6):hover {
     transform: translate(-100%, 100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(7):hover {
-    transform: translate(100%, 100%) scale(3);
+    transform: translate(100%, 0) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(8):hover {
-    transform: translate(0, 100%) scale(3);
+    transform: translate(0, 0) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(9):hover {
-    transform: translate(0, 100%) scale(3);
+    transform: translate(-100%, 0) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(10):hover {
-    transform: translate(-100%, 100%) scale(3);
+    transform: translate(100%, -100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(11):hover {
-    transform: translate(100%, 0) scale(3);
+    transform: translate(0, -100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
   &:nth-child(12):hover {
-    transform: translate(100%, 0) scale(3);
-  }
-  &:nth-child(13):hover {
-    transform: translate(0, 0) scale(3);
-  }
-  &:nth-child(14):hover {
-    transform: translate(-100%, 0) scale(3);
-  }
-  &:nth-child(15):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  &:nth-child(16):hover {
-    transform: translate(0, -100%) scale(3);
-  }
-  &:nth-child(17):hover {
-    transform: translate(0, -100%) scale(3);
-  }
-  &:nth-child(18):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  &:nth-child(19):hover {
-    transform: translate(0, -100%) scale(3);
-  }
-  &:nth-child(20):hover {
     transform: translate(-100%, -100%) scale(3);
+    transition: all var(--timing-function) 1000ms;
   }
+
   &:hover {
     box-shadow: var(--shadow-on);
     outline-width: 1px;
@@ -125,7 +114,7 @@
 
 .team__button {
   position: fixed;
-  top: -20px;
+  top: -30px;
   right: 0;
   padding: 0;
   z-index: 100;
@@ -134,8 +123,10 @@
   justify-content: center;
   align-items: center;
 
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: transparent;
   border-radius: 5px;
 }
 .isActive {
@@ -144,87 +135,101 @@
 
 .team__icon {
   outline: none;
-  fill: var(--black-text-color);
-
+  fill: var(--white-text-color);
   &:hover,
   &:focus {
     fill: var(--accent-color);
   }
 }
 
-.desktop {
-  display: none;
+.team-list__thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  &:hover .team-list__text {
+    bottom: 0;
+  }
 }
 
-/* TABLET & DESKTOP */
+.team-list__img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  margin: 0;
+  opacity: 1;
+  transform: rotateY(90deg);
+}
+.animated {
+  transform: perspective(350px) rotateY(0);
+  transition: all 2500ms var(--timing-function);
+}
+.team-list__text {
+  position: absolute;
+  bottom: -1000%;
+  width: 100%;
+  text-align: center;
+  font-family: var(--main-page-font);
+  font-size: 6px;
+  background-color: var(--accent-color);
+  color: var(--white-text-color);
+}
+/* TABLET */
 
 @media screen and(min-width: 768px) {
   .team {
-    width: 80vw;
+    width: 75vw;
     height: 90vh;
   }
-  .desktop {
-    display: block;
-  }
   .team-list__card {
-    width: 20%;
-    height: 25%;
+    width: 25%;
+    height: 33.333%;
+  }
+
+  .team-list__card:nth-child(1):hover {
+    transform: translate(100%, 100%) scale(3);
+  }
+  .team-list__card:nth-child(2):hover {
+    transform: translate(100%, 100%) scale(3);
+  }
+  .team-list__card:nth-child(3):hover {
+    transform: translate(-100%, 100%) scale(3);
+  }
+  .team-list__card:nth-child(4):hover {
+    transform: translate(-100%, 100%) scale(3);
+  }
+  .team-list__card:nth-child(5):hover {
+    transform: translate(100%, 0) scale(3);
+  }
+  .team-list__card:nth-child(6):hover {
+    transform: translate(100%, 0) scale(3);
+  }
+  .team-list__card:nth-child(7):hover {
+    transform: translate(-100%, 0) scale(3);
+  }
+  .team-list__card:nth-child(8):hover {
+    transform: translate(-100%, 0) scale(3);
+  }
+  .team-list__card:nth-child(9):hover {
+    transform: translate(100%, -100%) scale(3);
+  }
+  .team-list__card:nth-child(10):hover {
+    transform: translate(100%, -100%) scale(3);
+  }
+  .team-list__card:nth-child(11):hover {
+    transform: translate(0, -100%) scale(3);
+  }
+  .team-list__card:nth-child(12):hover {
+    transform: translate(-100%, -100%) scale(3);
+  }
+
+  .team-list__text {
+    font-size: 10px;
   }
 }
 
 @media screen and(min-width: 1024px) {
-  .team-list__card:nth-child(5):hover {
-    transform: translate(-100%, 100%) scale(3);
+  .team {
+    width: 50vw;
+    height: 90vh;
   }
-  .team-list__card:nth-child(9):hover {
-    transform: translate(-100%, 100%) scale(3);
-  }
-  .team-list__card:nth-child(10):hover {
-    transform: translate(-100%, 100%) scale(3);
-  }
-  .team-list__card:nth-child(11):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(12):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(13):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(14):hover {
-    transform: translate(-100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(15):hover {
-    transform: translate(-100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(16):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(17):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(18):hover {
-    transform: translate(100%, -100%) scale(3);
-  }
-  .team-list__card:nth-child(19):hover {
-    transform: translate(0, -100%) scale(3);
-  }
-  .team-list__card:nth-child(20):hover {
-    transform: translate(-100%, -100%) scale(3);
-  }
-}
-
-.team-list__thumb {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.team-list__img {
-  width: 100%;
-  object-fit: cover;
-  margin: 0;
-}
-.animated {
-  transform: rotateY(180deg);
-  transition: transform 3000ms var(--timing-function);
 }
