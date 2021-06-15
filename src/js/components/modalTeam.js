@@ -1,7 +1,7 @@
 // REFS
 import getRefs from '../refs/get-refs';
 const refs = getRefs();
-//
+//colors
 const colors = ['#d3b8ea', '#85aff2', '#f0d7d5', '#FF6B08', '#273275'];
 let paintCardInterval = null;
 let animateCardInterval = null;
@@ -27,15 +27,15 @@ const activateItem = function (item, selector) {
 };
 
 // fn 3 рандомное окрашивание
-const paintCard = function (card, colors) {
-  let ind = randomIntegerFromInterval(0, colors.length - 1);
-  card.style.backgroundColor = colors[ind];
+const paintCard = function (card, colorsArr) {
+  let ind = randomIntegerFromInterval(0, colorsArr.length - 1);
+  card.style.backgroundColor = colorsArr[ind];
 };
 
 // fn3  перебирает и красит каждую карточку в рандомный цвет  1 раз
-const colorizeModal = function (array, colors) {
+const colorizeModal = function (array, colorsArr) {
   array.forEach(card => {
-    paintCard(card, colors);
+    paintCard(card, colorsArr);
   });
 };
 
