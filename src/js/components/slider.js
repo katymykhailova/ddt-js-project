@@ -18,7 +18,7 @@ new Swiper('.image-slider', {
 // кол-во слайдов
    slidesPerView: 4,
 // отступы между слайдами
-   spaceBetween: 30,
+   spaceBetween: 10,
 // кол-во пролистываемых слайдов
    slidesPerGroup: 1,
 // бесконечный слайд
@@ -26,9 +26,10 @@ new Swiper('.image-slider', {
 // свободный режим
    freeMode: true,
 // автопрокрутка
-   // autoplay: {
-   //    delay: 1500,
-   // },
+   autoplay: {
+      delay: 1500,
+      disableOnInteractyon: false
+   },
 // скорость
    speed: 300,
 // брейкпоинты 
