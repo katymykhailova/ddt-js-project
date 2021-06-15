@@ -17,25 +17,21 @@ export function fetchLibraryMovies() {
 const refs = getRefs();
 let section = WATCHED;
 
-refs.libraryWatchedBtn.addEventListener('click', evt => {
-  isActiveBtn(evt);
-  section = WATCHED;
-  renderLibrary(section);
-});
+refs.libraryWatchedBtn.addEventListener('click', onlibraryBtnClick);
 
-refs.libraryQueueBtn.addEventListener('click', evt => {
-  isActiveBtn(evt);
-  section = QUEUE;
-  renderLibrary(section);
-});
+refs.libraryQueueBtn.addEventListener('click', onlibraryBtnClick);
 
-function isActiveBtn(evt) {
+function onlibraryBtnClick(evt) {
   if (evt.currentTarget.nodeName !== 'BUTTON') {
     return;
   }
+  isActiveBtn(evt);
+  section = evt.currentTarget.dataset.action.toUpperCase();
+  renderLibrary(section);
+}
 
+function isActiveBtn(evt) {
   const currentActiveBtn = document.querySelector('.is-active');
-
   if (currentActiveBtn) {
     currentActiveBtn.classList.remove('is-active');
   }
@@ -83,12 +79,20 @@ function checkLibraryStatus() {
   pagination.resetPage();
   clearMoviesContainer();
 
-  if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
-    refs.libraryWatchedBtn.classList.add('is-active');
-    renderLibrary(WATCHED);
+  section = localStorage.getItem(LIBRARY_STATUS);
+  renderLibrary(section);
+
+  if (section) {
+    const libraryBtn = document.querySelector(`[data-action=${section.toLowerCase()}]`);
+    libraryBtn.classList.add('is-active');
   }
-  if (localStorage.getItem(LIBRARY_STATUS) === QUEUE) {
-    refs.libraryQueueBtn.classList.add('is-active');
-    renderLibrary(QUEUE);
-  }
+
+  // if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
+  //   refs.libraryWatchedBtn.classList.add('is-active');
+  //   renderLibrary(WATCHED);
+  // }
+  // if (localStorage.getItem(LIBRARY_STATUS) === QUEUE) {
+  //   refs.libraryQueueBtn.classList.add('is-active');
+  //   renderLibrary(QUEUE);
+  // }
 }
