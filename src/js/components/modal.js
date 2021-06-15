@@ -138,7 +138,9 @@ function onModalClose(e) {
 
   refs.movieBackdrop.classList.add('is-hidden');
   document.body.classList.remove('body-overflow--hidden');
-  refs.toTopBtn.classList.add('upview');
+  if (window.pageYOffset > 500) {
+    refs.toTopBtn.classList.add('upview');
+  }
 
   window.removeEventListener('keydown', onModalClose);
 
