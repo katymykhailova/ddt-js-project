@@ -26,9 +26,11 @@
         </li>
         <li class='movie__data-list-item'>
           <p class='movie__data-title'>Genre</p>
-          {{#each genres}}
-            <span class='movie__data-subtitle--genre'>{{name}}{{#unless @last}},{{/unless}}</span>
-          {{/each}}
+          <p>
+            {{#each genres}}
+              <span class='movie__data-subtitle--genre'>{{name}}{{#unless @last}},{{/unless}}</span>
+            {{/each}}
+          </p>
         </li>
       </ul>
     </div>
