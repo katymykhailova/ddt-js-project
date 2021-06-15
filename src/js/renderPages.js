@@ -23,13 +23,12 @@ function updateContent(e) {
 function loadPageContent(e) {
   e.preventDefault();
   if (
-    (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') ||
-    e.target.dataset.page === history.state
+    e.target.nodeName !== 'A' &&
+    e.target.parentNode.nodeName !== 'A'
+    // || e.target.dataset.page === history.state
   ) {
     return;
   }
-  const data = e.target.dataset.page;
-  const url = data + '.html';
 
   if (e.target.dataset.page === 'index') {
     loadHomepageContent();
@@ -37,6 +36,9 @@ function loadPageContent(e) {
   if (e.target.dataset.page === 'library') {
     loadLibraryContent();
   }
+
+  const data = e.target.dataset.page;
+  const url = data + '.html';
   history.pushState(data, null, url);
 }
 
@@ -46,7 +48,7 @@ function loadHomepageContent() {
   refs.homeBtn.classList.add('current');
   refs.form.classList.remove('visually-hidden');
   refs.buttonBox.classList.add('visually-hidden');
-  fetchPopularMovies();//рендерит в galleryListEl список популярных фильмов///
+  fetchPopularMovies(); //рендерит в galleryListEl список популярных фильмов///
 }
 
 function loadLibraryContent() {
@@ -57,7 +59,6 @@ function loadLibraryContent() {
   refs.form.classList.add('visually-hidden');
   refs.buttonBox.classList.remove('visually-hidden');
   fetchLibraryMovies(); //рендерит в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
-  
 }
 
 function startLoadHomepageContent() {
