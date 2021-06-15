@@ -114,10 +114,6 @@ export default function onModalOpen(e) {
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
 
-  refs.movieBackdrop.classList.remove('is-hidden');
-  document.body.classList.add('body-overflow--hidden');
-  refs.toTopBtn.classList.remove('upview');
-
   // ligtboxSpinner('start');
 
   // console.log(toTopBtn);
