@@ -8,6 +8,7 @@ import './js/components/theme';
 import './js/components/modal-login';
 import './js/components/spinner';
 import './js/renderPages';
+import './js/components/slider';
 
 /*кнопка header в library*/
 //import './js/components/header-button-library';
