@@ -1,6 +1,12 @@
 import modalFilmTpl from '../../template/modal-film-card.hbs';
 import MoviesApiService from '../apiService';
 import getRefs from '../refs/get-refs';
+import {
+  btnWatchTextContentRemove,
+  btnQueueTextContentRemove,
+  btnWatchTextContent,
+  btnQueueTextContent,
+} from '../refs/settings';
 import noposter from '../../images/no-poster.png';
 
 // import * as basicLightbox from 'basiclightbox';
@@ -24,8 +30,6 @@ let addedQuequeMovie;
 let currentMovie;
 let addWatchedBtn;
 let addQuequeBtn;
-const btnWatchTextContent = 'REMOVE TO WATCHED';
-const btnQueueTextContent = 'REMOVE TO QUEUE';
 
 refs.galleryListEl.addEventListener('click', onModalOpen);
 refs.movieBackdrop.addEventListener('click', onModalClose);
@@ -54,7 +58,9 @@ async function fetchMovieDetails() {
     const movieNormalizer = { ...movie, poster_path };
     const movieMarkup = modalFilmTpl(movieNormalizer);
     modalMovieRender(movieMarkup);
-
+    refs.movieBackdrop.classList.remove('is-hidden');
+    document.body.classList.add('body-overflow--hidden');
+    refs.toTopBtn.classList.remove('upview');
     addQuequeBtn = document.querySelector('.add-queue-js');
     addWatchedBtn = document.querySelector('.add-watched-js');
     const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
@@ -66,7 +72,7 @@ async function fetchMovieDetails() {
     if (getMovieWatchOfLocalStorage(currentMovie)) {
       addedMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Watch
-      addWatchedBtn.textContent = btnWatchTextContent;
+      addWatchedBtn.textContent = btnWatchTextContentRemove;
       addWatchedBtn.classList.add('accent-button');
     } else {
       addedMovie = true;
@@ -76,7 +82,7 @@ async function fetchMovieDetails() {
     if (getMovieQueueOfLocalStorage(currentMovie)) {
       addedQuequeMovie = false;
       //есть в LocalStorage меняем внешний вид кнопки Queue
-      addQuequeBtn.textContent = btnQueueTextContent;
+      addQuequeBtn.textContent = btnQueueTextContentRemove;
       addQuequeBtn.classList.add('accent-button');
     } else {
       addedQuequeMovie = true;
@@ -88,13 +94,11 @@ async function fetchMovieDetails() {
 }
 
 const modalMovieRender = markup => {
-  // refs.movieBackdrop.insertAdjacentHTML('beforeend', markup);
   refs.movieWrap.insertAdjacentHTML('beforeend', markup);
   addSpinnerForModalWindow();
 };
 
 const modalClear = () => {
-  // refs.movieBackdrop.innerHTML = '';
   refs.movieWrap.innerHTML = '';
 };
 
@@ -109,11 +113,13 @@ export default function onModalOpen(e) {
   }
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
+
   refs.movieBackdrop.classList.remove('is-hidden');
   document.body.classList.add('body-overflow--hidden');
   refs.toTopBtn.classList.remove('upview');
 
   // ligtboxSpinner('start');
+
   // console.log(toTopBtn);
 
   // const instance = basicLightbox.create(``);
@@ -155,10 +161,10 @@ function onAddMovieInLocalStorage(watchedMovie) {
 function onAddQueque() {
   addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie });
 
-  addQuequeBtn.textContent = btnQueueTextContent;
+  addQuequeBtn.textContent = btnQueueTextContentRemove;
   addQuequeBtn.classList.add('accent-button');
   if ((addedQuequeMovie = !addedQuequeMovie)) {
-    addQuequeBtn.textContent = 'QUEUE';
+    addQuequeBtn.textContent = btnQueueTextContent;
     addQuequeBtn.classList.remove('accent-button');
   }
 }
@@ -166,10 +172,10 @@ function onAddQueque() {
 function onAddWatched() {
   addToWatchInLocalStorage({ addedMovie, currentMovie });
 
-  addWatchedBtn.textContent = btnWatchTextContent;
+  addWatchedBtn.textContent = btnWatchTextContentRemove;
   addWatchedBtn.classList.add('accent-button');
   if ((addedMovie = !addedMovie)) {
-    addWatchedBtn.textContent = 'ADD TO WATCHED';
+    addWatchedBtn.textContent = btnWatchTextContent;
     addWatchedBtn.classList.remove('accent-button');
   }
 }
