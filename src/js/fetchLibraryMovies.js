@@ -80,11 +80,11 @@ function checkLibraryStatus() {
   clearMoviesContainer();
 
   section = localStorage.getItem(LIBRARY_STATUS);
-  renderLibrary(section);
 
   if (section) {
     const libraryBtn = document.querySelector(`[data-action=${section.toLowerCase()}]`);
     libraryBtn.classList.add('is-active');
+    renderLibrary(section);
   }
 
   // if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
