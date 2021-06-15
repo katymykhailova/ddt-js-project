@@ -9,10 +9,6 @@ import {
 } from '../refs/settings';
 import noposter from '../../images/no-poster.png';
 
-// import * as basicLightbox from 'basiclightbox';
-// import 'basiclightbox/dist/basicLightbox.min.css';
-// import 'spin.js/spin.css';
-
 import { addSpinnerForModalWindow } from './spinner';
 
 import {
@@ -113,21 +109,6 @@ export default function onModalOpen(e) {
   }
   moviesApiService.id = e.target.parentNode.dataset.id;
   fetchMovieDetails();
-
-  // ligtboxSpinner('start');
-
-  // console.log(toTopBtn);
-
-  // const instance = basicLightbox.create(``);
-
-  // instance.show();
-  // const lightboxEl = instance.element();
-  // const modalSpinner = ligtboxSpinner.spin(lightboxEl);
-  // const modalImg = document.querySelector('.modal__movie-img');
-
-  // modalImg.addEventListener('load', e => {
-  //   modalSpinner.stop();
-  // });
 }
 
 function onModalClose(e) {

@@ -38,8 +38,6 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  // transition: transform var(--transition-function) var(--timing-function);
-
   transition-property: transform;
   transition-duration: 500ms;
   transition-timing-function: var(--timing-function);
@@ -70,12 +68,6 @@
     display: flex;
   }
 }
-
-// .movie-backdrop.is-hidden .movie-wrap {
-//   @media screen and (min-width: 1024px) {
-//     transform: translate(-50%, -50%) scale(1.1);
-//   }
-// }
 
 .modal__movie-img-wrapper {
   width: 100%;
