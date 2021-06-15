@@ -47,32 +47,44 @@ const teamModalAnimations = function () {
       let activeCard = searchItem(refs.cardsArrRef);
       activateItem(activeCard, 'isActive');
       paintCard(activeCard, colors);
-    }, 500);
+    }, 300);
         
     animateCardInterval = setInterval(() => {
       let i = randomIntegerFromInterval(0, refs.cardsImages.length - 1);
       let activeImage = searchItem(refs.cardsImages);
-      activeImage.classList.toggle('visually-hidden');
+      activeImage.classList.remove('visually-hidden');
       activeImage.classList.toggle('animated');
-    }, 3000);
+    }, 1500);
 }
-  
-function teamModalOpen() {
-  refs.teamModal.classList.remove('visually-hidden');
- 
-  if (!refs.teamModal.classList.contains('visually-hidden')) {
-    teamModalAnimations();
-  }
-  else {
-   return; 
-  }
 
+const teamModalOpen = function() {
+  refs.teamBackdrop.classList.remove('visually-hidden');
+  refs.teamBackdrop.addEventListener('click',closingBackdropClick)
+  teamModalAnimations();
+  window.addEventListener('keydown', onEscapePress);
+  
 }
 
 const teamModalClose = function() {
-  refs.teamModal.classList.add('visually-hidden');
+  refs.teamBackdrop.classList.add('visually-hidden');
   clearInterval(paintCardInterval);
   clearInterval(animateCardInterval);
+  window.removeEventListener('keydown', onEscapePress);
+  refs.teamBackdrop.removeEventListener('click',teamModalClose)
+}
+const closingBackdropClick = function (e) {
+  if (e.target.classList.contains('backdrop'))
+    teamModalClose();
+  
+}
+
+const onEscapePress = function (e) {
+  if (e.code === 'Escape') {
+    teamModalClose();
+  }
+  else {
+    return;
+  }
 }
 refs.openTeamModalBtn.addEventListener('click', teamModalOpen);
 refs.closeTeamModalBtn.addEventListener('click', teamModalClose);

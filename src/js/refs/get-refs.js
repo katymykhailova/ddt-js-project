@@ -16,6 +16,7 @@ export default function getRefs() {
     modalCloseBtn: document.querySelector('[data-action="modal-close"]'),
     openTeamModalBtn: document.querySelector('[data-modal-open]'),
     closeTeamModalBtn: document.querySelector('[data-modal-close]'),
+    teamBackdrop: document.querySelector('.backdrop'),
     teamModal: document.querySelector('[data-modal]'),
     cardsArrRef: document.querySelectorAll('.team-list__card'),
     cardsImages: document.querySelectorAll('.team-list__img'),
