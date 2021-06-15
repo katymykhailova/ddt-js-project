@@ -127,8 +127,9 @@ function onModalClose(e) {
   }
 
   window.removeEventListener('keydown', onModalClose);
-
-  modalClear();
+  setTimeout(() => {
+    modalClear();
+  }, 250);
 }
 
 function onAddMovieInLocalStorage(watchedMovie) {
