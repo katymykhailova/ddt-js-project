@@ -7,7 +7,7 @@ import noposter from '../../images/no-poster.png';
 // import 'basiclightbox/dist/basicLightbox.min.css';
 // import 'spin.js/spin.css';
 
-import ligtboxSpinner from './spinner';
+import { addSpinnerForModalWindow } from './spinner';
 
 import {
   getMovieQueueOfLocalStorage,
@@ -90,6 +90,7 @@ async function fetchMovieDetails() {
 const modalMovieRender = markup => {
   // refs.movieBackdrop.insertAdjacentHTML('beforeend', markup);
   refs.movieWrap.insertAdjacentHTML('beforeend', markup);
+  addSpinnerForModalWindow();
 };
 
 const modalClear = () => {
@@ -111,6 +112,8 @@ export default function onModalOpen(e) {
   refs.movieBackdrop.classList.remove('is-hidden');
   document.body.classList.add('body-overflow--hidden');
   refs.toTopBtn.classList.remove('upview');
+
+  // ligtboxSpinner('start');
   // console.log(toTopBtn);
 
   // const instance = basicLightbox.create(``);
@@ -123,8 +126,6 @@ export default function onModalOpen(e) {
   // modalImg.addEventListener('load', e => {
   //   modalSpinner.stop();
   // });
-
-  // modalSpinner.stop();
 }
 
 function onModalClose(e) {
