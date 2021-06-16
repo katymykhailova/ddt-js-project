@@ -8,7 +8,6 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  // transition: all 1000ms var(--timing-function);
 }
 
 .backdrop {
@@ -20,8 +19,6 @@
   height: 100%;
   z-index: 98;
   overflow-y: scroll;
-  // transition: all 1000ms var(--timing-function);
-
   background-color: var(--backdrop-color);
   transition: opacity var(--transition-function) var(--timing-function);
 }
@@ -31,7 +28,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  // transform: translate(-50%, -50%);
+
   transform: translate(-50%, -50%) scale(1);
   width: 70vw;
   height: 85vh;
@@ -175,12 +172,13 @@
   object-fit: cover;
   object-position: center;
   margin: 0;
-  opacity: 1;
-  transform: rotateY(90deg);
+  opacity: 0;
+  transform: rotateY(180deg);
+  transition: all 1000ms var(--timing-function);
 }
 .animated {
   transform: perspective(350px) rotateY(0);
-  transition: all 1000ms var(--timing-function);
+  opacity: 1;
 }
 .team-list__text {
   position: absolute;
