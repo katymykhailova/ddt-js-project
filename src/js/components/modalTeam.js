@@ -1,4 +1,5 @@
-// REFS
+
+
 import getRefs from '../refs/get-refs';
 const refs = getRefs();
 //colors
@@ -47,14 +48,14 @@ const teamModalAnimations = function () {
       let activeCard = searchItem(refs.cardsArrRef);
       activateItem(activeCard, 'isActive');
       paintCard(activeCard, colors);
-    }, 300);
+    }, 500);
         
     animateCardInterval = setInterval(() => {
       let i = randomIntegerFromInterval(0, refs.cardsImages.length - 1);
       let activeImage = searchItem(refs.cardsImages);
       activeImage.classList.remove('visually-hidden');
       activeImage.classList.toggle('animated');
-    }, 1500);
+    }, 1000);
 }
 
 const teamModalOpen = function() {
