@@ -50,11 +50,26 @@ export default class NewApiService {
     }
   }
 
+  // async fetchGenres() {
+  //   try {
+  //     const response = await axios.get(`/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+  //     const genres = await response.data.genres;
+  //     return genres;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
   async fetchGenres() {
     try {
+      if (this.genres) return this.genres; // если ранее закешировали значение - вернуть его
       const response = await axios.get(`/genre/movie/list?api_key=${API_KEY}&language=en-US`);
-      const genres = await response.data.genres;
-      return genres;
+      this.genres = {};
+      response.data.genres.forEach(({ id, name }) => {
+        // преобразовать в объект вида {ganreId:genreName}
+        this.genres[id] = name;
+      });
+      return this.genres;
     } catch (error) {
       console.error(error);
     }
@@ -76,24 +91,32 @@ export default class NewApiService {
     const genresArr = await this.fetchGenres();
 
     const updateMovie = movie => {
-      let genres = [];
-      const genresIdArr = movie.genre_ids;
+      // let genres = [];
+      // const genresIdArr = movie.genre_ids;
 
-      genresIdArr.forEach(id => {
-        const genreName = genresArr.find(gener => id === gener.id).name;
-        genres.push(genreName);
-      });
+      // genresIdArr.forEach(id => {
+      //   const genreName = genresArr.find(gener => id === gener.id).name;
+      //   genres.push(genreName);
+      // });
 
       // В случае переполнения контента
-      let genresStr = genres.join(',');
-      let i = 0;
-      if (genresStr.length > 28) {
-        do {
-          genres.splice(genres.length - 1, 1);
-        } while (genres.join(',').length > 20);
-        genres.push('others...');
-      }
+      // let genresStr = genres.join(',');
+      // let i = 0;
+      // if (genresStr.length > 28) {
+      //   do {
+      //     genres.splice(genres.length - 1, 1);
+      //   } while (genres.join(',').length > 20);
+      //   genres.push('others...');
+      // }
 
+      const MAX_GENRE_LENGTH = 20;
+      let genresLength = 0;
+      const genres = movie.genre_ids
+        .map(genreId => genresArr[genreId])
+        .filter(genreName => (genresLength += genreName.length) <= MAX_GENRE_LENGTH);
+      if (genresLength > MAX_GENRE_LENGTH) genres.push('others...');
+
+      // title
       let title = movie.title;
       if (title.length > 40) {
         title = movie.title.slice(0, 37) + '...';
@@ -108,7 +131,7 @@ export default class NewApiService {
       return movieUpdate;
     };
 
-    const updatedMoviesarr = moviesArr.map(movie => updateMovie(movie));
+    const updatedMoviesarr = moviesArr.map(updateMovie);
     return updatedMoviesarr;
   }
 
