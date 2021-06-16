@@ -18,6 +18,8 @@ import {
   addToQuequeInLocalStorage,
 } from './localStoragе';
 
+import { fetchLibraryMovies } from '../fetchLibraryMovies';
+
 const moviesApiService = new MoviesApiService();
 const refs = getRefs();
 
@@ -164,6 +166,7 @@ function onAddQueque() {
   if ((addedQuequeMovie = !addedQuequeMovie)) {
     addQuequeBtn.textContent = btnQueueTextContent;
     addQuequeBtn.classList.remove('accent-button');
+    fetchLibraryMovies();
   }
 }
 
@@ -175,5 +178,6 @@ function onAddWatched() {
   if ((addedMovie = !addedMovie)) {
     addWatchedBtn.textContent = btnWatchTextContent;
     addWatchedBtn.classList.remove('accent-button');
+    fetchLibraryMovies();
   }
 }
