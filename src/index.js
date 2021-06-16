@@ -9,6 +9,7 @@ import './js/components/modal-login';
 import './js/components/spinner';
 import './js/renderPages';
 import './js/components/slider';
+import './js/components/trailer';
 
 /*кнопка header в library*/
 //import './js/components/header-button-library';

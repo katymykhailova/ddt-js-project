@@ -23,6 +23,11 @@
     padding-bottom: 20px;
   }
 
+  // .image-slider__slide {
+  // width: 147px;
+  // margin-right: 10px;
+  // }
+
   .title-slider {
     font-family: var(--main-page-font);
     font-style: normal;
@@ -56,7 +61,25 @@
     font-size: 66px;
     color: var(--accent-color);
   }
-}
 
-@media screen and (min-width: 1024px) {
+  // рейтинг
+  .rating-slider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 18px;
+    font-family: var(--main-page-font);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.1;
+    color: var(--white-text-color);
+    background-color: var(--accent-bg-color);
+    border-radius: 5px;
+  }
 }
