@@ -54,15 +54,11 @@ async function fetchMovieDetails() {
     const movieNormalizer = { ...movie, poster_path };
     const movieMarkup = modalFilmTpl(movieNormalizer);
     modalMovieRender(movieMarkup);
-    refs.movieBackdrop.classList.remove('is-hidden');
-    document.body.classList.add('body-overflow--hidden');
-    refs.toTopBtn.classList.remove('upview');
-    addQuequeBtn = document.querySelector('.add-queue-js');
-    addWatchedBtn = document.querySelector('.add-watched-js');
-    const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
-    addQuequeBtn.addEventListener('click', onAddQueque);
-    addWatchedBtn.addEventListener('click', onAddWatched);
-    modalCloseBtn.addEventListener('click', onModalClose);
+    removeIsHiddenFromBackdrop();
+    addBodyOverflowHidden();
+    removeTopBtnUpview();
+    insertAddBtnsLogic();
+    insertCloseBtnLogic();
 
     currentMovie = JSON.parse(localStorage.getItem('movie'));
     if (getMovieWatchOfLocalStorage(currentMovie)) {
@@ -88,6 +84,30 @@ async function fetchMovieDetails() {
     console.log(error);
   }
 }
+
+const insertAddBtnsLogic = () => {
+  addQuequeBtn = document.querySelector('.add-queue-js');
+  addWatchedBtn = document.querySelector('.add-watched-js');
+  addQuequeBtn.addEventListener('click', onAddQueque);
+  addWatchedBtn.addEventListener('click', onAddWatched);
+};
+
+const insertCloseBtnLogic = () => {
+  const modalCloseBtn = document.querySelector('[data-action="modal-close"]');
+  modalCloseBtn.addEventListener('click', onModalClose);
+};
+
+const removeIsHiddenFromBackdrop = () => {
+  refs.movieBackdrop.classList.remove('is-hidden');
+};
+
+const addBodyOverflowHidden = () => {
+  document.body.classList.add('body-overflow--hidden');
+};
+
+const removeTopBtnUpview = () => {
+  refs.toTopBtn.classList.remove('upview');
+};
 
 const modalMovieRender = markup => {
   refs.movieWrap.insertAdjacentHTML('beforeend', markup);
