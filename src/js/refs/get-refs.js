@@ -26,5 +26,7 @@ export default function getRefs() {
     toTopBtn: document.querySelector('.uptop'),
     bodyEl: document.querySelector('body'),
     footerEl: document.querySelector('.footer'),
+    emptyLibraryList: document.querySelector('#empty-library-text'),
+    chooseLibraryList: document.querySelector('#choose-library-text'),
   };
 }

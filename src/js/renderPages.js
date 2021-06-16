@@ -49,6 +49,8 @@ function loadHomepageContent() {
   refs.homeBtn.classList.add('current');
   refs.form.classList.remove('visually-hidden');
   refs.buttonBox.classList.add('visually-hidden');
+  refs.chooseLibraryList.classList.add('visually-hidden');
+  refs.emptyLibraryList.classList.add('visually-hidden');
   fetchPopularMovies(); //рендерит в galleryListEl список популярных фильмов///
 }
 

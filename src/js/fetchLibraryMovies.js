@@ -44,14 +44,23 @@ function renderLibrary(section) {
   pagination.resetPage();
   const moviesFromLS = JSON.parse(localStorage.getItem(section));
 
+  if (!moviesFromLS || localStorage.getItem(section) === '[]') {
+    refs.emptyLibraryList.classList.remove('visually-hidden');
+    localStorage.setItem(LIBRARY_STATUS, section);
+    refs.chooseLibraryList.classList.add('visually-hidden');
+    return;
+  }
+
   if (moviesFromLS) {
     const moviesForRender = moviesFromLS.slice(0, 20);
     const numberOfPages = Math.ceil(moviesFromLS.length / 20);
+    refs.emptyLibraryList.classList.add('visually-hidden');
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
     pagination.show();
+    localStorage.setItem(LIBRARY_STATUS, section);
+    refs.chooseLibraryList.classList.add('visually-hidden');
   }
-  localStorage.setItem(LIBRARY_STATUS, section);
 }
 
 function paginationLibraryFetch() {
@@ -85,6 +94,10 @@ function checkLibraryStatus() {
     const libraryBtn = document.querySelector(`[data-action=${section.toLowerCase()}]`);
     libraryBtn.classList.add('is-active');
     renderLibrary(section);
+  }
+  
+  if (!section) {
+    refs.chooseLibraryList.classList.remove('visually-hidden');
   }
 
   // if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
