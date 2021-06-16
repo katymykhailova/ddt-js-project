@@ -53,7 +53,7 @@ const teamModalAnimations = function () {
     animateCardInterval = setInterval(() => {
       let i = randomIntegerFromInterval(0, refs.cardsImages.length - 1);
       let activeImage = searchItem(refs.cardsImages);
-      activeImage.classList.remove('visually-hidden');
+      activeImage.classList.remove('is-hidden');
       activeImage.classList.toggle('animated');
     }, 1000);
 }
