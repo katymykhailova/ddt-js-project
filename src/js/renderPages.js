@@ -1,6 +1,7 @@
 import getRefs from './refs/get-refs';
 import { fetchPopularMovies } from './fetchApiMovies';
 import { fetchLibraryMovies } from './fetchLibraryMovies';
+import { footerToBottom } from './components/footer';
 
 const refs = getRefs();
 
@@ -59,6 +60,7 @@ function loadLibraryContent() {
   refs.form.classList.add('visually-hidden');
   refs.buttonBox.classList.remove('visually-hidden');
   fetchLibraryMovies(); //рендерит в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
+  footerToBottom();
 }
 
 function startLoadHomepageContent() {

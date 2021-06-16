@@ -3,6 +3,7 @@ import debounce from 'lodash.debounce';
 // modules
 import MoviesApiService from './apiService';
 import { spinnerModal } from './components/spinner';
+import { footerToBottom } from './components/footer';
 
 // refs
 import getRefs from './refs/get-refs';
@@ -100,6 +101,7 @@ async function fetchMoviesSearchQuery() {
     appendMoviesMarkup(movies);
     appendPaginationMarkup(moviesApiService.totalPages);
     pagination.show();
+    footerToBottom();
     spinnerModal('stop');
   } catch (error) {
     spinnerModal('stop');
@@ -121,6 +123,8 @@ async function fetchApiMoviesPagination() {
     clearMoviesContainer();
     appendMoviesMarkup(movies);
     pagination.show();
+
+    footerToBottom();
     scrollTo();
     spinnerModal('stop');
   } catch (error) {
@@ -150,6 +154,7 @@ export async function fetchPopularMovies() {
     appendPaginationMarkup(moviesApiService.totalPages);
     pagination.updatePageList;
     pagination.show();
+    footerToBottom();
     spinnerModal('stop');
   } catch (error) {
     spinnerModal('stop');

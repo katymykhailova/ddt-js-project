@@ -28,7 +28,7 @@ function addToWatchInLocalStorage({ addedMovie, currentMovie }) {
     localStorage.setItem(`${STORAGE_KEY.WATCHED}`, JSON.stringify(toWatchArray));
   }
 
-  console.log('Добавлено в просмотренные');
+  // console.log('Добавлено в просмотренные');
 }
 
 function addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie }) {
@@ -50,7 +50,7 @@ function addToQuequeInLocalStorage({ addedQuequeMovie, currentMovie }) {
     localStorage.setItem(`${STORAGE_KEY.QUEUE}`, JSON.stringify(toQueueArray));
   }
   // Сохраняет фильм в local storage при нажатии на кнопку "Ad) {
-  console.log('Добавлено в очередь');
+  // console.log('Добавлено в очередь');
 }
 
 function getMovieWatchOfLocalStorage(currentMovie) {
