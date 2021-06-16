@@ -166,7 +166,9 @@ function onAddQueque() {
   if ((addedQuequeMovie = !addedQuequeMovie)) {
     addQuequeBtn.textContent = btnQueueTextContent;
     addQuequeBtn.classList.remove('accent-button');
-    fetchLibraryMovies();
+    if (refs.headerEl.classList.contains('my-library')) {
+      fetchLibraryMovies();
+    }
   }
 }
 
@@ -178,6 +180,8 @@ function onAddWatched() {
   if ((addedMovie = !addedMovie)) {
     addWatchedBtn.textContent = btnWatchTextContent;
     addWatchedBtn.classList.remove('accent-button');
-    fetchLibraryMovies();
+    if (refs.headerEl.classList.contains('my-library')) {
+      fetchLibraryMovies();
+    }
   }
 }
