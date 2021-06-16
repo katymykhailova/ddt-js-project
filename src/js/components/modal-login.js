@@ -49,6 +49,8 @@ const firebaseConfig = {
   storageBucket: 'filmoteka-f1878.appspot.com',
   messagingSenderId: '370619409618',
   appId: '1:370619409618:web:5a232dc64a1670cf9bf90b',
+  databaseURL:'https://filmoteka-f1878-default-rtdb.europe-west1.firebasedatabase.app/',
+ 
 };
 firebase.initializeApp(firebaseConfig);
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -59,7 +61,7 @@ new firebase.auth.PhoneAuthProvider();
 // =======VARIABLE FOR WORKING WITH USER LIBRARY========
 export const filmotekaDatabase = firebase.database().ref('users');
 export let currentUserId = '';
-console.log(currentUserId);
+
 
 const uiConfig = {
   signInFlow: 'popup',
