@@ -8,10 +8,6 @@
 
 /* MOBILE */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: var(--footer-bg-color);
 }
 .footer-wrapper {
@@ -91,4 +87,11 @@
   100% {
     transform: scale(1);
   }
+}
+
+.footerToBottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
