@@ -4,58 +4,43 @@ import { fetchLibraryMovies } from './fetchLibraryMovies';
 import { footerToBottom } from './components/footer';
 
 const refs = getRefs();
-const hashes = new Map([
-  ['#home', 'index'],
-  ['#library', 'library'],
-]);
-const data = new Map([
-  [
-    'index',
-    {
-      url: 'index.html#home',
-    },
-  ],
-  [
-    'library',
-    {
-      url: 'index.html#library',
-    },
-  ],
-]);
 
 refs.navigator.addEventListener('click', loadPageContent);
 window.addEventListener('popstate', updateContent);
 
-const updatePage = id => {
-  if (id === 'index') {
-    loadHomepageContent();
-  }
-  if (id === 'library') {
-    loadLibraryContent();
-  }
-
-  const entry = data.get(id);
-  if (entry) {
-    history.pushState(id, null, entry.url);
-  }
-};
+startLoadHomepageContent();
 
 function updateContent(e) {
   const character = e.state;
   if (!character) {
-    updatePage('index');
-  } else {
-    updatePage(character);
+    loadHomepageContent();
+  } else if (character === 'index') {
+    loadHomepageContent();
+  } else if (character === 'library') {
+    loadLibraryContent();
   }
 }
 
 function loadPageContent(e) {
   e.preventDefault();
-  if (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') {
+  if (
+    e.target.nodeName !== 'A' &&
+    e.target.parentNode.nodeName !== 'A'
+    // || e.target.dataset.page === history.state
+  ) {
     return;
   }
+
+  if (e.target.dataset.page === 'index') {
+    loadHomepageContent();
+  }
+  if (e.target.dataset.page === 'library') {
+    loadLibraryContent();
+  }
+
   const data = e.target.dataset.page;
-  updatePage(data);
+  const url = data + '.html';
+  history.pushState(data, null, url);
 }
 
 function loadHomepageContent() {
@@ -80,11 +65,8 @@ function loadLibraryContent() {
   footerToBottom();
 }
 
-(() => {
-  const tabId = hashes.get(window.location.hash);
-  if (tabId) {
-    updatePage(tabId);
-  } else {
-    updatePage('index');
-  }
-})();
+function startLoadHomepageContent() {
+  history.pushState('index', null, 'index.html');
+  fetchPopularMovies();
+  //--зарендерить в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
+}
