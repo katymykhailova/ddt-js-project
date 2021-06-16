@@ -1,14 +1,15 @@
 /* FOOTER */
 .auxiliaryIndent {
-  margin-bottom: 140px;
+  margin-bottom: 40px;
   @media screen and(min-width: 768px) {
-    margin-bottom: 160px;
+    margin-bottom: 60px;
   }
 }
 
 /* MOBILE */
 .footer {
   background-color: var(--footer-bg-color);
+  width: 100%;
 }
 .footer-wrapper {
   min-height: 100px;
@@ -91,7 +92,6 @@
 
 .footerToBottom {
   position: fixed;
-  bottom: 0;
+  bottom: 100%;
   left: 0;
-  width: 100%;
 }
