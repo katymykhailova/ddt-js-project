@@ -59,7 +59,7 @@ const teamModalAnimations = function () {
 }
 
 const teamModalOpen = function() {
-  refs.teamBackdrop.classList.remove('visually-hidden');
+  refs.teamBackdrop.classList.remove('is-hidden');
   refs.teamBackdrop.addEventListener('click',closingBackdropClick)
   teamModalAnimations();
   window.addEventListener('keydown', onEscapePress);
@@ -67,7 +67,7 @@ const teamModalOpen = function() {
 }
 
 const teamModalClose = function() {
-  refs.teamBackdrop.classList.add('visually-hidden');
+  refs.teamBackdrop.classList.add('is-hidden');
   clearInterval(paintCardInterval);
   clearInterval(animateCardInterval);
   window.removeEventListener('keydown', onEscapePress);

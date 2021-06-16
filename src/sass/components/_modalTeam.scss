@@ -4,12 +4,13 @@
 /* MODAL - tEAM */
 
 // backdrop
-.backdrop.visually-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 1000ms var(--timing-function);
+  // transition: all 1000ms var(--timing-function);
 }
+
 .backdrop {
   opacity: 1;
   position: fixed;
@@ -19,9 +20,10 @@
   height: 100%;
   z-index: 98;
   overflow-y: scroll;
-  transition: all 1000ms var(--timing-function);
+  // transition: all 1000ms var(--timing-function);
 
   background-color: var(--backdrop-color);
+  transition: opacity var(--transition-function) var(--timing-function);
 }
 
 // modal
@@ -29,11 +31,26 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 70vw;
   height: 85vh;
   background-color: transparent;
   background-attachment: scroll;
+
+  opacity: 1;
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: var(--timing-function);
+  transition-delay: 250ms;
+
+  .backdrop.is-hidden & {
+    transform: translate(-50%, -50%) scale(0);
+    transition-property: transform;
+    transition-duration: 500ms;
+    transition-timing-function: var(--timing-function);
+    transition-delay: 0ms;
+  }
 }
 
 .team-list {
