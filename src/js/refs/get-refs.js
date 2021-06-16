@@ -24,5 +24,7 @@ export default function getRefs() {
     libraryWatchedBtn: document.querySelector('.watched-js'),
     libraryQueueBtn: document.querySelector('.queue-js'),
     toTopBtn: document.querySelector('.uptop'),
+    bodyEl: document.querySelector('body'),
+    footerEl: document.querySelector('.footer'),
   };
 }
