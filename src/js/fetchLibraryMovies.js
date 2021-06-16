@@ -51,6 +51,10 @@ function renderLibrary(section) {
     appendPaginationMarkup(numberOfPages);
     pagination.show();
   }
+  if (!moviesFromLS || JSON.parse(moviesFromLS).length === 0) {
+    refs.chooseLibraryList.classList.add('visually-hidden');
+    refs.emptyLibraryList.classList.remove('visually-hidden');
+  }
   localStorage.setItem(LIBRARY_STATUS, section);
 }
 
@@ -78,6 +82,10 @@ function checkLibraryStatus() {
   pagination.hide();
   pagination.resetPage();
   clearMoviesContainer();
+  const activeLibrary = document.querySelector('.is-active');
+  if (!activeLibrary) {
+    refs.chooseLibraryList.classList.remove('visually-hidden');
+  }
 
   section = localStorage.getItem(LIBRARY_STATUS);
 
