@@ -12,9 +12,7 @@ const refs = {
 };
 
 const modalRefs = getRefs();
-refs.body.classList.remove(Theme.DARK);
-refs.footer.classList.remove(Theme.DARK);
-modalRefs.movieWrap.classList.remove(Theme.DARK);
+
 refs.body.classList.add(Theme.LIGHT);
 refs.footer.classList.add(Theme.LIGHT);
 modalRefs.movieWrap.classList.add(Theme.LIGHT);
@@ -43,5 +41,6 @@ const saveTheme = localStorage.getItem('theme');
 if (saveTheme === Theme.DARK) {
   refs.checkbox.checked = true;
   refs.body.classList.add(Theme.DARK);
+  refs.footer.classList.add(Theme.DARK);
   modalRefs.movieWrap.classList.toggle(Theme.DARK);
 }
