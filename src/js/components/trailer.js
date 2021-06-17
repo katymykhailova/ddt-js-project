@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
 import { BASE_URL, API_KEY } from '../refs/settings';
 
 function createTrailerLink(elementRef) {
