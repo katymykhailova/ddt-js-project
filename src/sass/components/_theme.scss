@@ -44,6 +44,22 @@ footer.dark-theme {
     background-color: var(--footer-bg-color);
     color: var(--black-text-color);
   }
+
+  .handle-button__watched {
+    border-color: var(--button-border-color);
+    color: var(--button-text-color);
+  }
+
+  .handle-button__queque {
+    border-color: var(--button-border-color);
+    color: var(--button-text-color);
+  }
+
+  .accent-button {
+    border: 2px solid var(--button-bg-color);
+    background: var(--button-bg-color);
+    color: var(--button-text-color);
+  }
 }
 
 .toolbar {
