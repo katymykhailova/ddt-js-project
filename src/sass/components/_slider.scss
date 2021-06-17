@@ -26,6 +26,16 @@
     display: none;
   }
 
+  .image-slider__image img {
+    border-radius: 5px;
+    height: 252.5px;
+    object-fit: cover;
+  }
+
+  // .image-slider__image:hover{
+
+  // }
+
   .title-slider {
     font-family: var(--main-page-font);
     color: var(--accent-color);
@@ -80,7 +90,7 @@
     line-height: 1.1;
     color: var(--white-text-color);
     background-color: var(--accent-bg-color);
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   // кнопка трейлер
@@ -108,6 +118,11 @@
     .overlay-btn-youtube-text {
       top: 93px;
       left: 80px;
+    }
+
+    .image-slider__image img {
+      height: 222.5px;
+      object-fit: cover;
     }
   }
 
