@@ -87,7 +87,7 @@ refs.logOutbutton.addEventListener('click', e => {
   window.location.reload();
 });
 
-// login state
+// // login state
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if (firebaseUser) {
     let displayName = firebaseUser.displayName;
