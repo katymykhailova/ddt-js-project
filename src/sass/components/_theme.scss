@@ -18,6 +18,34 @@ footer.dark-theme {
   color: var(--white-text-color);
 }
 
+.movie-wrap.light-theme {
+  background-color: #ffffff;
+}
+
+.movie-wrap.dark-theme {
+  background-color: #22272e;
+
+  .modal__movie-text-block {
+    color: #ffffff;
+  }
+
+  & .movie__data-subtitle {
+    &--accent {
+      background-color: var(--accent-color);
+      color: var(--white-text-color);
+    }
+
+    &--dark-grey {
+      color: #f7f7f7;
+    }
+  }
+
+  .bg-grey {
+    background-color: var(--footer-bg-color);
+    color: var(--black-text-color);
+  }
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
