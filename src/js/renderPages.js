@@ -66,6 +66,7 @@ function loadHomepageContent() {
   refs.buttonBox.classList.add('visually-hidden');
   refs.chooseLibraryList.classList.add('visually-hidden');
   refs.emptyLibraryList.classList.add('visually-hidden');
+  refs.sliderEl.classList.remove('is-hidden');
   fetchPopularMovies(); //рендерит в galleryListEl список популярных фильмов///
 }
 
@@ -76,6 +77,7 @@ function loadLibraryContent() {
   refs.homeBtn.classList.remove('current');
   refs.form.classList.add('visually-hidden');
   refs.buttonBox.classList.remove('visually-hidden');
+  refs.sliderEl.classList.add('is-hidden');
   fetchLibraryMovies(); //рендерит в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
   footerToBottom();
 }

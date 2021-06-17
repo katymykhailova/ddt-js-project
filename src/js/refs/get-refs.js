@@ -28,5 +28,6 @@ export default function getRefs() {
     footerEl: document.querySelector('.footer'),
     emptyLibraryList: document.querySelector('#empty-library-text'),
     chooseLibraryList: document.querySelector('#choose-library-text'),
+    sliderEl: document.querySelector('.slider-wrapper'),
   };
 }
