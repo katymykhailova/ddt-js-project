@@ -29,7 +29,6 @@ function createTrailerLink(elementRef) {
       `);
 
         instance.show();
-        addBodyOverflowHidden();
         modalClBtTrailer(instance);
       });
   }
@@ -45,6 +44,7 @@ function createTrailerLink(elementRef) {
         ></button>
     `,
     );
+    addBodyOverflowHidden();
     const modalCloseBtn = document.querySelector('[data-action="close-lightbox"]');
     modalCloseBtn.addEventListener('click', () => instance.close());
   }
