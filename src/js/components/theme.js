@@ -8,18 +8,23 @@ const Theme = {
 const refs = {
   checkbox: document.getElementById('theme-switch-toggle'),
   body: document.querySelector('body'),
+  footer:document.querySelector('footer'),
 };
 
 const modalRefs = getRefs();
 
 refs.body.classList.add(Theme.LIGHT);
 modalRefs.movieWrap.classList.add(Theme.LIGHT);
+refs.footer.classList.add(Theme.LIGHT);
 
 refs.checkbox.addEventListener('change', onClickCheckbox);
 
 function onClickCheckbox(e) {
   refs.body.classList.toggle(Theme.LIGHT);
   refs.body.classList.toggle(Theme.DARK);
+
+  refs.footer.classList.toggle(Theme.LIGHT);
+  refs.footer.classList.toggle(Theme.DARK);
 
   modalRefs.movieWrap.classList.toggle(Theme.LIGHT);
   modalRefs.movieWrap.classList.toggle(Theme.DARK);
