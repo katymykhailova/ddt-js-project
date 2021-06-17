@@ -2,6 +2,7 @@ import getRefs from './refs/get-refs';
 import { fetchPopularMovies } from './fetchApiMovies';
 import { fetchLibraryMovies } from './fetchLibraryMovies';
 import { footerToBottom } from './components/footer';
+import { renderTrendy } from './components/slider';
 
 const refs = getRefs();
 const hashes = new Map([
@@ -67,6 +68,7 @@ function loadHomepageContent() {
   refs.chooseLibraryList.classList.add('visually-hidden');
   refs.emptyLibraryList.classList.add('visually-hidden');
   refs.sliderEl.classList.remove('is-hidden');
+  renderTrendy();
   fetchPopularMovies(); //рендерит в galleryListEl список популярных фильмов///
 }
 
