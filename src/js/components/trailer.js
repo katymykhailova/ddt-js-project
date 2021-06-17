@@ -1,17 +1,17 @@
 import * as basicLightbox from 'basiclightbox';
+import { BASE_URL, API_KEY } from '../refs/settings';
 
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
 
-  trailerBtn.forEach(el => 
+  trailerBtn.forEach(el =>
     el.addEventListener('click', e => {
       drawModalForTrailler(e.target.dataset.id);
     }),
   );
 
   function drawModalForTrailler(id) {
-    const ApiKey = '3bb7c750e6d9b2ae7509ab17b85a7611';
-    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${ApiKey}&language=en-US`;
+    const url = `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -43,9 +43,7 @@ function createTrailerLink(elementRef) {
         ></button>
     `,
     );
-    const modalCloseBtn = document.querySelector(
-      '[data-action="close-lightbox"]',
-    );
+    const modalCloseBtn = document.querySelector('[data-action="close-lightbox"]');
     modalCloseBtn.addEventListener('click', () => instance.close());
   }
 }
