@@ -61,7 +61,7 @@ const swipe = new Swiper('.image-slider', {
 // swipe.mount();
 const swiperEl = document.querySelector('.swiper-container').swiper;
 
-function renderTrendy() {
+export function renderTrendy() {
   const url = `${BASE_URL}/trending/all/day?api_key=${API_KEY}`;
   return fetch(url)
     .then(response => response.json())
