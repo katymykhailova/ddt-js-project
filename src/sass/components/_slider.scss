@@ -22,6 +22,10 @@
     padding-bottom: 20px;
   }
 
+  .slider-wrapper.is-hidden {
+    display: none;
+  }
+
   .title-slider {
     font-family: var(--main-page-font);
     font-style: normal;
