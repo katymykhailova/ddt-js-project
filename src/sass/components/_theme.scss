@@ -29,6 +29,15 @@ footer.dark-theme {
     color: var(--white-text-color);
   }
 
+  .popup-button {
+    border-color: var(--white-text-color);
+    color: var(--white-text-color);
+  }
+
+  .modal__close-button {
+    background-image: url('../images/icon-close.svg');
+  }
+
   & .movie__data-subtitle {
     &--accent {
       background-color: var(--accent-color);
