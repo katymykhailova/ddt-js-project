@@ -44,6 +44,7 @@ const swipe = new Swiper('.image-slider', {
     delay: 1500,
     disableOnInteractyon: false,
   },
+  autoHeight: true,
   // скорость
   speed: 300,
   // брейкпоинты
