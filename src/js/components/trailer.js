@@ -44,8 +44,13 @@ function createTrailerLink(elementRef) {
         ></button>
     `,
     );
+    addBodyOverflowHidden();
     const modalCloseBtn = document.querySelector('[data-action="close-lightbox"]');
     modalCloseBtn.addEventListener('click', () => instance.close());
+  }
+
+  function addBodyOverflowHidden() {
+    document.body.classList.add('body-overflow--hidden');
   }
 }
 
