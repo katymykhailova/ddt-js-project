@@ -1,7 +1,7 @@
 // import Swiper JS
-// import Swiper from 'swiper';
+import Swiper from 'swiper/bundle';
 // import Swiper styles
-// import 'swiper/swiper-bundle.css';
+import 'swiper/swiper-bundle.css';
 
 import filmsCardSliderTpl from '../../template/slider-card.hbs';
 import trailer from './trailer';
@@ -61,7 +61,6 @@ const swipe = new Swiper('.image-slider', {
 const swiperEl = document.querySelector('.swiper-container').swiper;
 
 function renderTrendy() {
-  //https://api.themoviedb.org/3
   const url = `${BASE_URL}/trending/all/day?api_key=${API_KEY}`;
   return fetch(url)
     .then(response => response.json())
