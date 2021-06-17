@@ -12,10 +12,13 @@ const refs = {
 };
 
 const modalRefs = getRefs();
-
+refs.body.classList.remove(Theme.DARK);
+refs.footer.classList.remove(Theme.DARK);
+modalRefs.movieWrap.classList.remove(Theme.DARK);
 refs.body.classList.add(Theme.LIGHT);
-modalRefs.movieWrap.classList.add(Theme.LIGHT);
 refs.footer.classList.add(Theme.LIGHT);
+modalRefs.movieWrap.classList.add(Theme.LIGHT);
+
 
 refs.checkbox.addEventListener('change', onClickCheckbox);
 
