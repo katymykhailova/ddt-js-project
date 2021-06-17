@@ -74,24 +74,25 @@ function getMovieWatchOfLocalStorage(currentMovie) {
   // } else {
   //   return false;
   // }
-  return toQueueArray.some(({ id }) => id === currentMovie.id);
+  return toWatchArray.some(({ id }) => id === currentMovie.id);
 }
 
 function getMovieQueueOfLocalStorage(currentMovie) {
   // Читаем текущий фильм
   // Сиздаем масси id из массива уже записанных в хранилище фильмов
-  const idArr = toQueueArray.map(movie => {
-    if (!movie) {
-      return;
-    }
-    return movie.id;
-  });
+  // const idArr = toQueueArray.map(movie => {
+  //   if (!movie) {
+  //     return;
+  //   }
+  //   return movie.id;
+  // });
 
-  if (idArr.includes(currentMovie.id)) {
-    return true;
-  } else {
-    return false;
-  }
+  // if (idArr.includes(currentMovie.id)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  return toQueueArray.some(({ id }) => id === currentMovie.id);
 }
 
 export {
