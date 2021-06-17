@@ -1,3 +1,8 @@
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/swiper-bundle.css';
+
 import filmsCardSliderTpl from '../../template/slider-card.hbs';
 import trailer from './trailer';
 import { BASE_URL, API_KEY } from '../refs/settings';

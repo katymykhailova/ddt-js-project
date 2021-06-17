@@ -31,6 +31,7 @@
     "firebase": "^8.6.7",
     "firebaseui": "^4.8.0",
     "lodash.debounce": "^4.0.8",
-    "spin.js": "^4.1.0"
+    "spin.js": "^4.1.0",
+    "swiper": "^6.7.0"
   }
 }
