@@ -1,6 +1,7 @@
 // refs
 import getRefs from './refs/get-refs';
 import { LIBRARY_STATUS, WATCHED, QUEUE } from './refs/settings';
+import { footerToBottom } from './components/footer';
 
 import {
   appendMoviesMarkup,
@@ -58,6 +59,8 @@ function renderLibrary(section) {
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
     pagination.show();
+    footerToBottom();
+
     localStorage.setItem(LIBRARY_STATUS, section);
     refs.chooseLibraryList.classList.add('visually-hidden');
   }
@@ -95,7 +98,7 @@ function checkLibraryStatus() {
     libraryBtn.classList.add('is-active');
     renderLibrary(section);
   }
-  
+
   if (!section) {
     refs.chooseLibraryList.classList.remove('visually-hidden');
   }
