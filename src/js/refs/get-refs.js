@@ -29,5 +29,6 @@ export default function getRefs() {
     emptyLibraryList: document.querySelector('#empty-library-text'),
     chooseLibraryList: document.querySelector('#choose-library-text'),
     sliderEl: document.querySelector('.slider-wrapper'),
+    inputEl: document.querySelector('.search-field'),
   };
 }

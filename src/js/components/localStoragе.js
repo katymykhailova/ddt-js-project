@@ -3,12 +3,6 @@ const STORAGE_KEY = {
   QUEUE: 'QUEUE',
 };
 
-// const toWatch = JSON.parse(localStorage.getItem(`${STORAGE_KEY.WATCHED}`));
-// const toQueue = JSON.parse(localStorage.getItem(`${STORAGE_KEY.QUEUE}`));
-
-// let toWatchArray = toWatch !== null ? [...toWatch] : [];
-// let toQueueArray = toQueue !== null ? [...toQueue] : [];
-
 let toWatchArray = JSON.parse(localStorage.getItem(STORAGE_KEY.WATCHED)) || [];
 let toQueueArray = JSON.parse(localStorage.getItem(STORAGE_KEY.QUEUE)) || [];
 
