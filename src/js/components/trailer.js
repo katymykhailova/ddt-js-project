@@ -1,6 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { BASE_URL, API_KEY } from '../refs/settings';
+import MoviesApiService from '../apiService';
+
+const moviesApiService = new MoviesApiService();
 
 function createTrailerLink(elementRef) {
   const trailerBtn = elementRef;
@@ -11,26 +14,24 @@ function createTrailerLink(elementRef) {
     }),
   );
 
-  function drawModalForTrailler(id) {
-    const url = `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const id = data.results[0].key;
-        const instance = basicLightbox.create(`
-  <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-`);
-        instance.show();
-        modalClBtTrailer(instance);
-      })
-      .catch(() => {
-        const instance = basicLightbox.create(`
-    <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      `);
+  async function drawModalForTrailler(id) {
+    moviesApiService.id = id;
+    try {
+      const data = await moviesApiService.fetchTraillerMovie();
+      const id = data.results[0].key;
+      const instance = basicLightbox.create(`
+    <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  `);
+      instance.show();
+      modalClBtTrailer(instance);
+    } catch (error) {
+      const instance = basicLightbox.create(`
+      <iframe width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        `);
 
-        instance.show();
-        modalClBtTrailer(instance);
-      });
+      instance.show();
+      modalClBtTrailer(instance);
+    }
   }
 
   function modalClBtTrailer(instance) {
