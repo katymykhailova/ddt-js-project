@@ -40,14 +40,12 @@ function scrollTo() {
 
 function onInput(e) {
   e.preventDefault();
-  // moviesApiService.query = e.target.value.trim();
   moviesApiService.query = e.currentTarget.elements.query.value.trim();
   moviesApiService.resetPage();
   pagination.resetPage();
   scrollTo();
   clearMoviesContainer();
   fetchMoviesSearchQuery();
-  // e.currentTarget.elements.query.value = '';
 }
 
 function paginationFetch() {

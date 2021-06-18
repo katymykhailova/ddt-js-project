@@ -18,6 +18,16 @@ export default class NewApiService {
       return await this.fetchPopularMovies();
     }
   }
+  async fetchTrendingMovies() {
+    try {
+      const response = await axios.get(`/trending/all/day?api_key=${API_KEY}`);
+      const trendinMoviesData = await response.data;
+      const trendinMovies = await trendinMoviesData.results;
+      return trendinMovies;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async fetchPopularMovies() {
     try {

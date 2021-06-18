@@ -80,6 +80,7 @@ function loadLibraryContent() {
   refs.form.classList.add('visually-hidden');
   refs.buttonBox.classList.remove('visually-hidden');
   refs.sliderEl.classList.add('is-hidden');
+  refs.inputEl.value = '';
   fetchLibraryMovies(); //рендерит в galleryListEl соответствующий список фильмов watch  или queue для библиотеки //
   footerToBottom();
 }
