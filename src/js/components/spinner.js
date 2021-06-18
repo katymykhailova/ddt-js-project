@@ -44,12 +44,6 @@ export function addSpinnerForModalWindow() {
     spinnerForModalWindowEl,
   );
 
-  // spinnerForModalWindowEl.childNodes[2].addEventListener('load', stopSpinner);
-
-  // function stopSpinner() {
-  //   spinnerForModalWindow.stop();
-  // }
-
   setTimeout(() => {
     spinnerForModalWindow.stop();
   }, 1000);

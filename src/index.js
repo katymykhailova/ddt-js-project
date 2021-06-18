@@ -11,7 +11,3 @@ import './js/renderPages';
 import './js/components/footer';
 import './js/components/slider';
 import './js/components/trailer';
-
-/*кнопка header в library*/
-//import './js/components/header-button-library';
-import './js/components/popup-button';
