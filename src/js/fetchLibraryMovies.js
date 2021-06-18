@@ -19,8 +19,19 @@ const refs = getRefs();
 let section = WATCHED;
 
 refs.libraryWatchedBtn.addEventListener('click', onlibraryBtnClick);
-
 refs.libraryQueueBtn.addEventListener('click', onlibraryBtnClick);
+const headerClientHeight = refs.headerEl.clientHeight;
+
+function scrollTo() {
+  if (headerClientHeight === 0) {
+    return;
+  }
+
+  window.scrollTo({
+    top: headerClientHeight,
+    behavior: 'smooth',
+  });
+}
 
 function onlibraryBtnClick(evt) {
   if (evt.currentTarget.nodeName !== 'BUTTON') {
@@ -83,6 +94,8 @@ function fetchLibraryMoviesPagination() {
     appendMoviesMarkup(moviesForRender);
     appendPaginationMarkup(numberOfPages);
     pagination.show();
+    footerToBottom();
+    scrollTo();
   }
 }
 
