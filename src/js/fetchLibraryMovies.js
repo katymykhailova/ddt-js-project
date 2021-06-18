@@ -115,13 +115,4 @@ function checkLibraryStatus() {
   if (!section) {
     refs.chooseLibraryList.classList.remove('visually-hidden');
   }
-
-  // if (localStorage.getItem(LIBRARY_STATUS) === WATCHED) {
-  //   refs.libraryWatchedBtn.classList.add('is-active');
-  //   renderLibrary(WATCHED);
-  // }
-  // if (localStorage.getItem(LIBRARY_STATUS) === QUEUE) {
-  //   refs.libraryQueueBtn.classList.add('is-active');
-  //   renderLibrary(QUEUE);
-  // }
 }

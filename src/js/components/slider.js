@@ -5,7 +5,6 @@ import 'swiper/swiper-bundle.css';
 
 import filmsCardSliderTpl from '../../template/slider-card.hbs';
 import trailer from './trailer';
-import { BASE_URL, API_KEY } from '../refs/settings';
 import noposter from '../../images/no-poster.png';
 
 import MoviesApiService from '../apiService';
@@ -61,7 +60,6 @@ const swipe = new Swiper('.image-slider', {
   },
 });
 
-// swipe.mount();
 const swiperEl = document.querySelector('.swiper-container').swiper;
 
 export async function renderTrendy() {
@@ -78,16 +76,3 @@ function renderSliderFilms(articles) {
   swiperEl.update();
   trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
 }
-
-// export function renderTrendy() {
-//   const url = `${BASE_URL}/trending/all/day?api_key=${API_KEY}`;
-//   return fetch(url)
-//     .then(response => response.json())
-//     .then(({ results }) => {
-//       return results;
-//     })
-//     .then(renderSliderFilms)
-//     .catch(err => {
-//       sliderContainer.innerHTML = `<img class="catch-error-pagination" src="${noposter}" />`;
-//     });
-// }
