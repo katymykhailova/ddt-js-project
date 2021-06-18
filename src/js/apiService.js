@@ -18,6 +18,7 @@ export default class NewApiService {
       return await this.fetchPopularMovies();
     }
   }
+
   async fetchTrendingMovies() {
     try {
       const response = await axios.get(`/trending/all/day?api_key=${API_KEY}`);
@@ -26,6 +27,16 @@ export default class NewApiService {
       return trendinMovies;
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  async fetchTraillerMovie() {
+    try {
+      const response = await axios.get(`movie/${this.id}/videos?api_key=${API_KEY}&language=en-US`);
+      const modalMovie = await response.data;
+      return modalMovie;
+    } catch (error) {
+      console.log(error);
     }
   }
 
