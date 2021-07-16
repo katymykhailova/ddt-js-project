@@ -6,14 +6,14 @@ import { renderTrendy } from './components/slider';
 
 const refs = getRefs();
 const hashes = new Map([
-  ['#home', 'index'],
+  ['/', 'index'],
   ['#library', 'library'],
 ]);
 const data = new Map([
   [
     'index',
     {
-      url: 'index.html#home',
+      url: 'index.html',
     },
   ],
   [
