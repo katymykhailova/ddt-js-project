@@ -5,27 +5,27 @@ import { footerToBottom } from './components/footer';
 import { renderTrendy } from './components/slider';
 
 const refs = getRefs();
-const hashes = new Map([
-  ['/', 'index'],
-  ['#library', 'library'],
-]);
-const data = new Map([
-  [
-    'index',
-    {
-      url: 'index.html',
-    },
-  ],
-  [
-    'library',
-    {
-      url: 'index.html#library',
-    },
-  ],
-]);
+// const hashes = new Map([
+//   ['/', 'index'],
+//   ['#library', 'library'],
+// ]);
+// const data = new Map([
+//   [
+//     'index',
+//     {
+//       url: 'index.html',
+//     },
+//   ],
+//   [
+//     'library',
+//     {
+//       url: 'index.html#library',
+//     },
+//   ],
+// ]);
 
 refs.navigator.addEventListener('click', loadPageContent);
-window.addEventListener('popstate', updateContent);
+// window.addEventListener('popstate', updateContent);
 
 const updatePage = id => {
   if (id === 'index') {
@@ -35,20 +35,20 @@ const updatePage = id => {
     loadLibraryContent();
   }
 
-  const entry = data.get(id);
-  if (entry) {
-    history.pushState(id, null, entry.url);
-  }
+  // const entry = data.get(id);
+  // if (entry) {
+  //   history.pushState(id, null, entry.url);
+  // }
 };
 
-function updateContent(e) {
-  const character = e.state;
-  if (!character) {
-    updatePage('index');
-  } else {
-    updatePage(character);
-  }
-}
+// function updateContent(e) {
+//   const character = e.state;
+//   if (!character) {
+//     updatePage('index');
+//   } else {
+//     updatePage(character);
+//   }
+// }
 
 function loadPageContent(e) {
   e.preventDefault();
@@ -85,11 +85,15 @@ function loadLibraryContent() {
   footerToBottom();
 }
 
+// (() => {
+//   const tabId = hashes.get(window.location.hash);
+//   if (tabId) {
+//     updatePage(tabId);
+//   } else {
+//     updatePage('index');
+//   }
+// })();
+
 (() => {
-  const tabId = hashes.get(window.location.hash);
-  if (tabId) {
-    updatePage(tabId);
-  } else {
-    updatePage('index');
-  }
+  updatePage('index');
 })();
